@@ -226,18 +226,19 @@
     margin-bottom: var(--space-6);
 }
 
-.mood-collage {
-    position: relative;
-    height: 500px;
+.philosophy-image {
     width: 100%;
-    background: linear-gradient(135deg,
-            var(--color-stone) 0%,
-            var(--color-linen) 100%);
+    height: 100%;
+    min-height: 400px;
+    object-fit: cover;
     border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
 }
 
-.collage-item {
-    display: none;
+@media (min-width: 1024px) {
+    .philosophy-image {
+        height: 600px;
+    }
 }
 
 /* ===============================================
@@ -268,15 +269,15 @@
 
 .mood-card {
     position: relative;
-    height: 320px;
+    height: 480px;
     padding: var(--space-8);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     overflow: hidden;
     text-decoration: none;
-    color: var(--color-gray-900);
-    background: var(--color-linen) !important;
+    color: white;
+    background: var(--color-gray-900);
     border: 1px solid var(--color-gray-200);
     border-radius: var(--radius-sm);
     transition: all var(--transition-slow);
@@ -284,20 +285,94 @@
 
 .mood-card:hover {
     transform: translateY(-4px);
-    border-color: var(--color-gray-300);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-xl);
+    border-color: transparent;
+}
+
+.mood-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.mood-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.1) 100%);
+    pointer-events: none;
+    transition: background 0.3s ease;
+}
+
+.mood-card:hover .mood-image-container::after {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.mood-img {
+    width: 400%;
+    height: 100%;
+    object-fit: cover;
+    max-width: none;
+    transition: transform 0.5s ease;
+}
+
+.mood-card:hover .mood-img {
+    transform: scale(1.05);
+}
+
+/* Crop the collage for each mood card */
+.mood-img-1 {
+    transform: translateX(0);
+}
+
+.mood-img-2 {
+    transform: translateX(-25%);
+}
+
+.mood-img-3 {
+    transform: translateX(-50%);
+}
+
+.mood-img-4 {
+    transform: translateX(-75%);
+}
+
+.mood-card:hover .mood-img-1 {
+    transform: scale(1.05) translateX(0);
+}
+
+.mood-card:hover .mood-img-2 {
+    transform: scale(1.05) translateX(-25%);
+}
+
+.mood-card:hover .mood-img-3 {
+    transform: scale(1.05) translateX(-50%);
+}
+
+.mood-card:hover .mood-img-4 {
+    transform: scale(1.05) translateX(-75%);
 }
 
 .mood-content {
     position: relative;
     z-index: 2;
+    padding-bottom: var(--space-2);
 }
 
 .mood-icon {
     font-size: 1.5rem;
     margin-bottom: var(--space-4);
     display: block;
-    opacity: 0.8;
+    opacity: 0.9;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .mood-card h3 {
@@ -305,13 +380,15 @@
     font-size: var(--text-xl);
     font-weight: var(--font-normal);
     margin-bottom: var(--space-2);
-    color: var(--color-gray-900);
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .mood-card p {
     font-size: var(--text-sm);
     font-weight: var(--font-light);
-    color: var(--color-gray-600);
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .mood-overlay {

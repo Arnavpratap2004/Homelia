@@ -1,0 +1,280 @@
+
+--- Sheet: Table 1 ---
+[ROW:6] 01    SERENE | P02.-03
+[ROW:7] -                                            «
+[ROW:8] 02    ABOUT DURIAN | P . 04-07
+[ROW:9] -                          <«
+[ROW:10] 03    CERTIFICATION | P . 08-13
+[ROW:11] -                                            <«
+[ROW:12] 04    PRODUCT PORTFOLIO
+05    SOLIDS | P14.-17
+P1.8-29
+[ROW:13] -                  «
+[ROW:14] -                                        <«
+[ROW:15] 06    WOODGRAINS
+07    STONES
+08    METALS | P32.-49
+P52-.57
+P58-5.9
+[ROW:16] -                                «
+[ROW:17] -                                          «
+[ROW:18] -                                                                   <«
+[ROW:19] 09    FINISHES | P60-.61
+[ROW:20] -                                         «
+[ROW:21] 10    SIZE CHART | «   P . 62
+[ROW:22] --------
+[ROW:23] 11     USER MANUAL & TECHNICAL GUIDE | P.  63
+Xw
+0
+z 
+01
+[ROW:24] ---<«
+[ROW:25] L
+[ROW:26] About
+Welcome   to   Serene,   a   curated collection   showcasing   innovative solutions   for   transforming   spaces. Serene serves as your go-to resource for  inspiration  and ideas, highlighting the   latest   trends,   materials,   and design  philosophies.  It  is  more  than just  a  collection  of  products;  it  is  a source of inspiration and creativity for anyone   Looking   to   enhance   their space.   With   our  diverse   offerings, commitment  to  quality,  and  a  focus on  innovative  design,  we  invite  you to    explore   and   re-imagine   your environment.  Let's  create  something
+beautiful together!
+[ROW:28] 3
+[ROW:37] relationsnii:2s
+[ROW:38] sustainaoi Iity;
+[ROW:39] ••
+••                                                                                                                                                                                                                                                                                                                                             I
+[ROW:41] transforming
+[ROW:42] environmer.1ts
+[ROW:43] envir.onmental
+[ROW:48] SERENE
+[ROW:49] We  are Certified
+At Durian Laminates, quality is a tradition that is followed meticulously and  in its entirety. Our commitment to the highest standards in the manufacturing processhas won certificationsincluding ISO 9001,
+ISO 14001 &  Greenguard  for low chemical emissions for all facilities.
+Our certifications reflect our commitment to quality and sustainability, ensuring that our products
+meet the highest industry standards.
+[ROW:51] ■*        European
+Standard
+.                                   EN438
+The mark of
+reeponalble forntry
+Fire Retardant
+An ISO 9001 : 2015,ISO 14001 : 2015
+[ROW:53] 08                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  09
+[ROW:68] SERENE
+An enticing blend of form and functionality to bring about the best within your decors
+15
+[ROW:77] SUEDE (SD) | SERENE
+[ROW:78] U101 I PEARL WHITE
+U116 I COLUMBIAN WHITE
+U117 I WARM WHITE
+[ROW:81] U109 I POLAR WHITE | U118 I FROSTY WHITE
+[ROW:83] U115 I CREAM BEIGE | U110 I CITY GREY
+[ROW:87] U124 I IRISH CREAM | U123 I SAND GREY
+[ROW:88] U127 I ARCTIC WHITE
+18 | U125 I BRIGHT IVORY                                                                                      U131 I SNOW WHITE
+19
+[ROW:89] SUEDE (SD)                                                                                                                                                                                                                                                                                                                                                                              SERENE
+[ROW:90] U112 I PLATINUM GREY                                                                                   U120 I LIGHT BEIGE | U107 I ROYAL ORANGE | UlOS I CORAL
+[ROW:91] Ulll IMISTY GREY
+U119 I STONE GREY | U113 I TWILIGHT
+U126 I CHOCOLATE | U104 I BLUSH BLUE
+U129 I MARIE GOLD | U103 I MAGESTIC BLUE
+U106 I LIGHTING GREEN
+[ROW:92] U102 I DUSK SLATE                                                                                          U122 I BLACK                                                                                                                                           U114 I FRESH GREEN                                                                                       U108 I EMERALD
+20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   21
+[ROW:93] _J                                                                                                                                                                       L
+[ROW:94] ZERO MATT (ZK)                                                                                                                                                                                                                                                                                                                                                                     SERENE
+[ROW:96] ElOS I MILD WHITE                                                                                          El31 I PEWTER GREY                                                                                                                             El25 I COBBLE STONE                                                                                    El29 I SEASANE
+[ROW:98] El23 I FROSTY WHITE                                                                                     El27 I STONINGTON GREY                                                                                                                   El28 I CAMEL                                                                                                    Ell7 I AUTUMN
+[ROW:100] El33 I FLORA WHITE                                                                                       Ell3 I SLATE GREY                                                                                                                                  EllS I OLIVE                                                                                                       Ell9 I CHESTNUT
+[ROW:102] Ell4 I MISTY GREY                                                                                            Ell0 I CHARCOAL GREY                                                                                                                        El34 I FOSSIL GREEN                                                                                       El30 I PISTACHIO
+[ROW:103] 22                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  23
+7
+[ROW:104] _J                                                                                                                                                                       L
+[ROW:105] ULTRA GLOSS (UH++)                                                                                                                                                                                                                                                                                                                                                                           SERENE
+[ROW:106] A curated design phenomenon
+[ROW:107] Transform your
+space with timeless elegance
+[ROW:109] E124 I COLUMBIAN WHITE                                                                                 E123 I FROSTY WHITE                                                                                                                                   E134 I FOSSIL GREEN                                                                                            E118 I MOSS GREEN
+[ROW:113] E132 I SILVER GREY                                                                                               E114 I MISTY GREY                                                                                                                                          EllS I OLIVE                                                                                                            E130 I PISTACHIO
+[ROW:116] E113 I SLATE GREY                                                                                                 E106 I JET BLACK                                                                                                                                            E135 I TERACOTTA                                                                                                E119 I CHESTNUT
+[ROW:117] 24                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 25
+7
+[ROW:118] SUPER SUEDE (SS)
+E124 I COLUMBIAN WHITE
+E136 I PEARL GREY
+E132 I SILVER GREY | Sophisticated style, simplified living
+Laminates that speak style and substance
+E123 I FROSTY WHITE
+E113 I SLATE GREY | SERENE
+[ROW:120] E114 I MISTY GREY                                                                                                 E106 I JET BLACK
+[ROW:121] 27
+[ROW:122] SUPER SUEDE (SS)                                                                                                                                                                                                                                                                                                                                                                                 SERENE
+[ROW:123] Gear up for a gorgeous rendezvous with style
+� | Elevate your interiors: let your walls shine
+[ROW:124] E121 I BRIGHT YELLOW
+E116 I ORANGE | E122 I YELLOW
+E120 I BERRY RED | E133 I FLORA WHITE
+E130 I PISTACHIO | E134 I FOSSIL GREEN
+EllS I OLIVE
+[ROW:125] E135 I TERACOTTA                                                                                           E119 I CHESTNUT                                                                                                                                    E126 I ELECTRIC BLUE                                                                                    E109 I ROYAL BLUE
+28                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  29
+[ROW:132] SUEDE (SD)
+U304 I LAUREL OAK
+U302 I SIBERIAN OAK | U306 I WENGE | SERENE
+[ROW:134] U303 I SCANDINAVIAN OAK                                                                         U305 I TITTER WALNUT
+[ROW:135] 33
+[ROW:136] URBANE ULTRA (UU)                                                                                                                                                                                                                                                                                                                                                             SERENE
+[ROW:137] E384 I WALNUT PLANKWOOD
+E375 I CANARY WOOD                     E371 I HARD SPEAR WOOD             E396 I EUROPEAN OAK                    E373 I SLASH PINE                                                                   E386 I OREGON PINE                       E387 I SMOKED PINE | Create capt1•vat1•ng visual experiences!
+Crafted for beauty, built to last
+E392IOKOUMEGABOON
+E391 I PINE EST CANADA | E393 I OKOUME LUMBER
+E390 I SILK GREY PINE
+[ROW:139] 34                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  35
+[ROW:140] URBANE ULTRA (UU)                                                                                                                                                                                                    PICASSO VERA (Pl)                                                                                                                                     SERENE
+[ROW:141] E383 I INDONESIAN TEAK
+E398 I BILTMORE ASHWOOD | E374 I BURMA TEAK
+E394 I BHUTAN TEAK | E395 I MURRAY PINE
+E389 I OAK EURO VENEER | E382 I AFROMOSIA TEAK
+E388 I CHERRY VENEER | E396 I EUROPEAN OAK                    E383 I INDONESIAN TEAK                E376 I NORTHERN CATAWBA
+E375 I CANARY WOOD | E386 I OREGON PINE
+E372 I SPEAR ROSEWOOD
+[ROW:143] E379 I SWAMP OAK | E381 I SATIN OAK | E377 I WHITE OAK | E378 I BUR OAK                                                                        E384 I WALNUT PLANKWOOD                                                                     E380 I ALBA OAK
+[ROW:144] 36                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  37
+[ROW:145] NORDIC JACK (NJ)                                                                                                                                                                                                LINEAR QUIN (LQ)                                                                                                                               SERENE
+[ROW:146] E391 I PINE EST CANADA
+E373 I SLASH PINE | E390 I SILK GREY PINE
+E376 I NORTHERN CATAWBA | E395 I HURRAY PINE
+E392IOKOU!v1EGABOON | E387 I SMOKED PINE
+E393 I OKOU!v1E LUMBER | E372 I SPEAR ROSEWOOD | E371 I HARD SPEAR WOOD
+E381 I SATIN OAK | E398 I BILTMORE ASHWOOD
+E382 I AFRO!v1OSIA TEAK
+[ROW:148] E394 I BHUTAN TEAK | E374 I BURMA TEAK | E388 I CHERRY VENEER | E389 I OAK EURO VENEER | E380 I ALBA OAK                               E377 I WHITE OAK | E378 I BUR OAK                                 E379 I SWAMP OAK
+[ROW:149] 38                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 39
+[ROW:150] QUEENSLAND MAPPLE (QM)                                                                                              VENEER KNOTS (VK)                                         WALNUT UTILE (WU)                                                                                                                          SERENE
+D•iscover endless desjgn options
+Where design meets durability
+[ROW:151] E362 I AMERICAN TULIPWOOD | E367 I WHITE OAK | E375 I CANARY WOOD | E134 I FOSSIL GREEN
+[ROW:152] E363 I DYED TULIPWOOD
+E364 I DYED TULIP GREY | E366 I FIGURED OAK
+E365 I POLISHED OAK | E368 I GREY OAK
+E369 I TROPICAL OAK | E371 I HARD SPEAR WOOD
+E372 I SPEAR ROSEWOOD | E133 I FLORA WHITE
+El14 I MISTY GREY
+[ROW:154] 40                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  41
+[ROW:155] ZERO JUGLANS (ZJ)                                                                                                                             SERENE
+[ROW:156] E370 I QUARTER CUT OAK
+E333 I ULMAS SEROTINA                  E334 I PRUNUS SEROTINA | Timeless designs for you!
+The canvas
+for  your unique vision!
+E336 I SPANISH SPINNEY                  E335 I CONTINENTAL SPINNEY
+[ROW:158] 42
+[ROW:159] SUPER SUEDE (SS)                                                                                                                                                                                                                                                                                                                                                                                 SERENE
+[ROW:160] E371 I HARD SPEAR WOOD | E372 I SPEAR ROSEWOOD | E384 I WALNUT PLANKWOOD       E375 I CANARY WOOD | E373 I SLASH PINE | E389 I OAK EURO VENEER | E388 I CHERRY VENEER | E374 I BURMA TEAK
+[ROW:161] •     -.       •                 I
+�·,: | .•        �      ·•�:        .�'• i.••:��-•�•   I      •
+[ROW:162] I'    •                 ··•:�•  �:           .:0  •,.•:•       •-: •�\;
+1          ••::,t
+[ROW:163] Revitalize your home's charm! | �-
+I                                                                     �•
+[ROW:164] E380 I ALBA OAK
+E383 I INDONESIAN TEAK | E379 I SWAMP OAK
+E381 I SATIN OAK | Style that stands the test of time
+E377 I WHITE OAK                             E378 I BUR OAK | E376 I NORTHERN CATAWBA
+E394 I BHUTAN TEAK | E395 I MURRAY PINE
+E398 I BILTMORE ASHWOOD | E382 I AFROMOSIA TEAK
+E391 I PINE EST CANADA | E396 I EUROPEAN OAK
+E390 I SILK GREY PINE
+[ROW:165] 44                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  45
+[ROW:167] _J                                                                                                                                                                       L
+SUPER SUEDE (SS)                                                                                                                                                                                                                                                                                                                                                                                 SERENE
+[ROW:168] E392 I OKOUME GABOON | E393 I OKOUME LUMBER | E387 I SMOKED PINE | E386 I OREGON PINE
+Craft your perfect ambiance
+The perfect
+blend of form and function | E362 I AMERICAN TULIPWOOD      E363 I DYED TULIPWOOD
+Add
+a touch of luxe without breaking the bank
+E366 I FIGURED OAK | E364 I DYED TULIP GREY
+E365 POLISHED OAK
+[ROW:170] E368 I GREY OAK | E367 I WHITE OAK | E369 I TROPICAL OAK | E370 I QUARTER CUT OAK | E334 I PRUNUS SEROTINA | E333 I ULMAS SEROTINA
+[ROW:171] 46                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  47
+7
+[ROW:172] SUPER SUEDE (SS)                                                                                                                                     SERENE
+[ROW:173] Subtle
+[ROW:174] h• ues of
+[ROW:175] JOY
+[ROW:176] E336 I SPANISH SPINNEY
+E345 I ICE BEECH | Make way  for spectacular surfaces that make statements of style
+E337 I CEDAR OAK
+E346 I CAROLINA WENGE
+[ROW:177] E335 I CONTINENTAL SPINNEY       E344 I MANGFALL BEECH
+[ROW:179] E338 I CENTURY OAK
+[ROW:183] E343 I HIGHLAND PINE
+[ROW:184] 48                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          49
+[ROW:191] SUEDE (SD)                                                                                                                                              SERENE
+U205 I CLOUD TERRAZZO                                                                                   U206 I CASTOR TERRAZZO
+53
+[ROW:194] QUATTRO NATURALE (QN)                                                                                                                                                                        URBANE ULTRA (UU)                                                                                                                         SERENE
+[ROW:195] E201 I TONALITE GRANITO
+E208 I SAN BLUE NICOLA | E200 I DIORITE GRANITO
+E209 I EMARALD NICOLA | E200 I DIORITE GRANITO                                                                                    E201 I TONALITE GRANITO
+E210 I CLOUD TERRAZZO                                                                                    E211 I CASTOR TERRAZZO
+[ROW:196] 54
+[ROW:198] ZERO MATT (ZI<) | SERENE
+[ROW:199] E208 I SAN BLUE NICOLA
+E205 I WHITE STATUARIO VENATO
+E211 I CASTOR TERRAZZO
+Durable designs that wow and last | E203 I EGYPTIAN MARBLE GREY
+E205 I WHITE STATUARIO VENATO
+E206 I GREY CASPIO BROWN
+E211 I CASTOR TERRAZZO
+57
+[ROW:200] E209 I EMARALD NICOLA
+[ROW:202] E204 I METAMORPHIC MARBLE
+[ROW:206] E210 I CLOUD TERRAZZO
+[ROW:208] Chic solutions for
+stunni•ng spaces
+[ROW:210] 56
+[ROW:211] MATT (MT)
+U501 I SILVER FOIL | U502 I GOLD FOIL | SERENE
+[ROW:212] Unleash                 your.
+creative v1•s•1on
+The future of design - bold, beautiful, brilliant
+
+[ROW:214] U503 I BRONZE FOIL                        U504 I CHARCOAL FOIL
+[ROW:215] 59
+[ROW:216] TEXTURES | SERENE
+[ROW:217] Q_N I  Q_UATTRO NATURALE
+LQ_ I LINEAR Q_UIN | UU I URBANE ULTRA
+ZK I ZERO MATT | Pl I PICASSO VERA
+UH++ I ULTRA GLOSS | NJ I NORDIC JACK
+Q_M I Q_UEENSLAND MAPPLE
+[ROW:219] Prem1•u finishe
+[ROW:220] 1• mpres
+[ROW:221] Bring in the zing with enamoring finish options
+[ROW:222] SD I SUEDE                                            MT I MATT | VK  I VENEER KNOTS | ZJ I ZERO JUGLANS | WU  I WALNUT UTILE | SS I SUPER SUEDE
+[ROW:223] 60                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  61
+[ROW:224] _J                                                                                                                                                                       L
+[ROW:225]      Size
+Matrix
+[ROW:227] CODE NO | NAME | SIZE | ®
+Vurir;n
+DECORATIVE  LAMINATES
+y
+,-
+�c-..,;'.�
+�
+[ROW:228] 7 X3 FT | 7 X 3.25 FT | 8 X 4 FT | 10  X 4  FT | 10  X 4.25 FT
+[ROW:229] 2150 X 915 MM | 2150 X 950  MM | 2440 X 1220 MM | 3050 X 1220 MM | 3050 X 1300 MM
+[ROW:230] QN | QUATTRO NATURALE
+[ROW:231] UU | URBANE ULTRA
+[ROW:232] Pl | PICASSO VERA
+[ROW:233] NJ | NORDIC JACK
+[ROW:234] LQ | LINEAR QUIN
+[ROW:235] ZK | ZERO MATT
+[ROW:236] UH++ | ULTRA GLOSS
+[ROW:237] QM | QUEENSLAND MAPPLE
+[ROW:238] VK | VENEER KNOTS
+[ROW:239] ZJ | ZEROJUGLANS
+[ROW:240] WU | WALNUT UTILE
+[ROW:241] ss | SUPER SUEDE | USER MANUAL
+[ROW:242] SD | SUEDE | & TECHNICAL GUIDE
+[ROW:243] MT | MATT
+[ROW:244] 62
+[ROW:245] 7

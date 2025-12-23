@@ -107,7 +107,11 @@ const Home = () => {
                             </p>
                         </div>
                         <div className="philosophy-visual">
-                            <div className="mood-collage"></div>
+                            <img
+                                src="/design-art.png"
+                                alt="The Art of Considered Design"
+                                className="philosophy-image"
+                            />
                         </div>
                     </div>
                 </div>
@@ -122,6 +126,9 @@ const Home = () => {
                     </div>
                     <div className="mood-grid">
                         <Link to="/catalog?mood=calm" className="mood-card">
+                            <div className="mood-image-container">
+                                <img src="/mood-collage.png" alt="Calm & Minimal" className="mood-img mood-img-1" />
+                            </div>
                             <div className="mood-content">
                                 <span className="mood-icon">○</span>
                                 <h3>Calm & Minimal</h3>
@@ -129,6 +136,9 @@ const Home = () => {
                             </div>
                         </Link>
                         <Link to="/catalog?mood=bold" className="mood-card">
+                            <div className="mood-image-container">
+                                <img src="/mood-collage.png" alt="Bold & Expressive" className="mood-img mood-img-2" />
+                            </div>
                             <div className="mood-content">
                                 <span className="mood-icon">◆</span>
                                 <h3>Bold & Expressive</h3>
@@ -136,6 +146,9 @@ const Home = () => {
                             </div>
                         </Link>
                         <Link to="/catalog?mood=warm" className="mood-card">
+                            <div className="mood-image-container">
+                                <img src="/mood-collage.png" alt="Warm & Inviting" className="mood-img mood-img-3" />
+                            </div>
                             <div className="mood-content">
                                 <span className="mood-icon">◐</span>
                                 <h3>Warm & Inviting</h3>
@@ -143,6 +156,9 @@ const Home = () => {
                             </div>
                         </Link>
                         <Link to="/catalog?mood=elegant" className="mood-card">
+                            <div className="mood-image-container">
+                                <img src="/mood-collage.png" alt="Modern Elegance" className="mood-img mood-img-4" />
+                            </div>
                             <div className="mood-content">
                                 <span className="mood-icon">◇</span>
                                 <h3>Modern Elegance</h3>

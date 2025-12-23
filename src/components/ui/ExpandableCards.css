@@ -1,0 +1,385 @@
+/* ===============================================
+   EXPANDABLE CARDS - LUXURY EDITORIAL STYLE
+   Matches Homelia Design System
+   =============================================== */
+
+/* Overlay */
+.expandable-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(28, 25, 23, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+}
+
+/* Modal Container */
+.expandable-modal-container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: var(--space-6);
+}
+
+/* Close Button */
+.expandable-close-button {
+    position: absolute;
+    top: var(--space-6);
+    right: var(--space-6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--color-white);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-gray-200);
+    cursor: pointer;
+    z-index: 10001;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-fast);
+}
+
+.expandable-close-button:hover {
+    background: var(--color-gray-50);
+    border-color: var(--color-gray-300);
+}
+
+.expandable-close-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-gray-600);
+}
+
+/* Modal */
+.expandable-modal {
+    width: 100%;
+    max-width: 1000px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-2xl);
+    border: 1px solid var(--color-gray-100);
+}
+
+.expandable-modal-image-wrapper {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-gray-100);
+}
+
+@media (min-width: 768px) {
+    .expandable-modal-image-wrapper {
+        height: 600px;
+    }
+}
+
+.expandable-modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.expandable-modal-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: var(--color-white);
+}
+
+.expandable-modal-content {
+    padding: var(--space-8);
+    flex: 1;
+    overflow-y: auto;
+    background: var(--color-white);
+}
+
+.expandable-modal-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+@media (min-width: 640px) {
+    .expandable-modal-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+}
+
+.expandable-modal-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-normal);
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-2);
+    letter-spacing: var(--tracking-tight);
+}
+
+.expandable-modal-description {
+    font-size: var(--text-base);
+    font-weight: var(--font-light);
+    color: var(--color-gray-600);
+    line-height: var(--leading-relaxed);
+}
+
+.expandable-modal-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-weight: var(--font-medium);
+    font-size: var(--text-sm);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+}
+
+.expandable-modal-cta:hover {
+    background: var(--color-primary-dark);
+}
+
+.expandable-modal-body {
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-gray-100);
+    font-size: var(--text-base);
+    font-weight: var(--font-light);
+    color: var(--color-gray-600);
+    line-height: var(--leading-relaxed);
+}
+
+/* Cards Grid */
+.expandable-cards-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2.5rem;
+    max-width: 100%;
+    overflow: visible;
+}
+
+@media (min-width: 640px) {
+    .expandable-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .expandable-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ===============================================
+   LUXURY CATALOGUE CARD - Dark Premium Style
+   =============================================== */
+.expandable-card {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    overflow: visible;
+    position: relative;
+}
+
+.expandable-card:hover {
+    transform: translateY(-8px);
+}
+
+.expandable-card-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+/* Dark Content Box */
+.expandable-card-text {
+    background: linear-gradient(145deg, #d4cfc7 0%, #c8c2b8 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    margin-bottom: 0;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Number Indicator */
+.expandable-card-text::before {
+    content: attr(data-number);
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2C2C2C;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Line before number */
+.expandable-card-text::after {
+    content: '';
+    position: absolute;
+    top: 2rem;
+    right: 3.5rem;
+    width: 24px;
+    height: 2px;
+    background: #2C2C2C;
+}
+
+/* Icon Circle */
+.expandable-card-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    background: #2C2C2C;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.expandable-card-icon-wrapper svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+    stroke-width: 1.5;
+}
+
+/* Icon fallback for emoji */
+.expandable-card-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    color: white;
+}
+
+/* Title */
+.expandable-card-title {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #2C2C2C;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+}
+
+/* Description */
+.expandable-card-description {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #4a4a4a;
+    line-height: 1.7;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Arrow CTA */
+.expandable-card-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    color: #2C2C2C;
+    font-size: 1.25rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    margin-top: 1rem;
+    padding: 0;
+}
+
+.expandable-card-cta::after {
+    content: '→';
+    font-size: 1.25rem;
+}
+
+.expandable-card:hover .expandable-card-cta {
+    transform: translateX(4px);
+    color: #A69070;
+}
+
+/* Hide the old button text */
+.expandable-card-cta span,
+.expandable-card-cta svg {
+    display: none;
+}
+
+/* Floating Book Image */
+.expandable-card-image-wrapper {
+    position: relative;
+    width: 85%;
+    margin: -3rem auto 0;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+    transition: all 0.4s ease;
+}
+
+.expandable-card:hover .expandable-card-image-wrapper {
+    transform: translateY(-8px) rotate(-2deg);
+    filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.2));
+}
+
+.expandable-card-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+/* Section Header Styling */
+.catalogues-section .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.catalogues-section .section-header h2 {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 400;
+    color: #2C2C2C;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.catalogues-section .section-header p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #78716C;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}

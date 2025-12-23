@@ -170,6 +170,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -180,6 +181,13 @@ body {
   color: var(--color-gray-700);
   background-color: var(--color-bg);
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
 }
 
 img,

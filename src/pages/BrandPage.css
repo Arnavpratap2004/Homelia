@@ -1,9 +1,21 @@
 /* ===============================================
-   BRAND PAGE STYLES
+   BRAND PAGE STYLES - Dealer Luxury Theme
    =============================================== */
 
+/* Dealer Color Palette */
+:root {
+    --dealer-primary: #2C2C2C;
+    --dealer-accent: #A69070;
+    --dealer-accent-light: #C8B896;
+    --dealer-secondary: #5C4A3A;
+    --dealer-ivory: #FAF9F7;
+    --dealer-border: #F5F4F2;
+    --dealer-border-dark: #E8E6E3;
+}
+
 .brand-page {
-    background: var(--color-bg);
+    background: var(--dealer-ivory);
+    overflow-x: hidden;
 }
 
 .brand-not-found {
@@ -14,81 +26,178 @@
     text-align: center;
 }
 
-/* Brand Hero */
+/* ===============================================
+   BRAND HERO - Luxury Dark Theme
+   =============================================== */
 .brand-hero {
-    padding: var(--space-16) 0;
+    position: relative;
+    padding: 5rem 0 4rem;
     overflow: hidden;
+    background: linear-gradient(135deg,
+            var(--dealer-primary) 0%,
+            #3a3a3a 50%,
+            var(--dealer-primary) 100%) !important;
+    color: white;
+}
+
+/* Decorative gold gradient overlay */
+.brand-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background: radial-gradient(ellipse at 80% 20%,
+            rgba(166, 144, 112, 0.15) 0%,
+            transparent 60%);
+    pointer-events: none;
+}
+
+/* Subtle pattern overlay */
+.brand-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 20% 80%, rgba(166, 144, 112, 0.08) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .brand-hero-content {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-12);
+    gap: 3rem;
     align-items: center;
 }
 
 @media (min-width: 1024px) {
     .brand-hero-content {
         grid-template-columns: 1.2fr 1fr;
+        gap: 4rem;
     }
 }
 
+/* Breadcrumb - Gold accent */
 .brand-hero-text .breadcrumb {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-sm);
-    color: var(--color-gray-500);
-    margin-bottom: var(--space-6);
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 2rem;
 }
 
 .brand-hero-text .breadcrumb a {
-    color: var(--color-gray-600);
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.3s ease;
 }
 
 .brand-hero-text .breadcrumb a:hover {
-    color: var(--color-primary);
+    color: var(--dealer-accent);
 }
 
+/* Brand Logo - Gold accent */
 .brand-logo-large {
     display: inline-flex;
-    padding: var(--space-4) var(--space-6);
-    border-radius: var(--radius-xl);
-    margin-bottom: var(--space-4);
+    padding: 0.625rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    background: rgba(166, 144, 112, 0.2) !important;
+    border: 1px solid rgba(166, 144, 112, 0.4);
 }
 
 .brand-logo-large span {
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    font-weight: var(--font-bold);
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--dealer-accent) !important;
 }
 
+/* Main Title - White on Dark */
 .brand-hero-text h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: var(--space-3);
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
 }
 
+/* Tagline - Gold accent */
 .brand-tagline {
-    font-size: var(--text-xl);
-    color: var(--color-gray-600);
-    margin-bottom: var(--space-4);
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--dealer-accent-light);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
 }
 
+.brand-tagline::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, var(--dealer-accent), transparent);
+}
+
+/* Description - Light text */
 .brand-description {
-    font-size: var(--text-base);
-    color: var(--color-gray-500);
-    line-height: var(--leading-relaxed);
-    margin-bottom: var(--space-8);
-    max-width: 560px;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 520px;
 }
 
+/* Action buttons - Premium styling */
 .brand-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-4);
+    gap: 1rem;
 }
 
-/* Brand Visual */
+.brand-actions .btn {
+    transition: all 0.3s ease;
+}
+
+.brand-actions .btn-primary {
+    background-color: var(--dealer-accent);
+    border-color: var(--dealer-accent);
+    color: var(--dealer-primary);
+    font-weight: 500;
+}
+
+.brand-actions .btn-primary:hover {
+    background-color: var(--dealer-accent-light);
+    border-color: var(--dealer-accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(166, 144, 112, 0.3);
+}
+
+.brand-actions .btn-outline {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.brand-actions .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Brand Visual / Swatches */
 .brand-hero-visual {
     display: none;
 }
@@ -194,51 +303,142 @@
     }
 }
 
-/* Catalog Download */
+/* ===============================================
+   CATALOG DOWNLOAD - Elegant Card
+   =============================================== */
+.catalog-download-section {
+    padding: var(--space-20) 0;
+    background: var(--color-bg);
+}
+
 .catalog-download-card {
-    padding: var(--space-12) var(--space-8);
-    border-radius: var(--radius-2xl);
+    padding: var(--space-16) var(--space-10);
+    border-radius: var(--radius-lg);
     text-align: center;
     color: white;
+    background: linear-gradient(135deg,
+            var(--color-gray-800) 0%,
+            var(--color-gray-900) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative pattern overlay */
+.catalog-download-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 20% 80%, rgba(166, 144, 112, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+    pointer-events: none;
 }
 
 @media (min-width: 768px) {
     .catalog-download-card {
-        padding: var(--space-16);
+        padding: var(--space-20) var(--space-16);
     }
 }
 
+.catalog-content {
+    position: relative;
+    z-index: 1;
+}
+
 .catalog-content h2 {
+    font-family: var(--font-display);
+    font-weight: var(--font-light);
     color: white;
-    font-size: var(--text-3xl);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
     margin-bottom: var(--space-4);
+    letter-spacing: -0.01em;
 }
 
 .catalog-content p {
-    font-size: var(--text-lg);
-    opacity: 0.9;
+    font-size: var(--text-base);
+    font-weight: var(--font-light);
+    opacity: 0.8;
     margin-bottom: var(--space-8);
-    max-width: 500px;
+    max-width: 450px;
     margin-left: auto;
     margin-right: auto;
+    line-height: var(--leading-relaxed);
 }
 
-/* Brand CTA */
+.catalog-download-card .btn {
+    background: var(--color-white);
+    color: var(--color-gray-900);
+    border: none;
+    transition: all var(--transition-slow);
+}
+
+.catalog-download-card .btn:hover {
+    background: var(--color-accent);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+/* ===============================================
+   BRAND CTA - Request Quote Section
+   =============================================== */
+.brand-cta-section {
+    padding: var(--space-20) 0;
+    background: linear-gradient(to bottom, var(--color-bg), var(--color-linen));
+}
+
 .brand-cta-card {
-    padding: var(--space-12);
+    padding: var(--space-16) var(--space-8);
     text-align: center;
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative top accent */
+.brand-cta-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, var(--color-accent), var(--color-gray-400));
+    border-radius: 0 0 var(--radius-full) var(--radius-full);
 }
 
 .brand-cta-card h2 {
+    font-family: var(--font-display);
+    font-weight: var(--font-normal);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: var(--color-gray-900);
     margin-bottom: var(--space-4);
+    margin-top: var(--space-4);
 }
 
 .brand-cta-card p {
-    color: var(--color-gray-500);
+    font-size: var(--text-base);
+    font-weight: var(--font-light);
+    color: var(--color-gray-600);
     margin-bottom: var(--space-8);
-    max-width: 500px;
+    max-width: 480px;
     margin-left: auto;
     margin-right: auto;
+    line-height: var(--leading-relaxed);
+}
+
+.brand-cta-card .btn-primary {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    transition: all var(--transition-slow);
+}
+
+.brand-cta-card .btn-primary:hover {
+    background-color: var(--color-gray-900);
+    border-color: var(--color-gray-900);
+    transform: translateY(-2px);
 }
 
 /* Product cards - reuse styles */
@@ -337,4 +537,107 @@
 .brand-page .product-moq {
     font-size: var(--text-xs);
     color: var(--color-gray-500);
+}
+
+/* ===============================================
+   CATALOGUES SECTION - Dealer Luxury Theme
+   =============================================== */
+
+.catalogues-section {
+    background: var(--dealer-ivory);
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+/* Decorative gold top border */
+.catalogues-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(to right,
+            transparent,
+            var(--dealer-accent),
+            transparent);
+}
+
+/* ===============================================
+   SECTION HEADER - Luxury Horizontal Layout
+   =============================================== */
+.catalogues-section .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--dealer-border-dark);
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .catalogues-section .section-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}
+
+/* Left: Subtitle with decorative line */
+.catalogues-section .section-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dealer-secondary, #5C4A3A);
+    white-space: nowrap;
+}
+
+.catalogues-section .section-subtitle::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--dealer-secondary, #5C4A3A);
+}
+
+/* Center: Main Title */
+.catalogues-section h2 {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    color: var(--dealer-primary);
+    letter-spacing: -0.01em;
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+/* Right: Description */
+.catalogues-section .section-description {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #78716C;
+    max-width: 300px;
+    line-height: 1.6;
+    text-align: right;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .catalogues-section .section-description {
+        text-align: center;
+        max-width: 100%;
+    }
+}
+
+.catalogues-section .container {
+    overflow: visible;
 }
