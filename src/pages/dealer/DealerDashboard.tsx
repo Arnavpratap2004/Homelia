@@ -143,35 +143,10 @@ const DealerDashboard = () => {
                         Sign Out
                     </button>
                 </nav>
-
-                <div className="dealer-user">
-                    <div className="dealer-avatar">
-                        {user?.name?.charAt(0) || 'D'}
-                    </div>
-                    <div className="dealer-user-info">
-                        <span className="dealer-user-name">{user?.name || 'Dealer'}</span>
-                        <span className="dealer-user-company">{user?.companyName || 'Dealer Company'}</span>
-                    </div>
-                    <button className="logout-btn" onClick={handleLogout} title="Sign Out">
-                        <LogOut size={18} />
-                        <span>Sign Out</span>
-                    </button>
-                </div>
             </aside>
 
             {/* Main Content */}
             <main className="dealer-main">
-                {/* Top Bar with Logout */}
-                <div className="dealer-topbar">
-                    <div className="topbar-welcome">
-                        Welcome, <strong>{user?.name || 'Partner'}</strong>
-                    </div>
-                    <button className="topbar-logout" onClick={handleLogout}>
-                        <LogOut size={18} />
-                        Sign Out
-                    </button>
-                </div>
-
                 {/* Overview Tab */}
                 {activeTab === 'overview' && (
                     <div className="dealer-content">

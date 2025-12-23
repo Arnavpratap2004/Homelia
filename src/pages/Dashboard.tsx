@@ -460,6 +460,17 @@ const Dashboard = () => {
                 <div className="dashboard-layout">
                     {/* Sidebar */}
                     <aside className="dashboard-sidebar">
+                        {/* Logo Header */}
+                        <div className="dashboard-logo">
+                            <Link to="/" className="logo-link">
+                                <div className="logo-icon">H</div>
+                                <div className="logo-text">
+                                    <span className="logo-name">Homelia</span>
+                                    <span className="logo-badge">B2B Portal</span>
+                                </div>
+                            </Link>
+                        </div>
+
                         <div className="user-card card">
                             <div className="user-avatar">
                                 {(demoUser.name || '').split(' ').map((n: string) => n[0]).join('')}
@@ -662,7 +673,7 @@ const Dashboard = () => {
                                             <p>Loading quotes...</p>
                                         </div>
                                     ) : quotes.map(quote => (
-                                        <div key={quote.id} className="quote-card card">
+                                        <div key={quote.id} className="quote-card">
                                             <div className="quote-header">
                                                 <span className="quote-id">{quote.id}</span>
                                                 <span className={`status-badge ${quote.status.toLowerCase()}`}>

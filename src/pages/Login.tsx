@@ -326,7 +326,7 @@ const Login = () => {
                                             <p><strong>Test Credentials:</strong></p>
                                             {selectedUserType === 'ADMIN' && <p>admin@homelia.in / admin123</p>}
                                             {selectedUserType === 'DEALER' && <p>dealer@example.com / dealer123</p>}
-                                            {selectedUserType === 'B2B' && <p>b2b@example.com / b2b12345</p>}
+                                            {selectedUserType === 'B2B' && <p>b2b@example.com / b2b123</p>}
                                         </div>
                                     </form>
                                 ) : (

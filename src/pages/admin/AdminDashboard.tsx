@@ -535,6 +535,91 @@ const AdminDashboard = () => {
                 </div>
             )}
 
+            {/* Quote Detail Modal */}
+            {selectedQuote && (
+                <div className="modal-overlay" onClick={() => setSelectedQuote(null)}>
+                    <div className="modal-content" onClick={e => e.stopPropagation()}>
+                        <div className="modal-header">
+                            <h2>Quote Details</h2>
+                            <button className="close-btn" onClick={() => setSelectedQuote(null)}>×</button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="order-detail-header">
+                                <div>
+                                    <h3>{selectedQuote.quoteNumber}</h3>
+                                    <p>Submitted on {new Date(selectedQuote.createdAt).toLocaleDateString()}</p>
+                                </div>
+                                <span className={`status-badge ${selectedQuote.status.toLowerCase()}`}>
+                                    {selectedQuote.status}
+                                </span>
+                            </div>
+
+                            <div className="order-detail-section">
+                                <h4>Requested By</h4>
+                                <p><strong>{selectedQuote.user?.companyName || selectedQuote.user?.name || 'Customer'}</strong></p>
+                            </div>
+
+                            {selectedQuote.items && selectedQuote.items.length > 0 && (
+                                <div className="order-detail-section">
+                                    <h4>Requested Products</h4>
+                                    <table className="order-items-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Qty</th>
+                                                <th>Quoted Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {selectedQuote.items.map((item, i) => (
+                                                <tr key={i}>
+                                                    <td>{item.product?.name || 'Product'}</td>
+                                                    <td>{item.requestedQty}</td>
+                                                    <td>{item.quotedPrice ? formatPrice(item.quotedPrice) : 'Pending'}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            )}
+
+                            {selectedQuote.notes && (
+                                <div className="order-detail-section">
+                                    <h4>Notes</h4>
+                                    <p>{selectedQuote.notes}</p>
+                                </div>
+                            )}
+
+                            {selectedQuote.totalAmount && (
+                                <div className="order-detail-section">
+                                    <h4>Total Amount</h4>
+                                    <p className="order-total-amount">{formatPrice(selectedQuote.totalAmount)}</p>
+                                </div>
+                            )}
+                        </div>
+                        <div className="modal-footer">
+                            <button className="btn btn-outline" onClick={() => setSelectedQuote(null)}>Close</button>
+                            {selectedQuote.status === 'PENDING' && (
+                                <>
+                                    <button
+                                        className="btn btn-danger"
+                                        onClick={() => { handleRejectQuote(selectedQuote.id); setSelectedQuote(null); }}
+                                    >
+                                        Reject
+                                    </button>
+                                    <button
+                                        className="btn btn-primary"
+                                        onClick={() => { handleApproveQuote(selectedQuote.id); setSelectedQuote(null); }}
+                                    >
+                                        Approve Quote
+                                    </button>
+                                </>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Sidebar */}
             <aside className="admin-sidebar">
                 <div className="admin-logo">
@@ -1147,18 +1232,196 @@ const AdminDashboard = () => {
                     </div>
                 )}
 
-                {/* Other tabs - placeholder */}
-                {['products', 'reports', 'notifications', 'settings'].includes(activeTab) && (
+                {/* Products Tab */}
+                {activeTab === 'products' && (
                     <div className="admin-content">
                         <div className="admin-header">
-                            <h1>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}</h1>
+                            <div>
+                                <h1>Product Catalog</h1>
+                                <p>Manage your laminate collection</p>
+                            </div>
+                            <Link to="/catalog" className="btn btn-primary">
+                                <Package size={16} /> View Full Catalog
+                            </Link>
                         </div>
                         <div className="admin-card full-width">
+                            <div className="card-header">
+                                <h3>Catalog Overview</h3>
+                            </div>
                             <div className="placeholder-content">
                                 <Package size={48} />
-                                <h3>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Management</h3>
-                                <p>This section is ready for detailed implementation.</p>
-                                <Link to="/catalog" className="btn btn-primary">Browse Products</Link>
+                                <h3>Product Management</h3>
+                                <p>Your product catalog is managed through the main catalog page. View, filter, and manage all laminates from our curated collection.</p>
+                                <Link to="/catalog" className="btn btn-outline">Browse Catalog</Link>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Reports Tab */}
+                {activeTab === 'reports' && (
+                    <div className="admin-content">
+                        <div className="admin-header">
+                            <div>
+                                <h1>Analytics & Reports</h1>
+                                <p>Business insights and performance metrics</p>
+                            </div>
+                        </div>
+                        <div className="kpi-grid">
+                            <div className="kpi-card">
+                                <div className="kpi-icon revenue">
+                                    <TrendingUp size={24} />
+                                </div>
+                                <div className="kpi-content">
+                                    <span className="kpi-value">+18.5%</span>
+                                    <span className="kpi-label">Monthly Growth</span>
+                                </div>
+                            </div>
+                            <div className="kpi-card">
+                                <div className="kpi-icon orders">
+                                    <ShoppingCart size={24} />
+                                </div>
+                                <div className="kpi-content">
+                                    <span className="kpi-value">156</span>
+                                    <span className="kpi-label">Orders This Month</span>
+                                </div>
+                            </div>
+                            <div className="kpi-card">
+                                <div className="kpi-icon users">
+                                    <Users size={24} />
+                                </div>
+                                <div className="kpi-content">
+                                    <span className="kpi-value">24</span>
+                                    <span className="kpi-label">New Customers</span>
+                                </div>
+                            </div>
+                            <div className="kpi-card">
+                                <div className="kpi-icon pending">
+                                    <BarChart3 size={24} />
+                                </div>
+                                <div className="kpi-content">
+                                    <span className="kpi-value">89%</span>
+                                    <span className="kpi-label">Order Fulfillment</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="admin-card full-width">
+                            <div className="card-header">
+                                <h3>Performance Summary</h3>
+                            </div>
+                            <div className="placeholder-content">
+                                <BarChart3 size={48} />
+                                <h3>Detailed Reports Coming Soon</h3>
+                                <p>Advanced analytics and exportable reports will be available in a future update. Track sales, inventory, and customer trends.</p>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Notifications Tab */}
+                {activeTab === 'notifications' && (
+                    <div className="admin-content">
+                        <div className="admin-header">
+                            <div>
+                                <h1>Notifications</h1>
+                                <p>Stay updated with system alerts</p>
+                            </div>
+                        </div>
+                        <div className="admin-card full-width">
+                            <div className="orders-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Message</th>
+                                            <th>Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span className="status-badge approved">New Order</span></td>
+                                            <td>Order #ORD-2024-0156 received from Interior Pro Designs</td>
+                                            <td>2 hours ago</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span className="status-badge pending">Quote Request</span></td>
+                                            <td>New quote request from Sharma Interiors for bulk order</td>
+                                            <td>5 hours ago</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span className="status-badge processing">Registration</span></td>
+                                            <td>New dealer registration from Mumbai Laminates Co.</td>
+                                            <td>1 day ago</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span className="status-badge delivered">Completed</span></td>
+                                            <td>Order #ORD-2024-0152 has been delivered successfully</td>
+                                            <td>2 days ago</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Settings Tab */}
+                {activeTab === 'settings' && (
+                    <div className="admin-content">
+                        <div className="admin-header">
+                            <div>
+                                <h1>Settings</h1>
+                                <p>Configure your admin preferences</p>
+                            </div>
+                        </div>
+                        <div className="admin-grid">
+                            <div className="admin-card">
+                                <div className="card-header">
+                                    <h3>Account Settings</h3>
+                                </div>
+                                <div className="modal-body">
+                                    <div className="form-group">
+                                        <label>Admin Name</label>
+                                        <input type="text" className="search-input" value={user?.name || 'Admin'} readOnly />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Email Address</label>
+                                        <input type="email" className="search-input" value={user?.email || 'admin@homelia.com'} readOnly />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Role</label>
+                                        <input type="text" className="search-input" value="Administrator" readOnly />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="admin-card">
+                                <div className="card-header">
+                                    <h3>Preferences</h3>
+                                </div>
+                                <div className="modal-body">
+                                    <div className="form-group">
+                                        <label>Notifications</label>
+                                        <select className="filter-select" style={{ width: '100%' }}>
+                                            <option value="all">All Notifications</option>
+                                            <option value="important">Important Only</option>
+                                            <option value="none">None</option>
+                                        </select>
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Currency Display</label>
+                                        <select className="filter-select" style={{ width: '100%' }}>
+                                            <option value="inr">₹ INR</option>
+                                            <option value="usd">$ USD</option>
+                                        </select>
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Date Format</label>
+                                        <select className="filter-select" style={{ width: '100%' }}>
+                                            <option value="dd-mm-yyyy">DD-MM-YYYY</option>
+                                            <option value="mm-dd-yyyy">MM-DD-YYYY</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
