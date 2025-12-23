@@ -1,0 +1,509 @@
+/* ===============================================
+   LOGIN/REGISTER PAGE STYLES
+   =============================================== */
+
+.auth-page {
+    min-height: 100vh;
+    background: var(--color-bg);
+}
+
+.auth-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+}
+
+@media (min-width: 1024px) {
+    .auth-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Branding Panel */
+.auth-branding {
+    display: none;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    padding: var(--space-12);
+    color: white;
+}
+
+@media (min-width: 1024px) {
+    .auth-branding {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.branding-content {
+    max-width: 400px;
+}
+
+.auth-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-10);
+    color: white;
+}
+
+.auth-logo .logo-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+}
+
+.auth-logo span {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+}
+
+.auth-branding h1 {
+    font-size: var(--text-3xl);
+    color: white;
+    margin-bottom: var(--space-4);
+}
+
+.auth-branding p {
+    font-size: var(--text-lg);
+    opacity: 0.9;
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-10);
+}
+
+.branding-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.feature-check {
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-sm);
+}
+
+.feature-item span {
+    font-size: var(--text-base);
+}
+
+/* Form Panel */
+.auth-form-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-8);
+    background: var(--color-white);
+}
+
+.auth-form-container {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* Tabs */
+.auth-tabs {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+    background: var(--color-gray-100);
+    padding: var(--space-1);
+    border-radius: var(--radius-lg);
+}
+
+.auth-tab {
+    flex: 1;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-gray-600);
+    background: none;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.auth-tab.active {
+    background: white;
+    color: var(--color-gray-900);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Form */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon svg:first-child {
+    position: absolute;
+    left: var(--space-4);
+    color: var(--color-gray-400);
+    pointer-events: none;
+}
+
+.input-with-icon .input {
+    padding-left: var(--space-12);
+    padding-right: var(--space-12);
+}
+
+.password-toggle {
+    position: absolute;
+    right: var(--space-3);
+    background: none;
+    border: none;
+    color: var(--color-gray-400);
+    cursor: pointer;
+    padding: var(--space-1);
+}
+
+.password-toggle:hover {
+    color: var(--color-gray-600);
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    cursor: pointer;
+}
+
+.checkbox-label input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-primary);
+}
+
+.checkbox-label.terms {
+    align-items: flex-start;
+}
+
+.checkbox-label.terms span {
+    line-height: var(--leading-relaxed);
+}
+
+.checkbox-label a {
+    color: var(--color-primary);
+}
+
+.forgot-link {
+    font-size: var(--text-sm);
+    color: var(--color-primary);
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: var(--space-2);
+}
+
+/* Divider */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    color: var(--color-gray-400);
+    font-size: var(--text-sm);
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-gray-200);
+}
+
+/* Social Buttons */
+.social-buttons {
+    display: flex;
+    gap: var(--space-3);
+}
+
+.social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+}
+
+.social-btn svg {
+    flex-shrink: 0;
+}
+
+/* Error Message */
+.auth-error {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-error-bg, #FEE2E2);
+    color: var(--color-error, #DC2626);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+}
+
+.auth-error svg {
+    flex-shrink: 0;
+}
+
+/* Loading Spinner */
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Demo Credentials */
+.demo-credentials {
+    margin-top: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-gray-50);
+    border-radius: var(--radius-md);
+    font-size: var(--text-xs);
+    color: var(--color-gray-600);
+    text-align: center;
+}
+
+.demo-credentials p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ===============================================
+   USER TYPE SELECTOR STYLES
+   =============================================== */
+
+.user-type-selection {
+    text-align: center;
+}
+
+.selection-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-2);
+}
+
+.selection-subtitle {
+    font-size: var(--text-base);
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-8);
+}
+
+.user-type-selector {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.user-type-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-xl);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    text-align: center;
+}
+
+.user-type-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.user-type-card .card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+}
+
+.user-type-card h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--color-gray-900);
+    margin: 0;
+}
+
+.user-type-card p {
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+/* Admin Card */
+.user-type-card.admin {
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.user-type-card.admin:hover {
+    border-color: #EF4444;
+    background: rgba(254, 226, 226, 0.3);
+}
+
+.user-type-card.admin .card-icon {
+    background: rgba(254, 226, 226, 0.8);
+    color: #DC2626;
+}
+
+.user-type-card.admin:hover .card-icon {
+    background: #DC2626;
+    color: white;
+}
+
+/* Dealer Card */
+.user-type-card.dealer {
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+.user-type-card.dealer:hover {
+    border-color: #8B5CF6;
+    background: rgba(237, 233, 254, 0.3);
+}
+
+.user-type-card.dealer .card-icon {
+    background: rgba(237, 233, 254, 0.8);
+    color: #7C3AED;
+}
+
+.user-type-card.dealer:hover .card-icon {
+    background: #7C3AED;
+    color: white;
+}
+
+/* B2B Card */
+.user-type-card.b2b {
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.user-type-card.b2b:hover {
+    border-color: #22C55E;
+    background: rgba(220, 252, 231, 0.3);
+}
+
+.user-type-card.b2b .card-icon {
+    background: rgba(220, 252, 231, 0.8);
+    color: #16A34A;
+}
+
+.user-type-card.b2b:hover .card-icon {
+    background: #16A34A;
+    color: white;
+}
+
+/* Login Header */
+.login-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-6);
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-gray-600);
+    background: none;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.back-button:hover {
+    color: var(--color-gray-900);
+    background: var(--color-gray-100);
+}
+
+.portal-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    border-radius: var(--radius-full);
+}
+
+.portal-badge.admin {
+    background: rgba(254, 226, 226, 0.8);
+    color: #DC2626;
+}
+
+.portal-badge.dealer {
+    background: rgba(237, 233, 254, 0.8);
+    color: #7C3AED;
+}
+
+.portal-badge.b2b {
+    background: rgba(220, 252, 231, 0.8);
+    color: #16A34A;
+}

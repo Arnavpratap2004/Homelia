@@ -1,0 +1,477 @@
+/* Dashboard General */
+.dashboard-page {
+    padding: 2rem 0;
+    background-color: #f8fafc;
+    min-height: calc(100vh - 80px);
+    /* Adjust based on navbar height */
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+}
+
+/* Sidebar */
+.dashboard-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+}
+
+.user-card {
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 64px;
+    height: 64px;
+    background-color: #f1f5f9;
+    color: #475569;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.user-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.user-card p {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.dashboard-nav {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    color: #64748b;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.nav-item:hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+.nav-item.active {
+    background-color: #f3e8ff;
+    color: #7c3aed;
+}
+
+.nav-item.logout {
+    color: #ef4444;
+    margin-top: auto;
+}
+
+.nav-item.logout:hover {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Main Content */
+.dashboard-main {
+    min-height: 500px;
+}
+
+.tab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.tab-header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* Orders List */
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.order-card {
+    padding: 1.5rem;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.order-id {
+    display: block;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.order-date {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.order-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-total {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 1.1rem;
+    margin-top: 0.25rem;
+}
+
+.order-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+}
+
+.status-badge.delivered,
+.status-badge.paid,
+.status-badge.approved {
+    background-color: #ecfdf5;
+    color: #047857;
+}
+
+.status-badge.shipped {
+    background-color: #f0f9ff;
+    color: #0284c7;
+}
+
+.status-badge.processing {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+}
+
+.status-badge.pending {
+    background-color: #fff7ed;
+    color: #c2410c;
+}
+
+.status-badge.cancelled {
+    background-color: #fef2f2;
+    color: #b91c1c;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #7c3aed;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #6d28d9;
+}
+
+.btn-outline {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    color: #475569;
+}
+
+.btn-outline:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.btn-ghost {
+    background: none;
+    color: #64748b;
+}
+
+.btn-ghost:hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+}
+
+/* Modals */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(2px);
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.modal-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #64748b;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+/* Order Details inside Modal */
+.order-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.order-detail-header h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.order-detail-section {
+    margin-bottom: 2rem;
+}
+
+.order-detail-section h4 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.order-products-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-products-table th,
+.order-products-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: left;
+}
+
+.order-products-table th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.order-products-table tfoot td {
+    border-bottom: none;
+    padding-top: 1rem;
+}
+
+.order-products-table tfoot .total-row td {
+    font-size: 1.1rem;
+    color: #0f172a;
+    padding-top: 0.5rem;
+}
+
+/* Quotes List */
+.quotes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.quote-card {
+    padding: 1.5rem;
+}
+
+.quote-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.quote-id {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.quote-products {
+    color: #475569;
+    margin-bottom: 1rem;
+}
+
+.quote-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quote-date {
+    font-size: 0.875rem;
+    color: #94a3b8;
+}
+
+/* Invoices Table */
+.invoices-table {
+    overflow-x: auto;
+}
+
+.invoices-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.invoices-table th,
+.invoices-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.invoices-table th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 600;
+    background-color: #f8fafc;
+}
+
+.invoices-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Loading State */
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    items-align: center;
+    justify-content: center;
+    padding: 3rem;
+    color: #64748b;
+    gap: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+}

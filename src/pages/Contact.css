@@ -1,0 +1,257 @@
+/* ===============================================
+   CONTACT PAGE STYLES
+   =============================================== */
+
+.contact-page {
+    background: var(--color-bg);
+    min-height: 100vh;
+    padding-bottom: var(--space-16);
+}
+
+/* Header */
+.contact-header {
+    background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-bg) 100%);
+    padding: var(--space-12) 0;
+    margin-bottom: var(--space-8);
+}
+
+.contact-header .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-4);
+}
+
+.contact-header h1 {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-3);
+}
+
+.contact-header p {
+    font-size: var(--text-lg);
+    color: var(--color-gray-500);
+    max-width: 600px;
+}
+
+/* Layout */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+    .contact-layout {
+        grid-template-columns: 1fr 380px;
+    }
+}
+
+/* Contact Form */
+.contact-form-container {
+    padding: var(--space-8);
+}
+
+.contact-form h2 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-5);
+    border-bottom: 1px solid var(--color-gray-100);
+}
+
+.contact-form h2 svg {
+    color: var(--color-primary);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+}
+
+@media (min-width: 640px) {
+    .form-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.contact-form .textarea {
+    min-height: 140px;
+}
+
+.contact-form .btn {
+    align-self: flex-start;
+}
+
+/* Form Success */
+.form-success {
+    text-align: center;
+    padding: var(--space-12) var(--space-6);
+}
+
+.form-success .success-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--color-success-light);
+    color: var(--color-success);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-6);
+}
+
+.form-success h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-3);
+    border: none;
+    padding: 0;
+    justify-content: center;
+}
+
+.form-success p {
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-6);
+}
+
+/* Contact Info Sidebar */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+@media (min-width: 1024px) {
+    .contact-info {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+    }
+}
+
+.info-card {
+    padding: var(--space-6);
+}
+
+.info-card h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-5);
+}
+
+.info-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.info-item {
+    display: flex;
+    gap: var(--space-4);
+    color: inherit;
+    transition: color var(--transition-fast);
+}
+
+.info-item:hover {
+    color: var(--color-primary);
+}
+
+.info-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--color-primary-100);
+    color: var(--color-primary);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.info-item div:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-item strong {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-gray-800);
+    margin-bottom: var(--space-1);
+}
+
+.info-item span {
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+    line-height: var(--leading-relaxed);
+}
+
+/* Quick Links */
+.quick-links-card {
+    padding: var(--space-5);
+}
+
+.quick-links-card h3 {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+}
+
+.quick-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.quick-links a {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-gray-100);
+    transition: color var(--transition-fast);
+}
+
+.quick-links a:last-child {
+    border-bottom: none;
+}
+
+.quick-links a:hover {
+    color: var(--color-primary);
+}
+
+/* Map Card */
+.map-card {
+    padding: var(--space-5);
+}
+
+.map-card h3 {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+}
+
+.map-placeholder {
+    height: 160px;
+    background: var(--color-gray-100);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gray-400);
+}
+
+.map-placeholder svg {
+    margin-bottom: var(--space-2);
+}
+
+.map-placeholder p {
+    font-size: var(--text-sm);
+}
