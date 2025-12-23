@@ -22,7 +22,7 @@ import { useCart } from '../context/CartContext';
 const Dashboard = () => {
     const navigate = useNavigate();
     const { clearCart } = useCart();
-    const { logout } = useAuth();
+    const { logout, user } = useAuth();
 
     // State declarations
     const [activeTab, setActiveTab] = useState('orders');
@@ -471,12 +471,12 @@ const Dashboard = () => {
                             </Link>
                         </div>
 
-                        <div className="user-card card">
+                        <div className="user-card">
                             <div className="user-avatar">
-                                {(demoUser.name || '').split(' ').map((n: string) => n[0]).join('')}
+                                {(profileForm.name || user?.name || 'U').split(' ').map((n: string) => n[0]).join('').toUpperCase()}
                             </div>
-                            <h3>{demoUser.name}</h3>
-                            <p>{demoUser.company}</p>
+                            <h3>{profileForm.name || user?.name}</h3>
+                            <p>{profileForm.company || user?.companyName}</p>
                         </div>
 
                         <nav className="dashboard-nav">

@@ -11,12 +11,12 @@
 }
 
 /* ===============================================
-   SIDEBAR - Refined & Minimal
+   SIDEBAR - Dark Theme (Admin)
    =============================================== */
 .admin-sidebar {
     width: 260px;
-    background-color: var(--color-white, #FFFFFF);
-    border-right: 1px solid var(--color-gray-100, #F5F4F2);
+    background-color: #2C2C2C;
+    border-right: none;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -29,21 +29,21 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    border-bottom: 1px solid var(--color-gray-100, #F5F4F2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .logo-icon {
     width: 36px;
     height: 36px;
-    background-color: var(--color-primary, #2C2C2C);
-    color: white;
+    background-color: #C5A572;
+    color: #1C1917;
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading, 'Cormorant Garamond', serif);
-    font-weight: 400;
-    font-size: 1.25rem;
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 
 .logo-text {
@@ -55,14 +55,14 @@
     font-family: var(--font-heading, 'Cormorant Garamond', serif);
     font-weight: 400;
     font-size: 1.15rem;
-    color: var(--color-gray-900, #1C1917);
+    color: #FFFFFF;
     line-height: 1.2;
     letter-spacing: -0.01em;
 }
 
 .logo-badge {
     font-size: 0.6rem;
-    color: var(--color-gray-500, #78716C);
+    color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 500;
@@ -83,14 +83,14 @@
     gap: 0.875rem;
     padding: 0.75rem 1rem;
     border-radius: 4px;
-    color: var(--color-gray-600, #57534E);
+    color: rgba(255, 255, 255, 0.7);
     font-weight: 400;
     font-size: 0.875rem;
     background: none;
     border: none;
     cursor: pointer;
     text-align: left;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     width: 100%;
 }
 
@@ -98,62 +98,75 @@
     stroke-width: 1.5;
     width: 18px;
     height: 18px;
+    opacity: 0.7;
 }
 
 .nav-item:hover {
-    background-color: var(--color-gray-50, #FAF9F8);
-    color: var(--color-gray-900, #1C1917);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #FFFFFF;
+}
+
+.nav-item:hover svg {
+    opacity: 1;
 }
 
 .nav-item.active {
-    background-color: var(--color-linen, #F7F5F2);
-    color: var(--color-primary, #2C2C2C);
+    background-color: rgba(197, 165, 114, 0.15);
+    color: #C5A572;
     font-weight: 500;
+}
+
+.nav-item.active svg {
+    opacity: 1;
+    color: #C5A572;
 }
 
 .nav-badge {
     margin-left: auto;
-    background-color: var(--color-secondary, #5C4A3A);
-    color: white;
+    background-color: #C5A572;
+    color: #1C1917;
     font-size: 0.65rem;
     padding: 0.15rem 0.5rem;
     border-radius: 999px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .nav-divider {
     height: 1px;
-    background-color: var(--color-gray-100, #F5F4F2);
+    background-color: rgba(255, 255, 255, 0.08);
     margin: 0.75rem 0;
 }
 
 .nav-item.logout {
-    color: var(--color-error, #8A4A4A);
+    color: #E57373;
+    margin-top: auto;
 }
 
 .nav-item.logout:hover {
-    background-color: var(--color-error-light, #F5E8E8);
+    background-color: rgba(229, 115, 115, 0.1);
+    color: #EF5350;
 }
 
 .admin-user {
     padding: 1.25rem 1.5rem;
-    border-top: 1px solid var(--color-gray-100, #F5F4F2);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .admin-avatar {
     width: 40px;
     height: 40px;
-    background-color: var(--color-stone, #E8E4DF);
+    background-color: #C5A572;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.875rem;
-    color: var(--color-gray-700, #44403C);
+    color: #1C1917;
 }
 
 .admin-user-info {
@@ -163,13 +176,13 @@
 
 .admin-user-name {
     font-weight: 500;
-    color: var(--color-gray-900, #1C1917);
+    color: #FFFFFF;
     font-size: 0.875rem;
 }
 
 .admin-user-role {
     font-size: 0.7rem;
-    color: var(--color-gray-500, #78716C);
+    color: rgba(255, 255, 255, 0.5);
     letter-spacing: 0.02em;
 }
 

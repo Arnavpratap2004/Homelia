@@ -24,14 +24,14 @@
 }
 
 /* ===============================================
-   SIDEBAR
+   SIDEBAR - Dark Theme (matches Dealer Dashboard)
    =============================================== */
 .dashboard-sidebar {
     display: flex;
     flex-direction: column;
     gap: 0;
-    background-color: var(--color-white, white);
-    border-right: 1px solid var(--color-gray-100, #F5F4F2);
+    background-color: #2C2C2C;
+    border-right: none;
     padding: 0;
     position: sticky;
     top: 0;
@@ -41,8 +41,8 @@
 
 /* Logo Header */
 .dashboard-logo {
-    padding: 1.5rem;
-    border-bottom: 1px solid var(--color-gray-100, #F5F4F2);
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .dashboard-logo .logo-link {
@@ -53,17 +53,17 @@
 }
 
 .dashboard-logo .logo-icon {
-    width: 40px;
-    height: 40px;
-    background-color: var(--color-primary, #2C2C2C);
-    color: white;
+    width: 36px;
+    height: 36px;
+    background-color: #C5A572;
+    color: #1C1917;
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading, 'Cormorant Garamond', serif);
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .dashboard-logo .logo-text {
@@ -73,18 +73,18 @@
 
 .dashboard-logo .logo-name {
     font-family: var(--font-heading, 'Cormorant Garamond', serif);
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 400;
-    color: var(--color-gray-900, #1C1917);
+    color: #FFFFFF;
     letter-spacing: -0.02em;
 }
 
 .dashboard-logo .logo-badge {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-accent, #8B7355);
-    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
 }
 
 .dashboard-page .card {
@@ -97,24 +97,27 @@
 }
 
 .user-card {
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .user-avatar {
-    width: 56px;
-    height: 56px;
-    background-color: var(--color-stone, #E8E4DF);
-    color: var(--color-gray-700, #44403C);
+    width: 52px;
+    height: 52px;
+    background-color: #C5A572;
+    color: #1C1917;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600;
     margin-bottom: 0.75rem;
     text-transform: uppercase;
 }
@@ -123,14 +126,14 @@
     font-family: var(--font-heading, 'Cormorant Garamond', serif);
     font-size: 1rem;
     font-weight: 400;
-    color: var(--color-gray-900, #1C1917);
+    color: #FFFFFF;
     margin-bottom: 0.2rem;
     letter-spacing: -0.01em;
 }
 
 .user-card p {
-    font-size: 0.75rem;
-    color: var(--color-gray-500, #78716C);
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
     font-weight: 400;
 }
 
@@ -138,7 +141,7 @@
     background: transparent;
     border-radius: 0;
     border: none;
-    padding: 0.5rem 0.75rem;
+    padding: 0.75rem;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -150,14 +153,14 @@
     gap: 0.875rem;
     padding: 0.75rem 1rem;
     border-radius: 4px;
-    color: var(--color-gray-600, #57534E);
+    color: rgba(255, 255, 255, 0.7);
     font-weight: 400;
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     background: none;
     border: none;
     cursor: pointer;
     text-align: left;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     width: 100%;
 }
 
@@ -165,29 +168,39 @@
     stroke-width: 1.5;
     width: 18px;
     height: 18px;
+    opacity: 0.7;
 }
 
 .dashboard-nav .nav-item:hover {
-    background-color: var(--color-gray-50, #FAF9F8);
-    color: var(--color-gray-900, #1C1917);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #FFFFFF;
+}
+
+.dashboard-nav .nav-item:hover svg {
+    opacity: 1;
 }
 
 .dashboard-nav .nav-item.active {
-    background-color: var(--color-linen, #F7F5F2);
-    color: var(--color-primary, #2C2C2C);
+    background-color: rgba(197, 165, 114, 0.15);
+    color: #C5A572;
     font-weight: 500;
 }
 
+.dashboard-nav .nav-item.active svg {
+    opacity: 1;
+    color: #C5A572;
+}
+
 .dashboard-nav .nav-item.logout {
-    color: var(--color-error, #8A4A4A);
+    color: #E57373;
     margin-top: auto;
     padding-top: 1rem;
-    border-top: 1px solid var(--color-gray-100, #F5F4F2);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .dashboard-nav .nav-item.logout:hover {
-    background-color: var(--color-error-light, #F5E8E8);
-    color: var(--color-error, #8A4A4A);
+    background-color: rgba(229, 115, 115, 0.1);
+    color: #EF5350;
 }
 
 /* ===============================================
