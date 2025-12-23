@@ -234,6 +234,89 @@ const BrandPage = () => {
                 );
             })()}
 
+            {/* Catalogues Section - For Rockstar */}
+            {brand.id === 'rockstar' && (() => {
+                const rockstarCatalogues: ExpandableCardItem[] = [
+                    {
+                        id: 1,
+                        title: 'COLOR RUSH',
+                        description: 'Experience a vibrant spectrum with ROCKSTAR\'s COLOR RUSH collection featuring bold hues, striking styles, and limitless creative energy.',
+                        thumbnail: 'https://rockstarlaminates.in/wp-content/uploads/2025/09/Layer-2-1.png',
+                        icon: '',
+                        ctaText: 'Open PDF',
+                        ctaLink: '/catalogues/rockstar-catalogue/ROCKSTAR-COLOR-RUSH.pdf',
+                        content: () => (
+                            <p>
+                                Discover the vibrant world of Color Rush - a collection that brings bold,
+                                energetic colors to your spaces. From striking reds to electric blues,
+                                this catalogue is perfect for making a statement.
+                            </p>
+                        )
+                    },
+                    {
+                        id: 2,
+                        title: 'GOOD LOOK',
+                        description: 'Premium aesthetics with the Good Look collection featuring sophisticated designs and refined finishes for elegant interiors.',
+                        thumbnail: 'https://rockstarlaminates.in/wp-content/uploads/2025/09/Layer-3-1.png',
+                        icon: '',
+                        ctaText: 'Open PDF',
+                        ctaLink: '/catalogues/rockstar-catalogue/ROCKSTAR-GOOD-LOOK-LINK.pdf',
+                        content: () => (
+                            <p>
+                                The Good Look collection offers sophisticated designs with refined finishes
+                                that elevate any interior space. Perfect for those who appreciate understated
+                                luxury and timeless elegance.
+                            </p>
+                        )
+                    },
+                    {
+                        id: 3,
+                        title: 'ROCKSTAR LITE',
+                        description: 'Lightweight laminate solutions with the Lite collection - perfect balance of durability, style, and ease of installation.',
+                        thumbnail: 'https://rockstarlaminates.in/wp-content/uploads/2025/09/Layer-1-1.png',
+                        icon: '',
+                        ctaText: 'Open PDF',
+                        ctaLink: '/catalogues/rockstar-catalogue/ROCKSTAR-LITE.pdf',
+                        content: () => (
+                            <p>
+                                Rockstar Lite brings you lightweight laminate solutions that don't compromise
+                                on quality. Easy to handle, install, and maintain while delivering the premium
+                                look you expect from Rockstar.
+                            </p>
+                        )
+                    },
+                    {
+                        id: 4,
+                        title: 'ROCKSTAR DOOR',
+                        description: 'Specialized door laminates with the Door collection - durable, stylish surfaces designed specifically for door applications.',
+                        thumbnail: 'https://rockstarlaminates.in/wp-content/uploads/2025/09/Layer-1-4-1-1.png',
+                        icon: '',
+                        ctaText: 'Open PDF',
+                        ctaLink: '/catalogues/rockstar-catalogue/ROCKSTAR-DOOR.pdf',
+                        content: () => (
+                            <p>
+                                The Rockstar Door collection features laminates specifically designed for
+                                door applications. Enhanced durability, fingerprint resistance, and stunning
+                                designs make your doors stand out.
+                            </p>
+                        )
+                    }
+                ];
+
+                return (
+                    <section className="catalogues-section section">
+                        <div className="container">
+                            <div className="section-header">
+                                <span className="section-subtitle">Rockstar Laminates</span>
+                                <h2>Explore Our Catalogues</h2>
+                                <p className="section-description">Browse through our collection of premium laminate catalogues. Click on any catalogue to preview and explore.</p>
+                            </div>
+                            <ExpandableCards cards={rockstarCatalogues} />
+                        </div>
+                    </section>
+                );
+            })()}
+
             {/* Request Quote CTA */}
             <section className="brand-cta-section section">
                 <div className="container">

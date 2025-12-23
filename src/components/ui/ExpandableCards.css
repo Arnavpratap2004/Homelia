@@ -210,61 +210,97 @@
     position: relative;
 }
 
-/* Dark Content Box */
+/* Premium Content Box with Subtle Shine */
 .expandable-card-text {
-    background: linear-gradient(145deg, #d4cfc7 0%, #c8c2b8 100%);
-    border-radius: 16px;
-    padding: 2rem;
+    background: linear-gradient(145deg,
+            #e8e4dd 0%,
+            #ddd8cf 50%,
+            #d4cfc7 100%);
+    border-radius: 20px;
+    padding: 2rem 2rem 1.5rem;
     position: relative;
     margin-bottom: 0;
-    min-height: 280px;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    overflow: hidden;
 }
 
-/* Number Indicator */
+/* Subtle shine overlay */
 .expandable-card-text::before {
-    content: attr(data-number);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.25) 0%,
+            transparent 100%);
+    border-radius: 20px 20px 0 0;
+    pointer-events: none;
+}
+
+/* Number Indicator - Enhanced */
+.expandable-card-number {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
-    font-family: var(--font-heading, 'Cormorant Garamond', serif);
-    font-size: 1rem;
-    font-weight: 500;
-    color: #2C2C2C;
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #3d3d3d;
 }
 
-/* Line before number */
-.expandable-card-text::after {
+.expandable-card-number::before {
     content: '';
-    position: absolute;
-    top: 2rem;
-    right: 3.5rem;
-    width: 24px;
+    width: 28px;
     height: 2px;
-    background: #2C2C2C;
+    background: linear-gradient(to right, transparent, #3d3d3d);
 }
 
-/* Icon Circle */
+/* Icon Circle - Gold accent on hover */
 .expandable-card-icon-wrapper {
-    width: 56px;
-    height: 56px;
-    background: #2C2C2C;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(145deg, #2C2C2C, #1a1a1a);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.expandable-card:hover .expandable-card-icon-wrapper {
+    background: linear-gradient(145deg, #A69070, #8b7858);
+    box-shadow:
+        0 6px 20px rgba(166, 144, 112, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
 }
 
 .expandable-card-icon-wrapper svg {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     color: white;
     stroke-width: 1.5;
+    transition: transform 0.3s ease;
+}
+
+.expandable-card:hover .expandable-card-icon-wrapper svg {
+    transform: scale(1.1);
 }
 
 /* Icon fallback for emoji */
@@ -274,90 +310,133 @@
     color: white;
 }
 
-/* Title */
+/* Title - More elegant */
 .expandable-card-title {
     font-family: var(--font-heading, 'Cormorant Garamond', serif);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 500;
-    color: #2C2C2C;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
+    color: #1a1a1a;
+    margin-bottom: 0.875rem;
+    line-height: 1.15;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
+    position: relative;
+    z-index: 1;
 }
 
-/* Description */
+/* Description - Better readability */
 .expandable-card-description {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 400;
-    color: #4a4a4a;
-    line-height: 1.7;
+    color: #5a5a5a;
+    line-height: 1.75;
     flex: 1;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
-/* Arrow CTA */
+/* Arrow CTA - Enhanced */
 .expandable-card-cta {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
+    gap: 0.625rem;
     background: transparent;
     color: #2C2C2C;
-    font-size: 1.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
     align-self: flex-start;
-    margin-top: 1rem;
-    padding: 0;
+    margin-top: auto;
+    padding: 0.75rem 0;
+    position: relative;
+    z-index: 1;
 }
 
-.expandable-card-cta::after {
-    content: '→';
-    font-size: 1.25rem;
+.expandable-card-cta svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
 }
 
 .expandable-card:hover .expandable-card-cta {
-    transform: translateX(4px);
     color: #A69070;
 }
 
-/* Hide the old button text */
-.expandable-card-cta span,
-.expandable-card-cta svg {
-    display: none;
+.expandable-card:hover .expandable-card-cta svg {
+    transform: translateX(4px);
 }
 
-/* Floating Book Image */
+/* ===============================================
+   FLOATING BOOK IMAGE - Premium 3D Effect
+   =============================================== */
 .expandable-card-image-wrapper {
     position: relative;
-    width: 85%;
-    margin: -3rem auto 0;
-    height: 220px;
+    width: 75%;
+    margin: -2.5rem auto 0;
+    height: 240px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
-    transition: all 0.4s ease;
-}
-
-.expandable-card:hover .expandable-card-image-wrapper {
-    transform: translateY(-8px) rotate(-2deg);
-    filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.2));
+    perspective: 1000px;
+    transform-style: preserve-3d;
 }
 
 .expandable-card-image {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    border-radius: 4px;
+    border-radius: 8px;
+    /* 3D Transform - Slight tilt for depth */
+    transform: rotateY(-5deg) rotateX(2deg);
+    /* Premium multi-layer shadow */
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.15),
+        0 20px 45px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+}
+
+/* Hover: Lift and straighten */
+.expandable-card:hover .expandable-card-image {
+    transform: rotateY(0deg) rotateX(0deg) translateY(-12px) scale(1.03);
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.15),
+        0 25px 50px rgba(0, 0, 0, 0.12),
+        0 40px 80px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(166, 144, 112, 0.2);
+}
+
+/* Reflection effect underneath */
+.expandable-card-image-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 30px;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.08) 0%,
+            transparent 100%);
+    border-radius: 50%;
+    filter: blur(8px);
+    transition: all 0.5s ease;
+}
+
+.expandable-card:hover .expandable-card-image-wrapper::after {
+    width: 80%;
+    height: 40px;
+    opacity: 0.6;
 }
 
 /* Section Header Styling */

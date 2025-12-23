@@ -177,8 +177,11 @@ export function ExpandableCards({ cards }: ExpandableCardProps) {
                         className="expandable-card"
                     >
                         <div className="expandable-card-inner">
-                            {/* Text Content Box with Number */}
-                            <div className="expandable-card-text" data-number={String(index + 1).padStart(2, '0')}>
+                            {/* Text Content Box */}
+                            <div className="expandable-card-text">
+                                {/* Number Indicator */}
+                                <span className="expandable-card-number">{String(index + 1).padStart(2, '0')}</span>
+
                                 {/* Icon in dark circle */}
                                 <div className="expandable-card-icon-wrapper">
                                     {card.icon ? (
@@ -208,7 +211,11 @@ export function ExpandableCards({ cards }: ExpandableCardProps) {
                                     layoutId={`button-${card.id}-${id}`}
                                     className="expandable-card-cta"
                                 >
-                                    {card.ctaText}
+                                    <span>Open</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
                                 </motion.button>
                             </div>
                             {/* Floating Book Image */}
