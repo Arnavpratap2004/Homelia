@@ -41,36 +41,17 @@ const Header = () => {
 
     return (
         <>
-            {/* Top Bar */}
-            <div className="top-bar">
-                <div className="container">
-                    <div className="top-bar-content">
-                        <div className="top-bar-left">
-                            <Phone size={14} />
-                            <span>+91 98765 43210</span>
-                            <span className="divider">|</span>
-                            <span>Pan-India Delivery</span>
-                        </div>
-                        <div className="top-bar-right">
-                            <Link to="/dealer-enquiry">Become a Dealer</Link>
-                            <span className="divider">|</span>
-                            <Link to="/track-order">Track Order</Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             {/* Main Header */}
             <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
                 <div className="container">
                     <div className="header-content">
                         {/* Logo */}
                         <Link to="/" className="logo">
-                            <div className="logo-icon">H</div>
-                            <div className="logo-text">
-                                <span className="logo-name">Homelia</span>
-                                <span className="logo-tagline">Authorized Distributor</span>
-                            </div>
+                            <img
+                                src="/homelia-logo.png"
+                                alt="Homelia - Premium Laminates"
+                                className="logo-image"
+                            />
                         </Link>
 
                         {/* Desktop Navigation */}
@@ -100,46 +81,10 @@ const Header = () => {
                                         </Link>
                                     </div>
                                 </li>
-                                <li
-                                    className="has-dropdown"
-                                    onMouseEnter={() => setActiveDropdown('products')}
-                                    onMouseLeave={() => setActiveDropdown(null)}
-                                >
-                                    <button className="nav-link">
-                                        Products <ChevronDown size={16} />
-                                    </button>
-                                    <div className={`dropdown dropdown-wide ${activeDropdown === 'products' ? 'active' : ''}`}>
-                                        <div className="dropdown-grid">
-                                            <div className="dropdown-section">
-                                                <h4>By Category</h4>
-                                                <Link to="/catalog?category=decorative" className="dropdown-item">Decorative Laminates</Link>
-                                                <Link to="/catalog?category=compact" className="dropdown-item">Compact Laminates</Link>
-                                                <Link to="/catalog?category=exterior" className="dropdown-item">Exterior Laminates</Link>
-                                                <Link to="/catalog?category=fire-retardant" className="dropdown-item">Fire Retardant</Link>
-                                                <Link to="/catalog?category=anti-bacterial" className="dropdown-item">Anti-Bacterial</Link>
-                                            </div>
-                                            <div className="dropdown-section">
-                                                <h4>By Application</h4>
-                                                <Link to="/catalog?application=kitchen" className="dropdown-item">Kitchen</Link>
-                                                <Link to="/catalog?application=wardrobe" className="dropdown-item">Wardrobe</Link>
-                                                <Link to="/catalog?application=furniture" className="dropdown-item">Furniture</Link>
-                                                <Link to="/catalog?application=office" className="dropdown-item">Office</Link>
-                                                <Link to="/catalog?application=wall-panels" className="dropdown-item">Wall Panels</Link>
-                                            </div>
-                                            <div className="dropdown-section">
-                                                <h4>By Finish</h4>
-                                                <Link to="/catalog?finish=matte" className="dropdown-item">Matte</Link>
-                                                <Link to="/catalog?finish=glossy" className="dropdown-item">Glossy</Link>
-                                                <Link to="/catalog?finish=textured" className="dropdown-item">Textured</Link>
-                                                <Link to="/catalog?finish=high-gloss" className="dropdown-item">High Gloss</Link>
-                                            </div>
-                                        </div>
-                                        <div className="dropdown-footer">
-                                            <Link to="/catalog" className="btn btn-primary btn-sm">
-                                                View All Products
-                                            </Link>
-                                        </div>
-                                    </div>
+                                <li>
+                                    <Link to="/catalog" className={location.pathname === '/catalog' ? 'active' : ''}>
+                                        Products
+                                    </Link>
                                 </li>
                                 <li>
                                     <Link to="/bulk-order" className={location.pathname === '/bulk-order' ? 'active' : ''}>
@@ -164,9 +109,9 @@ const Header = () => {
                             <button className="header-action-btn" aria-label="Search">
                                 <Search size={20} />
                             </button>
-                            <Link to="/wishlist" className="header-action-btn" aria-label="Wishlist">
+                            <button className="header-action-btn" aria-label="Wishlist">
                                 <Heart size={20} />
-                            </Link>
+                            </button>
                             <Link to="/cart" className="header-action-btn cart-btn" aria-label="Cart">
                                 <ShoppingCart size={20} />
                                 {itemCount > 0 && <span className="cart-count">{itemCount}</span>}

@@ -234,13 +234,13 @@ const Contact = () => {
                                         <span>+91 98352 68202</span>
                                     </div>
                                 </a>
-                                <a href="mailto:arnavpratap2003@gmail.com" className="info-item">
+                                <a href="mailto:prabhatkumarbxr@gmail.com" className="info-item">
                                     <div className="info-icon">
                                         <Mail size={20} />
                                     </div>
                                     <div>
                                         <strong>Email</strong>
-                                        <span>arnavpratap2003@gmail.com</span>
+                                        <span>prabhatkumarbxr@gmail.com</span>
                                     </div>
                                 </a>
                                 <a href="https://maps.google.com/?q=RPS+More+Patna+Bihar" target="_blank" rel="noopener noreferrer" className="info-item">

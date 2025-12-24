@@ -316,10 +316,10 @@
 }
 
 .mood-img {
-    width: 400%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
-    max-width: none;
+    object-position: center;
     transition: transform 0.5s ease;
 }
 
@@ -327,37 +327,19 @@
     transform: scale(1.05);
 }
 
-/* Crop the collage for each mood card */
-.mood-img-1 {
-    transform: translateX(0);
-}
-
-.mood-img-2 {
-    transform: translateX(-25%);
-}
-
-.mood-img-3 {
-    transform: translateX(-50%);
-}
-
+/* Individual mood images - no offset needed now */
+.mood-img-1,
+.mood-img-2,
+.mood-img-3,
 .mood-img-4 {
-    transform: translateX(-75%);
+    transform: none;
 }
 
-.mood-card:hover .mood-img-1 {
-    transform: scale(1.05) translateX(0);
-}
-
-.mood-card:hover .mood-img-2 {
-    transform: scale(1.05) translateX(-25%);
-}
-
-.mood-card:hover .mood-img-3 {
-    transform: scale(1.05) translateX(-50%);
-}
-
+.mood-card:hover .mood-img-1,
+.mood-card:hover .mood-img-2,
+.mood-card:hover .mood-img-3,
 .mood-card:hover .mood-img-4 {
-    transform: scale(1.05) translateX(-75%);
+    transform: scale(1.05);
 }
 
 .mood-content {
@@ -488,7 +470,6 @@
     justify-content: center;
     flex-shrink: 0;
     margin-bottom: var(--space-6);
-    background: #0a0a0a !important;
     overflow: hidden;
 }
 

@@ -624,9 +624,9 @@ const BulkOrder = () => {
                                         <Phone size={18} />
                                         <span>+91 98352 68202</span>
                                     </a>
-                                    <a href="mailto:arnavpratap2003@gmail.com" className="contact-item">
+                                    <a href="mailto:prabhatkumarbxr@gmail.com" className="contact-item">
                                         <Mail size={18} />
-                                        <span>arnavpratap2003@gmail.com</span>
+                                        <span>prabhatkumarbxr@gmail.com</span>
                                     </a>
                                     <div className="contact-item">
                                         <MapPin size={18} />

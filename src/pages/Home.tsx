@@ -13,10 +13,12 @@ import {
 } from 'lucide-react';
 import { productsApi } from '../api';
 import ProductCard from '../components/ProductCard';
+import ExpandableBrands from '../components/ExpandableBrands';
 import { getFeaturedProducts, getBestsellerProducts, categories, brands, Product } from '../data/products';
 import './Home.css';
 
 const Home = () => {
+    const [showBrands, setShowBrands] = useState(false);
     const [featuredProducts, setFeaturedProducts] = useState<Product[]>(getFeaturedProducts().slice(0, 3));
     const [bestsellerProducts, setBestsellerProducts] = useState<Product[]>(getBestsellerProducts().slice(0, 3));
 
@@ -64,11 +66,11 @@ const Home = () => {
                                 Premium laminates that bring warmth, texture, and timeless elegance to spaces designed for life.
                             </p>
                             <div className="hero-ctas">
-                                <Link to="/catalog" className="btn btn-primary btn-lg">
+                                <button onClick={() => setShowBrands(true)} className="btn btn-primary btn-lg">
                                     Explore Collection
-                                </Link>
-                                <Link to="/sample-order" className="btn btn-outline btn-lg">
-                                    Request Samples
+                                </button>
+                                <Link to="/contact" className="btn btn-outline btn-lg">
+                                    Request Catalogue
                                 </Link>
                             </div>
                             <div className="hero-stats">
@@ -137,7 +139,7 @@ const Home = () => {
                         </Link>
                         <Link to="/catalog?mood=bold" className="mood-card">
                             <div className="mood-image-container">
-                                <img src="/mood-collage.png" alt="Bold & Expressive" className="mood-img mood-img-2" />
+                                <img src="/mood-bold.jpg" alt="Bold & Expressive" className="mood-img mood-img-2" />
                             </div>
                             <div className="mood-content">
                                 <span className="mood-icon">◆</span>
@@ -147,7 +149,7 @@ const Home = () => {
                         </Link>
                         <Link to="/catalog?mood=warm" className="mood-card">
                             <div className="mood-image-container">
-                                <img src="/mood-collage.png" alt="Warm & Inviting" className="mood-img mood-img-3" />
+                                <img src="/mood-warm.jpg" alt="Warm & Inviting" className="mood-img mood-img-3" />
                             </div>
                             <div className="mood-content">
                                 <span className="mood-icon">◐</span>
@@ -157,7 +159,7 @@ const Home = () => {
                         </Link>
                         <Link to="/catalog?mood=elegant" className="mood-card">
                             <div className="mood-image-container">
-                                <img src="/mood-collage.png" alt="Modern Elegance" className="mood-img mood-img-4" />
+                                <img src="/mood-elegant.jpg" alt="Modern Elegance" className="mood-img mood-img-4" />
                             </div>
                             <div className="mood-content">
                                 <span className="mood-icon">◇</span>
@@ -233,25 +235,6 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Featured Products */}
-            <section className="products-section section">
-                <div className="container">
-                    <div className="section-header">
-                        <div>
-                            <h2>Curated Selection</h2>
-                            <p>Handpicked designs from our collection</p>
-                        </div>
-                        <Link to="/catalog?featured=true" className="btn btn-outline">
-                            View All <ArrowRight size={14} />
-                        </Link>
-                    </div>
-                    <div className="products-grid">
-                        {featuredProducts.map((product) => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             {/* Quick Actions */}
             <section className="quick-actions section">
@@ -281,10 +264,10 @@ const Home = () => {
                             <div className="quick-action-icon">
                                 <Palette size={28} />
                             </div>
-                            <h3>Sample Swatches</h3>
-                            <p>Experience the quality firsthand. Order sample swatches delivered to your doorstep.</p>
-                            <Link to="/sample-order" className="btn btn-primary">
-                                Order Samples
+                            <h3>Request Catalogue</h3>
+                            <p>Browse our comprehensive catalogue books featuring the full range of laminate designs and finishes.</p>
+                            <Link to="/contact" className="btn btn-primary">
+                                Get Catalogue
                             </Link>
                         </div>
                     </div>
@@ -331,25 +314,6 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Bestsellers */}
-            <section className="products-section section">
-                <div className="container">
-                    <div className="section-header">
-                        <div>
-                            <h2>Most Loved</h2>
-                            <p>Designs chosen by architects and designers</p>
-                        </div>
-                        <Link to="/catalog?bestseller=true" className="btn btn-outline">
-                            View All <ArrowRight size={14} />
-                        </Link>
-                    </div>
-                    <div className="products-grid">
-                        {bestsellerProducts.map((product) => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             {/* Testimonials */}
             <section className="testimonials-section section">
@@ -433,6 +397,9 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Expandable Brands Modal */}
+            <ExpandableBrands isOpen={showBrands} onClose={() => setShowBrands(false)} />
         </div>
     );
 };

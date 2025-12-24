@@ -69,27 +69,27 @@ const Footer = () => {
                         {/* Company Info */}
                         <div className="footer-col footer-col-brand">
                             <div className="footer-logo">
-                                <div className="logo-icon">H</div>
-                                <div className="logo-text">
-                                    <span className="logo-name">Homelia</span>
-                                    <span className="logo-tagline">Premium Laminates</span>
-                                </div>
+                                <img
+                                    src="/homelia-logo.png"
+                                    alt="Homelia - Premium Laminates"
+                                    className="footer-logo-img"
+                                />
                             </div>
                             <p className="footer-description">
                                 Your trusted authorized distributor for Durian and Rockstar laminates.
                                 Serving architects, interior designers, contractors, and bulk buyers across India.
                             </p>
                             <div className="footer-contact">
-                                <a href="tel:+919835268202" className="contact-item">
-                                    <Phone size={18} />
+                                <a href="tel:+919835268202" className="contact-item" style={{ color: '#A69070', fontWeight: 500 }}>
+                                    <Phone size={18} style={{ color: '#A69070' }} />
                                     <span>+91 98352 68202</span>
                                 </a>
-                                <a href="mailto:arnavpratap2003@gmail.com" className="contact-item">
-                                    <Mail size={18} />
-                                    <span>arnavpratap2003@gmail.com</span>
+                                <a href="mailto:prabhatkumarbxr@gmail.com" className="contact-item" style={{ color: '#A69070', fontWeight: 500 }}>
+                                    <Mail size={18} style={{ color: '#A69070' }} />
+                                    <span>prabhatkumarbxr@gmail.com</span>
                                 </a>
-                                <a href="https://maps.google.com/?q=RPS+More+Patna+Bihar" target="_blank" rel="noopener noreferrer" className="contact-item">
-                                    <MapPin size={18} />
+                                <a href="https://maps.google.com/?q=RPS+More+Patna+Bihar" target="_blank" rel="noopener noreferrer" className="contact-item" style={{ color: '#A69070', fontWeight: 500 }}>
+                                    <MapPin size={18} style={{ color: '#A69070' }} />
                                     <span>Near RPS More, Patna, Bihar</span>
                                 </a>
                             </div>

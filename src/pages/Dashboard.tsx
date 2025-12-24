@@ -293,7 +293,7 @@ const Dashboard = () => {
     <div class="footer">
         <p>Thank you for your business!</p>
         <p>This is a computer-generated invoice and does not require a signature.</p>
-        <p style="margin-top: 10px;">Homelia Laminates | arnavpratap2003@gmail.com | +91 98352 68202</p>
+        <p style="margin-top: 10px;">Homelia Laminates | prabhatkumarbxr@gmail.com | +91 98352 68202</p>
     </div>
 
     <div class="no-print" style="text-align: center; margin-top: 30px;">

@@ -5,8 +5,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
-import Catalog from './pages/Catalog';
-import ProductDetail from './pages/ProductDetail';
+import ComingSoon from './pages/ComingSoon';
 import BrandPage from './pages/BrandPage';
 import RequestQuote from './pages/RequestQuote';
 import SampleOrder from './pages/SampleOrder';
@@ -58,9 +57,14 @@ function App() {
                         <Routes>
                             {/* Public Routes */}
                             <Route path="/" element={<Home />} />
-                            <Route path="/catalog" element={<Catalog />} />
-                            <Route path="/product/:id" element={<ProductDetail />} />
+
+                            {/* Product pages - Coming Soon */}
+                            <Route path="/catalog" element={<ComingSoon />} />
+                            <Route path="/product/:id" element={<ComingSoon />} />
+
+                            {/* Brands - Active with catalogues */}
                             <Route path="/brands/:brandId" element={<BrandPage />} />
+
                             <Route path="/request-quote" element={<RequestQuote />} />
                             <Route path="/sample-order" element={<SampleOrder />} />
                             <Route path="/cart" element={<Cart />} />
