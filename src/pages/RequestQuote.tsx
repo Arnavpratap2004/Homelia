@@ -11,11 +11,14 @@ import {
     Package,
     CheckCircle2,
     ChevronRight,
-    Loader2
+    Loader2,
+    AlertCircle
 } from 'lucide-react';
-import { quotesApi } from '../api';
-import { products, brands } from '../data/products';
+import { brands } from '../data/products';
 import './RequestQuote.css';
+
+// Web3Forms API Key
+const WEB3FORMS_ACCESS_KEY = 'c8572849-db61-4485-be8b-0c9eb45913c4';
 
 const RequestQuote = () => {
     const [formData, setFormData] = useState({
@@ -35,6 +38,7 @@ const RequestQuote = () => {
     const [submitted, setSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [quoteId, setQuoteId] = useState('');
+    const [error, setError] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -43,36 +47,50 @@ const RequestQuote = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
+        setError('');
 
         try {
-            // Call API to create quote
-            await quotesApi.create({
-                items: [{
-                    productId: 'bulk-request',
-                    requestedQty: parseInt(formData.quantity) || 100,
-                    notes: `Brand: ${formData.brand}, Products: ${formData.products}`
-                }],
-                notes: `
-Company: ${formData.companyName}
-Contact: ${formData.contactPerson}
-Email: ${formData.email}
-Phone: ${formData.phone}
-GSTIN: ${formData.gstin}
-City: ${formData.city}
-Timeline: ${formData.timeline}
-Message: ${formData.message}
-                `.trim()
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: WEB3FORMS_ACCESS_KEY,
+                    from_name: 'Homelia Quote Request',
+                    subject: `Quote Request from ${formData.companyName} - ${formData.quantity || 'TBD'} sheets`,
+                    // Form Data
+                    company_name: formData.companyName,
+                    contact_person: formData.contactPerson,
+                    email: formData.email,
+                    phone: formData.phone,
+                    gstin: formData.gstin || 'Not provided',
+                    city: formData.city,
+                    state: formData.state || 'Not specified',
+                    preferred_brand: formData.brand || 'No preference',
+                    products_of_interest: formData.products || 'Not specified',
+                    estimated_quantity: formData.quantity || 'To be discussed',
+                    timeline: formData.timeline || 'Not specified',
+                    additional_notes: formData.message || 'None',
+                    // Settings
+                    botcheck: false,
+                    replyto: formData.email
+                })
             });
 
-            const newQuoteId = `RFQ-${Date.now().toString().slice(-8)}`;
-            setQuoteId(newQuoteId);
-            setSubmitted(true);
-        } catch (error) {
-            console.error('Quote submission error:', error);
-            // For demo, still show success
-            const newQuoteId = `RFQ-${Date.now().toString().slice(-8)}`;
-            setQuoteId(newQuoteId);
-            setSubmitted(true);
+            const result = await response.json();
+
+            if (result.success) {
+                const newQuoteId = `RFQ-${Date.now().toString().slice(-8)}`;
+                setQuoteId(newQuoteId);
+                setSubmitted(true);
+            } else {
+                throw new Error(result.message || 'Failed to submit quote request');
+            }
+        } catch (err) {
+            console.error('Quote submission error:', err);
+            setError('Failed to submit quote request. Please try again or contact us directly.');
         } finally {
             setIsLoading(false);
         }
@@ -129,6 +147,13 @@ Message: ${formData.message}
                     <div className="quote-form-container card">
                         <form onSubmit={handleSubmit} className="quote-form">
                             <h2>Quote Request Form</h2>
+
+                            {error && (
+                                <div className="form-error">
+                                    <AlertCircle size={18} />
+                                    <span>{error}</span>
+                                </div>
+                            )}
 
                             {/* Business Details */}
                             <div className="form-section">
@@ -288,9 +313,22 @@ Message: ${formData.message}
                                 </div>
                             </div>
 
-                            <button type="submit" className="btn btn-primary btn-lg submit-btn">
-                                <Send size={20} />
-                                Submit Quote Request
+                            <button
+                                type="submit"
+                                className="btn btn-primary btn-lg submit-btn"
+                                disabled={isLoading}
+                            >
+                                {isLoading ? (
+                                    <>
+                                        <Loader2 size={20} className="spin" />
+                                        Submitting...
+                                    </>
+                                ) : (
+                                    <>
+                                        <Send size={20} />
+                                        Submit Quote Request
+                                    </>
+                                )}
                             </button>
                         </form>
                     </div>

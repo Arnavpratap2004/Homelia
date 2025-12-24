@@ -17,6 +17,7 @@ import Logout from './pages/Logout';
 import Dashboard from './pages/Dashboard';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
+import BulkOrder from './pages/BulkOrder';
 // Role-specific dashboards
 import AdminDashboard from './pages/admin/AdminDashboard';
 import DealerDashboard from './pages/dealer/DealerDashboard';
@@ -68,6 +69,7 @@ function App() {
                             <Route path="/logout" element={<Logout />} />
                             <Route path="/contact" element={<Contact />} />
                             <Route path="/faq" element={<FAQ />} />
+                            <Route path="/bulk-order" element={<BulkOrder />} />
 
                             {/* Admin Routes - Standalone layout */}
                             <Route

@@ -49,7 +49,7 @@ export const brands: Brand[] = [
     {
         id: 'durian',
         name: 'Durian Laminates',
-        logo: '/images/durian-logo.svg',
+        logo: '/durian-logo.jpg',
         tagline: 'Crafting Perfection Since 1981',
         description: 'Durian is one of India\'s most trusted names in laminates, known for exceptional quality, innovative designs, and sustainability. With over 40 years of experience, Durian offers a wide range of decorative and specialty laminates for residential and commercial applications.',
         collections: ['Woodgrains', 'Abstracts', 'Solids', 'High Gloss', 'Exterior Grade', 'Compact'],
@@ -59,7 +59,7 @@ export const brands: Brand[] = [
     {
         id: 'rockstar',
         name: 'Rockstar Laminates',
-        logo: '/images/rockstar-logo.svg',
+        logo: '/rockstar-logo.jpg',
         tagline: 'Bold Designs, Premium Quality',
         description: 'Rockstar Laminates brings contemporary designs with rock-solid durability. Known for trendy patterns and superior finish quality, Rockstar is the choice for modern interiors seeking style and substance.',
         collections: ['Urban Collection', 'Nature Series', 'Metallics', 'Stone Finish', 'Fabric Textures'],

@@ -8,16 +8,81 @@ import {
     Send,
     ChevronRight,
     CheckCircle2,
-    MessageSquare
+    MessageSquare,
+    Loader2,
+    AlertCircle
 } from 'lucide-react';
 import './Contact.css';
 
-const Contact = () => {
-    const [submitted, setSubmitted] = useState(false);
+// Web3Forms API Key - Get your free key at https://web3forms.com/
+// Replace this with your actual access key
+const WEB3FORMS_ACCESS_KEY = 'c8572849-db61-4485-be8b-0c9eb45913c4';
 
-    const handleSubmit = (e: React.FormEvent) => {
+const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        phone: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+    const [submitted, setSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setSubmitted(true);
+        setIsLoading(true);
+        setError('');
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: WEB3FORMS_ACCESS_KEY,
+                    from_name: 'Homelia Contact Form',
+                    subject: `New Contact: ${formData.subject || 'General Inquiry'} - ${formData.name}`,
+                    name: formData.name,
+                    phone: formData.phone,
+                    email: formData.email,
+                    topic: formData.subject,
+                    message: formData.message,
+                    // Additional useful fields
+                    botcheck: false,
+                    // Customize the email format
+                    replyto: formData.email
+                })
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                setSubmitted(true);
+                setFormData({
+                    name: '',
+                    phone: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+            } else {
+                throw new Error(result.message || 'Failed to send message');
+            }
+        } catch (err) {
+            console.error('Contact form error:', err);
+            setError('Failed to send message. Please try again or contact us directly via phone/email.');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -57,47 +122,99 @@ const Contact = () => {
                             <form onSubmit={handleSubmit} className="contact-form">
                                 <h2><MessageSquare size={20} /> Send us a Message</h2>
 
+                                {error && (
+                                    <div className="form-error">
+                                        <AlertCircle size={18} />
+                                        <span>{error}</span>
+                                    </div>
+                                )}
+
                                 <div className="form-row">
                                     <div className="input-group">
                                         <label className="input-label">Full Name *</label>
-                                        <input type="text" className="input" placeholder="Your name" required />
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            className="input"
+                                            placeholder="Your name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            required
+                                        />
                                     </div>
                                     <div className="input-group">
                                         <label className="input-label">Phone *</label>
-                                        <input type="tel" className="input" placeholder="+91 98765 43210" required />
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            className="input"
+                                            placeholder="+91 98765 43210"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                            required
+                                        />
                                     </div>
                                 </div>
 
                                 <div className="input-group">
                                     <label className="input-label">Email *</label>
-                                    <input type="email" className="input" placeholder="your@email.com" required />
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        className="input"
+                                        placeholder="your@email.com"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
+                                    />
                                 </div>
 
                                 <div className="input-group">
                                     <label className="input-label">Subject</label>
-                                    <select className="input select">
+                                    <select
+                                        name="subject"
+                                        className="input select"
+                                        value={formData.subject}
+                                        onChange={handleChange}
+                                    >
                                         <option value="">Select a topic</option>
-                                        <option value="sales">Sales Inquiry</option>
-                                        <option value="quote">Bulk Quote Request</option>
-                                        <option value="support">Order Support</option>
-                                        <option value="dealer">Dealer Registration</option>
-                                        <option value="other">Other</option>
+                                        <option value="Sales Inquiry">Sales Inquiry</option>
+                                        <option value="Bulk Quote Request">Bulk Quote Request</option>
+                                        <option value="Order Support">Order Support</option>
+                                        <option value="Dealer Registration">Dealer Registration</option>
+                                        <option value="Other">Other</option>
                                     </select>
                                 </div>
 
                                 <div className="input-group">
                                     <label className="input-label">Message *</label>
                                     <textarea
+                                        name="message"
                                         className="input textarea"
                                         placeholder="How can we help you?"
                                         rows={5}
+                                        value={formData.message}
+                                        onChange={handleChange}
                                         required
                                     />
                                 </div>
 
-                                <button type="submit" className="btn btn-primary btn-lg">
-                                    <Send size={18} />
-                                    Send Message
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary btn-lg"
+                                    disabled={isLoading}
+                                >
+                                    {isLoading ? (
+                                        <>
+                                            <Loader2 size={18} className="spin" />
+                                            Sending...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Send size={18} />
+                                            Send Message
+                                        </>
+                                    )}
                                 </button>
                             </form>
                         )}

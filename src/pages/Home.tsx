@@ -180,9 +180,11 @@ const Home = () => {
                         {brands.map((brand) => (
                             <Link to={`/brands/${brand.id}`} key={brand.id} className="brand-card">
                                 <div className="brand-logo">
-                                    <div className="brand-logo-text">
-                                        {brand.name.split(' ')[0]}
-                                    </div>
+                                    <img
+                                        src={brand.logo}
+                                        alt={`${brand.name} Logo`}
+                                        className="brand-logo-img"
+                                    />
                                 </div>
                                 <div className="brand-info">
                                     <h3>{brand.name}</h3>

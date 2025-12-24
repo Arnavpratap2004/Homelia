@@ -103,6 +103,44 @@
     margin-top: var(--space-6);
 }
 
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Form Error */
+.quote-form .form-error {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-6);
+}
+
+.quote-form .form-error svg {
+    flex-shrink: 0;
+}
+
+/* Loading Spinner */
+.quote-form .spin {
+    animation: quoteSpinner 1s linear infinite;
+}
+
+@keyframes quoteSpinner {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /* Sidebar */
 .quote-sidebar {
     display: flex;
