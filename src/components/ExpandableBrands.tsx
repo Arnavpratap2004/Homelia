@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X } from 'lucide-react';
 import { brands } from '../data/products';
@@ -9,9 +9,19 @@ interface ExpandableBrandsProps {
     onClose: () => void;
 }
 
+// Floating particles for ambiance
+const FloatingParticles = () => (
+    <div className="particles-container">
+        {[...Array(7)].map((_, i) => (
+            <div key={i} className="particle" />
+        ))}
+    </div>
+);
+
 const ExpandableBrands = ({ isOpen, onClose }: ExpandableBrandsProps) => {
     const navigate = useNavigate();
     const [activeCard, setActiveCard] = useState<string | null>(null);
+    const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     // Lock body scroll when modal is open
     useEffect(() => {
@@ -37,6 +47,40 @@ const ExpandableBrands = ({ isOpen, onClose }: ExpandableBrandsProps) => {
         };
     }, [isOpen]);
 
+    // Handle 3D tilt effect and spotlight tracking
+    const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>, index: number) => {
+        const card = cardRefs.current[index];
+        if (!card) return;
+
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Spotlight position
+        const percentX = (x / rect.width) * 100;
+        const percentY = (y / rect.height) * 100;
+
+        // 3D tilt calculation (subtle effect)
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -5; // Max 5 degrees
+        const rotateY = ((x - centerX) / centerX) * 5;  // Max 5 degrees
+
+        card.style.setProperty('--mouse-x', `${percentX}%`);
+        card.style.setProperty('--mouse-y', `${percentY}%`);
+        card.style.setProperty('--rotation-x', `${rotateX}deg`);
+        card.style.setProperty('--rotation-y', `${rotateY}deg`);
+    }, []);
+
+    // Reset card position on mouse leave
+    const handleMouseLeave = useCallback((index: number) => {
+        const card = cardRefs.current[index];
+        if (!card) return;
+
+        card.style.setProperty('--rotation-x', '0deg');
+        card.style.setProperty('--rotation-y', '0deg');
+    }, []);
+
     const handleCardClick = (brandId: string) => {
         setActiveCard(brandId);
         // Navigate after a brief animation
@@ -50,9 +94,11 @@ const ExpandableBrands = ({ isOpen, onClose }: ExpandableBrandsProps) => {
 
     return (
         <div className="expandable-overlay" onClick={onClose}>
+            <FloatingParticles />
+
             <div className="expandable-container" onClick={(e) => e.stopPropagation()}>
-                <button className="expandable-close" onClick={onClose}>
-                    <X size={24} />
+                <button className="expandable-close" onClick={onClose} aria-label="Close modal">
+                    <X size={22} />
                 </button>
 
                 <div className="expandable-header">
@@ -67,12 +113,15 @@ const ExpandableBrands = ({ isOpen, onClose }: ExpandableBrandsProps) => {
                     {brands.map((brand, index) => (
                         <div
                             key={brand.id}
+                            ref={(el) => { cardRefs.current[index] = el; }}
                             className={`expandable-card ${activeCard === brand.id ? 'active' : ''}`}
                             style={{
-                                '--delay': `${index * 0.1}s`,
+                                '--delay': `${index * 0.15}s`,
                                 '--brand-color': brand.color
                             } as React.CSSProperties}
                             onClick={() => handleCardClick(brand.id)}
+                            onMouseMove={(e) => handleMouseMove(e, index)}
+                            onMouseLeave={() => handleMouseLeave(index)}
                         >
                             <div className="card-background">
                                 <div className="card-gradient" />
