@@ -8,7 +8,6 @@ import {
     Palette,
     Download,
     Check,
-    Share2,
     Heart,
     Truck,
     Shield,

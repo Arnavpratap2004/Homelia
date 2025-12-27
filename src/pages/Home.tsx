@@ -12,15 +12,16 @@ import {
     Building2
 } from 'lucide-react';
 import { productsApi } from '../api';
-import ProductCard from '../components/ProductCard';
+// ProductCard available if needed
+// import ProductCard from '../components/ProductCard';
 import ExpandableBrands from '../components/ExpandableBrands';
 import { getFeaturedProducts, getBestsellerProducts, categories, brands, Product } from '../data/products';
 import './Home.css';
 
 const Home = () => {
     const [showBrands, setShowBrands] = useState(false);
-    const [featuredProducts, setFeaturedProducts] = useState<Product[]>(getFeaturedProducts().slice(0, 3));
-    const [bestsellerProducts, setBestsellerProducts] = useState<Product[]>(getBestsellerProducts().slice(0, 3));
+    const [_featuredProducts, setFeaturedProducts] = useState<Product[]>(getFeaturedProducts().slice(0, 3));
+    const [_bestsellerProducts, setBestsellerProducts] = useState<Product[]>(getBestsellerProducts().slice(0, 3));
 
     // Fetch products from API on mount
     useEffect(() => {

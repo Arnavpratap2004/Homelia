@@ -131,7 +131,7 @@ const Dashboard = () => {
 
     // State for real orders from API
     const [orders, setOrders] = useState(demoOrdersData);
-    const [isLoadingOrders, setIsLoadingOrders] = useState(true);
+    const [_isLoadingOrders, setIsLoadingOrders] = useState(true);
 
     // Fetch user's orders from API
     useEffect(() => {

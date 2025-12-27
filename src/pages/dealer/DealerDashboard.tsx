@@ -13,7 +13,6 @@ import {
     Star,
     Clock,
     CheckCircle,
-    Eye,
     Plus
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';

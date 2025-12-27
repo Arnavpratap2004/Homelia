@@ -9,7 +9,7 @@ import {
     CheckCircle2,
     Truck
 } from 'lucide-react';
-import { products, formatPricePerSheet } from '../data/products';
+import { products } from '../data/products';
 import './SampleOrder.css';
 
 interface SampleItem {

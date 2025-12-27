@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { authApi, User, setToken, setRefreshToken, getToken, clearTokens } from '../api';
+import { authApi, User, setToken, setRefreshToken, clearTokens } from '../api';
 
 // Types
 export type UserRole = 'ADMIN' | 'DEALER' | 'B2B_CUSTOMER' | 'RETAIL' | 'RETAIL_CUSTOMER';

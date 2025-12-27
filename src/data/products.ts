@@ -112,13 +112,13 @@ export const applicationOptions = [
     { value: 'exterior', label: 'Exterior' }
 ];
 
-// Generate placeholder colors for product swatches
-const productColors = [
-    '#8B4513', '#A0522D', '#D2691E', '#CD853F', '#DEB887',
-    '#F5DEB3', '#FAEBD7', '#2F4F4F', '#696969', '#808080',
-    '#A9A9A9', '#C0C0C0', '#DCDCDC', '#F5F5F5', '#FFF8DC',
-    '#1E3A5F', '#2C5282', '#4A7C59', '#718096', '#9F7AEA'
-];
+// Generate placeholder colors for product swatches (unused - kept for reference)
+// const _productColors = [
+//     '#8B4513', '#A0522D', '#D2691E', '#CD853F', '#DEB887',
+//     '#F5DEB3', '#FAEBD7', '#2F4F4F', '#696969', '#808080',
+//     '#A9A9A9', '#C0C0C0', '#DCDCDC', '#F5F5F5', '#FFF8DC',
+//     '#1E3A5F', '#2C5282', '#4A7C59', '#718096', '#9F7AEA'
+// ];
 
 // Mock Products Data
 export const products: Product[] = [

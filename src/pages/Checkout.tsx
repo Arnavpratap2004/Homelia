@@ -1,13 +1,10 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
     ChevronRight,
-    CreditCard,
     Truck,
     Shield,
     CheckCircle2,
-    Building2,
-    MapPin,
     FileText,
     AlertCircle,
     Loader2,
@@ -18,7 +15,7 @@ import {
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { ordersApi } from '../api';
-import { products, formatPrice } from '../data/products';
+import { formatPrice } from '../data/products';
 import './Checkout.css';
 
 interface CheckoutStep {
@@ -28,7 +25,7 @@ interface CheckoutStep {
 }
 
 const Checkout = () => {
-    const navigate = useNavigate();
+    // Navigation available if needed in future
     const { items, subtotal, clearCart } = useCart();
     const [currentStep, setCurrentStep] = useState(1);
     const [orderPlaced, setOrderPlaced] = useState(false);
@@ -48,7 +45,7 @@ const Checkout = () => {
         pincode: ''
     });
 
-    const getProduct = (id: string) => products.find(p => p.id === id);
+    // Product lookup available if needed: products.find(p => p.id === id)
 
     const gstRate = 0.18;
     const gstAmount = subtotal * gstRate;
@@ -424,7 +421,6 @@ const Checkout = () => {
                             <h3>Order Summary</h3>
                             <div className="summary-list">
                                 {items.map(item => {
-                                    const product = getProduct(item.productId);
                                     return (
                                         <div key={item.productId} className="summary-item">
                                             <div className="item-thumb" style={{ background: item.color || '#eee' }}></div>
