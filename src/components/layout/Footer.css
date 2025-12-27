@@ -196,6 +196,23 @@
     margin-bottom: var(--space-8);
 }
 
+@media (max-width: 639px) {
+    .newsletter-form {
+        flex-direction: column !important;
+        gap: var(--space-3) !important;
+    }
+
+    .newsletter-input {
+        border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border-radius: var(--radius-sm) !important;
+    }
+
+    .newsletter-btn {
+        border-radius: var(--radius-sm) !important;
+        width: 100%;
+    }
+}
+
 .newsletter-input {
     flex: 1;
     padding: var(--space-3) var(--space-4);

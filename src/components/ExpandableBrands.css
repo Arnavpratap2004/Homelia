@@ -8,10 +8,13 @@
     -webkit-backdrop-filter: blur(8px);
     z-index: 9999;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding: var(--space-6);
     animation: fadeIn 0.3s ease-out;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
 }
 
 @keyframes fadeIn {
@@ -105,6 +108,71 @@
 @media (min-width: 640px) {
     .expandable-cards {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 639px) {
+    .expandable-overlay {
+        padding: var(--space-4);
+        align-items: flex-start;
+        padding-top: var(--space-16);
+    }
+
+    .expandable-container {
+        padding: var(--space-6);
+        max-width: 100%;
+    }
+
+    .expandable-close {
+        top: -10px;
+        right: 0;
+        width: 40px;
+        height: 40px;
+    }
+
+    .expandable-header {
+        margin-bottom: var(--space-6);
+    }
+
+    .expandable-title {
+        font-size: var(--text-2xl);
+    }
+
+    .expandable-description {
+        font-size: var(--text-sm);
+    }
+
+    .expandable-card {
+        padding: var(--space-6);
+    }
+
+    .card-logo {
+        width: 100px;
+        height: 40px;
+        margin-bottom: var(--space-4);
+    }
+
+    .card-name {
+        font-size: var(--text-xl);
+    }
+
+    .card-tagline {
+        font-size: var(--text-xs);
+        margin-bottom: var(--space-4);
+    }
+
+    .card-collections {
+        margin-bottom: var(--space-4);
+    }
+
+    .collection-tag {
+        font-size: 0.6rem;
+        padding: 4px var(--space-2);
+    }
+
+    .card-cta {
+        font-size: var(--text-xs);
     }
 }
 

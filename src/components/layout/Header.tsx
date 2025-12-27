@@ -30,6 +30,21 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+            document.body.style.touchAction = 'none';
+        } else {
+            document.body.style.overflow = '';
+            document.body.style.touchAction = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+            document.body.style.touchAction = '';
+        };
+    }, [isMenuOpen]);
+
     useEffect(() => {
         setIsMenuOpen(false);
         setActiveDropdown(null);
@@ -131,8 +146,21 @@ const Header = () => {
                 </div>
 
                 {/* Mobile Navigation */}
-                <div className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
-                    <div className="mobile-nav-content">
+                <div
+                    className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}
+                    onClick={() => setIsMenuOpen(false)}
+                >
+                    <div className="mobile-nav-content" onClick={(e) => e.stopPropagation()}>
+                        {/* Close button */}
+                        <div className="mobile-nav-close">
+                            <button
+                                className="mobile-close-btn"
+                                onClick={() => setIsMenuOpen(false)}
+                                aria-label="Close menu"
+                            >
+                                <X size={24} />
+                            </button>
+                        </div>
                         <div className="mobile-nav-section">
                             <Link to="/" className="mobile-nav-link">Home</Link>
                         </div>
@@ -176,9 +204,6 @@ const Header = () => {
                                 <FileText size={18} />
                                 Request Quote
                             </Link>
-                            <Link to="/sample-order" className="mobile-nav-link">
-                                Order Samples
-                            </Link>
                             <Link to="/contact" className="mobile-nav-link">Contact Us</Link>
                         </div>
 
@@ -188,7 +213,7 @@ const Header = () => {
                             </Link>
                             <p className="mobile-phone">
                                 <Phone size={16} />
-                                +91 98765 43210
+                                +91 98352 68202
                             </p>
                         </div>
                     </div>
