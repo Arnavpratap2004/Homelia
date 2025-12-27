@@ -6,7 +6,10 @@
 .expandable-overlay {
     position: fixed;
     inset: 0;
-    background: linear-gradient(135deg,
+    /* Solid background shows immediately as fallback */
+    background-color: rgb(12, 12, 12);
+    /* Gradient overlay for visual richness */
+    background-image: linear-gradient(135deg,
             rgba(10, 10, 10, 0.95) 0%,
             rgba(20, 18, 15, 0.97) 50%,
             rgba(10, 10, 10, 0.95) 100%);
@@ -25,6 +28,9 @@
     overscroll-behavior: contain;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    /* Performance optimizations */
+    will-change: opacity, backdrop-filter;
+    contain: layout style;
 }
 
 .expandable-overlay::-webkit-scrollbar {
@@ -297,7 +303,9 @@
     --rotation-y: 0deg;
 
     position: relative;
-    background: linear-gradient(145deg,
+    /* Solid background shows immediately while backdrop-filter loads */
+    background-color: rgba(30, 30, 30, 0.95);
+    background-image: linear-gradient(145deg,
             rgba(255, 255, 255, 0.08) 0%,
             rgba(255, 255, 255, 0.02) 50%,
             rgba(255, 255, 255, 0.05) 100%);
@@ -312,14 +320,16 @@
     animation: cardEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--delay) both;
     transform-style: preserve-3d;
     transform: rotateX(var(--rotation-x)) rotateY(var(--rotation-y));
-    will-change: transform, box-shadow;
+    will-change: transform, box-shadow, backdrop-filter;
     isolation: isolate;
+    contain: layout style;
 }
 
 @keyframes cardEnter {
     from {
-        opacity: 0;
-        transform: translateY(60px) rotateX(10deg);
+        /* Start with visible background, subtle fade for refinement */
+        opacity: 0.7;
+        transform: translateY(30px) rotateX(5deg);
     }
 
     to {
@@ -411,6 +421,8 @@
     z-index: 0;
     overflow: hidden;
     border-radius: var(--radius-xl);
+    /* Solid dark background renders immediately */
+    background-color: rgba(25, 25, 25, 1);
 }
 
 .card-gradient {
