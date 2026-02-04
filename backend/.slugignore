@@ -1,0 +1,46 @@
+# Heroku Slug Optimization
+# These files are excluded from the deployment slug to reduce size
+
+# Source TypeScript files (not needed after build)
+src/
+*.ts
+!*.d.ts
+tsconfig.json
+
+# Development files
+*.md
+*.log
+.env.example
+.env.local
+
+# Test files
+tests/
+__tests__/
+*.test.ts
+*.spec.ts
+coverage/
+
+# Local development scripts
+scripts/
+
+# Git
+.git/
+.gitignore
+
+# Editor and IDE configs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Prisma migrations (schema is needed, but migrations can be excluded if using db push)
+# prisma/migrations/
+
+# Temporary files
+*.tmp
+*.temp
