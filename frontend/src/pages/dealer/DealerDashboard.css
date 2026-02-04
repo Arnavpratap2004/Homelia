@@ -1,0 +1,1350 @@
+/* ===============================================
+   DEALER DASHBOARD - Luxury Premium Theme
+   =============================================== */
+
+.dealer-dashboard {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--color-ivory, #FAF9F7);
+}
+
+/* ===============================================
+   SIDEBAR - Refined Dark Luxury
+   =============================================== */
+.dealer-sidebar {
+    width: 280px;
+    background-color: var(--color-primary, #2C2C2C);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+}
+
+.dealer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dealer-logo .logo-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--color-accent, #A69070);
+    color: var(--color-primary, #2C2C2C);
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dealer-logo .logo-name {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #fff;
+    display: block;
+    letter-spacing: -0.01em;
+}
+
+.dealer-logo .logo-badge {
+    font-size: 0.6rem;
+    color: var(--color-accent, #A69070);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+}
+
+/* Tier Badge - Refined Gold */
+.dealer-tier {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+    padding: 14px 16px;
+    background: rgba(166, 144, 112, 0.12);
+    border: 1px solid rgba(166, 144, 112, 0.25);
+    border-radius: 4px;
+    color: var(--color-accent-light, #C8B896);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.discount-badge {
+    margin-left: auto;
+    background: var(--color-accent, #A69070);
+    color: var(--color-primary, #2C2C2C);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* Navigation */
+.dealer-nav {
+    flex: 1;
+    padding: 8px 12px;
+    overflow-y: auto;
+}
+
+.dealer-nav .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    background: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    margin-bottom: 2px;
+}
+
+.dealer-nav .nav-item svg {
+    stroke-width: 1.5;
+    width: 18px;
+    height: 18px;
+}
+
+.dealer-nav .nav-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+}
+
+.dealer-nav .nav-item.active {
+    background: var(--color-accent, #A69070);
+    color: var(--color-primary, #2C2C2C);
+}
+
+.dealer-dashboard .nav-badge {
+    margin-left: auto;
+    background: var(--color-secondary, #5C4A3A);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 999px;
+}
+
+.dealer-dashboard .nav-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 12px 16px;
+}
+
+.dealer-nav .nav-item.logout {
+    color: rgba(138, 74, 74, 0.9);
+    margin-top: 8px;
+}
+
+.dealer-nav .nav-item.logout:hover {
+    background: rgba(138, 74, 74, 0.15);
+    color: #B05050;
+}
+
+/* User section */
+.dealer-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+.dealer-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--color-accent, #A69070);
+    color: var(--color-primary, #2C2C2C);
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dealer-user-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.dealer-user-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.dealer-user-company {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: rgba(138, 74, 74, 0.12);
+    border: 1px solid rgba(138, 74, 74, 0.25);
+    color: #B05050;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.logout-btn:hover {
+    background: rgba(138, 74, 74, 0.2);
+}
+
+/* ===============================================
+   MAIN CONTENT
+   =============================================== */
+.dealer-main {
+    flex: 1;
+    margin-left: 280px;
+    padding: 2.5rem;
+    min-height: 100vh;
+}
+
+/* Top Bar */
+.dealer-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-white, white);
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--color-gray-100, #F5F4F2);
+    margin-bottom: 2rem;
+}
+
+.topbar-welcome {
+    font-size: 0.875rem;
+    color: var(--color-gray-600, #57534E);
+    font-weight: 400;
+}
+
+.topbar-welcome strong {
+    color: var(--color-gray-900, #1C1917);
+    font-weight: 500;
+}
+
+.topbar-logout {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--color-error, #8A4A4A);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.topbar-logout:hover {
+    background: #7A3A3A;
+}
+
+.dealer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.dealer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.dealer-header h1 {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--color-gray-900, #1C1917);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
+}
+
+.dealer-header p {
+    color: var(--color-gray-500, #78716C);
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+/* ===============================================
+   STATS CARDS - Refined
+   =============================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--color-white, white);
+    border-radius: 4px;
+    padding: 1.5rem;
+    border: 1px solid var(--color-gray-100, #F5F4F2);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    border-color: var(--color-gray-200, #E8E6E3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.stat-card.highlight {
+    background: var(--color-primary, #2C2C2C);
+    border-color: var(--color-primary, #2C2C2C);
+    color: white;
+}
+
+.stat-card.highlight .stat-label {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-icon svg {
+    stroke-width: 1.5;
+}
+
+.stat-icon.orders {
+    background: var(--color-linen, #F7F5F2);
+    color: var(--color-secondary, #5C4A3A);
+}
+
+.stat-icon.revenue {
+    background: var(--color-success-light, #E8F0E8);
+    color: var(--color-success, #5A7A5A);
+}
+
+.stat-icon.credit {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--color-accent-light, #C8B896);
+}
+
+.stat-icon.pending {
+    background: var(--color-warning-light, #F5F0E8);
+    color: var(--color-warning, #9A7A4A);
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-value {
+    display: block;
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--color-gray-900, #1C1917);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
+}
+
+.stat-card.highlight .stat-value {
+    color: white;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--color-gray-500, #78716C);
+    font-weight: 400;
+}
+
+/* Credit Bar */
+.credit-bar {
+    height: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.credit-fill {
+    height: 100%;
+    background: var(--color-accent, #A69070);
+    border-radius: 2px;
+    transition: width 0.3s;
+}
+
+/* ===============================================
+   DEALER CARDS
+   =============================================== */
+.dealer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.dealer-card {
+    background: var(--color-white, white);
+    border-radius: 4px;
+    border: 1px solid var(--color-gray-100, #F5F4F2);
+    overflow: hidden;
+}
+
+.dealer-card.full-width {
+    grid-column: 1 / -1;
+}
+
+.dealer-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--color-gray-100, #F5F4F2);
+}
+
+.dealer-card .card-header h3 {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--color-gray-900, #1C1917);
+    letter-spacing: -0.01em;
+}
+
+/* ===============================================
+   ORDERS/QUOTES LIST
+   =============================================== */
+.dealer-dashboard .orders-list,
+.dealer-dashboard .quotes-list {
+    padding: 0.5rem;
+}
+
+.order-item,
+.quote-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.order-item:hover,
+.quote-item:hover {
+    background: var(--color-gray-50, #FAF9F8);
+}
+
+.order-info,
+.quote-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dealer-dashboard .order-id,
+.dealer-dashboard .quote-id {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray-900, #1C1917);
+}
+
+.dealer-dashboard .order-date,
+.dealer-dashboard .quote-products {
+    font-size: 0.75rem;
+    color: var(--color-gray-500, #78716C);
+    font-weight: 400;
+}
+
+.order-details,
+.quote-details {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.order-amount,
+.quote-amount {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-success, #5A7A5A);
+}
+
+/* ===============================================
+   STATUS BADGES - Muted
+   =============================================== */
+.dealer-dashboard .status-badge {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.65rem;
+    font-weight: 500;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.dealer-dashboard .status-badge.pending {
+    background: var(--color-warning-light, #F5F0E8);
+    color: var(--color-warning, #9A7A4A);
+}
+
+.dealer-dashboard .status-badge.processing {
+    background: #EEF2FF;
+    color: #4338CA;
+}
+
+.dealer-dashboard .status-badge.shipped {
+    background: #E0F2FE;
+    color: #0369A1;
+}
+
+.dealer-dashboard .status-badge.delivered,
+.dealer-dashboard .status-badge.approved {
+    background: var(--color-success-light, #E8F0E8);
+    color: var(--color-success, #5A7A5A);
+}
+
+/* ===============================================
+   PRODUCTS TABLE
+   =============================================== */
+.products-table,
+.dealer-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.products-table th,
+.products-table td,
+.dealer-table th,
+.dealer-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-size: 0.875rem;
+}
+
+.products-table th,
+.dealer-table th {
+    background: var(--color-gray-50, #FAF9F8);
+    color: var(--color-gray-500, #78716C);
+    font-weight: 500;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.products-table tr,
+.dealer-table tr {
+    border-bottom: 1px solid var(--color-gray-100, #F5F4F2);
+}
+
+.products-table tr:hover,
+.dealer-table tr:hover {
+    background: var(--color-gray-50, #FAF9F8);
+}
+
+.sku {
+    color: var(--color-gray-500, #78716C);
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.retail-price {
+    color: var(--color-gray-400, #A8A29E);
+    text-decoration: line-through;
+    font-size: 0.8rem;
+}
+
+.dealer-price {
+    color: var(--color-success, #5A7A5A);
+    font-weight: 500;
+}
+
+.savings {
+    color: var(--color-accent, #A69070);
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.stock-badge {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.65rem;
+    font-weight: 500;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.stock-badge.in-stock {
+    background: var(--color-success-light, #E8F0E8);
+    color: var(--color-success, #5A7A5A);
+}
+
+.stock-badge.low-stock {
+    background: var(--color-warning-light, #F5F0E8);
+    color: var(--color-warning, #9A7A4A);
+}
+
+/* ===============================================
+   PLACEHOLDER
+   =============================================== */
+.placeholder-content {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--color-gray-500, #78716C);
+}
+
+.placeholder-content svg {
+    margin-bottom: 1rem;
+    color: var(--color-accent, #A69070);
+    opacity: 0.4;
+    stroke-width: 1;
+}
+
+.placeholder-content h3 {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--color-gray-900, #1C1917);
+    margin-bottom: 0.5rem;
+}
+
+.placeholder-content p {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* ===============================================
+   BUTTONS - Luxury
+   =============================================== */
+.dealer-dashboard .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.dealer-dashboard .btn-primary {
+    background: var(--color-accent, #A69070);
+    color: var(--color-primary, #2C2C2C);
+    border-color: var(--color-accent, #A69070);
+}
+
+.dealer-dashboard .btn-primary:hover {
+    background: var(--color-accent-light, #C8B896);
+    border-color: var(--color-accent-light, #C8B896);
+}
+
+.dealer-dashboard .btn-ghost {
+    background: transparent;
+    color: var(--color-gray-600, #57534E);
+}
+
+.dealer-dashboard .btn-ghost:hover {
+    background: var(--color-gray-50, #FAF9F8);
+    color: var(--color-gray-900, #1C1917);
+}
+
+.dealer-dashboard .btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.65rem;
+}
+
+/* ===============================================
+   MOBILE RESPONSIVE STYLES
+   =============================================== */
+
+/* Mobile Menu Toggle Button */
+.dealer-mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 200;
+    width: 44px;
+    height: 44px;
+    background: var(--color-accent, #A69070);
+    color: var(--color-primary, #2C2C2C);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dealer-sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 90;
+}
+
+/* Large Tablet (1200px and below) */
+@media (max-width: 1200px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dealer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dealer-main {
+        padding: 1.5rem;
+    }
+}
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+    .dealer-sidebar {
+        width: 240px;
+    }
+
+    .dealer-main {
+        margin-left: 240px;
+        padding: 1.25rem;
+    }
+
+    .stat-card {
+        padding: 1.25rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .products-table th,
+    .products-table td {
+        padding: 0.875rem 1rem;
+    }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+    .dealer-mobile-toggle {
+        display: flex;
+    }
+
+    .dealer-sidebar-overlay.active {
+        display: block;
+    }
+
+    .dealer-sidebar {
+        width: 280px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .dealer-sidebar.open {
+        transform: translateX(0);
+    }
+
+    /* Keep text visible in sidebar when open */
+    .dealer-sidebar.open .dealer-logo .logo-text,
+    .dealer-sidebar.open .dealer-tier span,
+    .dealer-sidebar.open .dealer-nav .nav-item span,
+    .dealer-sidebar.open .dealer-user-info,
+    .dealer-sidebar.open .logout-btn span {
+        display: block;
+    }
+
+    .dealer-main {
+        margin-left: 0;
+        padding: 1rem;
+        padding-top: 4.5rem;
+        min-height: 100vh;
+    }
+
+    /* Topbar Mobile */
+    .dealer-topbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        align-items: stretch;
+    }
+
+    .topbar-logout {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Header Mobile */
+    .dealer-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .dealer-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .stat-value {
+        font-size: 1.35rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+
+    /* Cards Mobile */
+    .dealer-card {
+        margin-bottom: 1rem;
+    }
+
+    .dealer-card .card-header {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .dealer-card .card-header h3 {
+        font-size: 1rem;
+    }
+
+    /* Orders/Quotes List Mobile */
+    .order-item,
+    .quote-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.875rem;
+    }
+
+    .order-details,
+    .quote-details {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* Products Table Mobile */
+    .products-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .products-table table {
+        min-width: 600px;
+    }
+
+    .products-table th,
+    .products-table td {
+        padding: 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    /* Placeholder Mobile */
+    .placeholder-content {
+        padding: 2rem 1rem;
+    }
+
+    .placeholder-content h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Buttons Mobile */
+    .dealer-dashboard .btn {
+        padding: 0.75rem 1rem;
+        min-height: 44px;
+    }
+
+    .dealer-dashboard .btn-sm {
+        padding: 0.5rem 0.75rem;
+        min-height: 40px;
+    }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+    .dealer-main {
+        padding: 0.75rem;
+        padding-top: 4rem;
+    }
+
+    .dealer-header h1 {
+        font-size: 1.25rem;
+    }
+
+    .dealer-header p {
+        font-size: 0.8rem;
+    }
+
+    .stat-card {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .stat-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .stat-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .stat-value {
+        font-size: 1.25rem;
+    }
+
+    .dealer-card .card-header h3 {
+        font-size: 0.95rem;
+    }
+
+    .dealer-dashboard .order-id,
+    .dealer-dashboard .quote-id {
+        font-size: 0.8rem;
+    }
+
+    .order-amount,
+    .quote-amount {
+        font-size: 0.9rem;
+    }
+
+    .dealer-dashboard .status-badge {
+        font-size: 0.6rem;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .dealer-nav .nav-item {
+        min-height: 48px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .dealer-nav .nav-item:active {
+        opacity: 0.8;
+    }
+
+    .stat-card:active {
+        transform: scale(0.99);
+    }
+
+    .order-item:active,
+    .quote-item:active {
+        background-color: var(--color-gray-100, #F5F4F2);
+    }
+
+    .dealer-dashboard .btn:active:not(:disabled) {
+        transform: scale(0.98);
+    }
+}
+
+/* Safe area insets for notched devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+    @media (max-width: 768px) {
+        .dealer-mobile-toggle {
+            top: calc(1rem + env(safe-area-inset-top));
+            left: calc(1rem + env(safe-area-inset-left));
+        }
+
+        .dealer-main {
+            padding-top: calc(4.5rem + env(safe-area-inset-top));
+            padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+            padding-left: calc(1rem + env(safe-area-inset-left));
+            padding-right: calc(1rem + env(safe-area-inset-right));
+        }
+    }
+}
+
+/* ===============================================
+   MODALS - Refined Luxury
+   =============================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(44, 44, 44, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1.5rem;
+}
+
+.modal-content {
+    background: var(--color-white, white);
+    border-radius: 4px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--color-gray-100, #F5F4F2);
+}
+
+.modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-gray-100, #F5F4F2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-family: var(--font-heading, "Cormorant Garamond", serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-gray-900, #1C1917);
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-gray-400, #A8A29E);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: var(--color-gray-900, #1C1917);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--color-gray-100, #F5F4F2);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* Form Elements in Modal */
+.order-detail-section {
+    margin-bottom: 2rem;
+}
+
+.order-detail-section h4 {
+    font-family: var(--font-heading, "Cormorant Garamond", serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--color-accent, #A69070);
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-linen, #F7F5F2);
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-gray-700, #403E3B);
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--color-white, white);
+    border: 1px solid var(--color-gray-200, #E8E6E3);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    color: var(--color-gray-900, #1C1917);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-accent, #A69070);
+    box-shadow: 0 0 0 3px rgba(166, 144, 112, 0.1);
+}
+
+.form-input::placeholder {
+    color: var(--color-gray-400, #A8A29E);
+}
+
+.form-input:disabled {
+    background: var(--color-gray-50, #FAF9F8);
+    cursor: not-allowed;
+}
+
+/* ===============================================
+   CREDIT REQUEST STYLES
+   =============================================== */
+
+/* Request Button in Stat Card - High Visibility Gold Accent */
+.credit-request-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.65rem 1rem;
+    background: var(--color-accent, #A69070);
+    color: var(--color-primary, #2C2C2C);
+    border: none;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.credit-request-btn:hover {
+    background: var(--color-accent-light, #C8B896);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(166, 144, 112, 0.3);
+}
+
+/* Modal Styling Overrides for Premium Feel */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 520px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #2C2C2C 0%, #3D3D3D 100%);
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-header h2 {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.4rem;
+    color: white;
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+.modal-header .close-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.modal-header .close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.modal-content form {
+    padding: 2rem;
+}
+
+.modal-content .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.modal-content .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #57534E;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.modal-content .form-group .form-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-size: 1.1rem;
+    border: 2px solid #E8E6E3;
+    border-radius: 8px;
+    background: #FAFAFA;
+    color: #1C1917;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.modal-content .form-group .form-input:focus {
+    outline: none;
+    border-color: var(--color-accent, #A69070);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(166, 144, 112, 0.15);
+}
+
+.modal-content .form-group .form-input::placeholder {
+    color: #A8A29E;
+}
+
+.modal-content .form-group input[type="number"] {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.modal-content .form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.modal-content .form-group small {
+    display: block;
+    margin-top: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #F8F7F5 0%, #F0EFE8 100%);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: #57534E;
+    border: 1px solid #E8E6E3;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    padding-top: 0.5rem;
+}
+
+.modal-actions .btn-outline {
+    flex: 1;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 2px solid #E8E6E3;
+    border-radius: 6px;
+    background: transparent;
+    color: #57534E;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-actions .btn-outline:hover {
+    border-color: #A69070;
+    color: #A69070;
+}
+
+.modal-actions .btn-primary {
+    flex: 1.5;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
+    border-radius: 6px;
+    background: var(--color-accent, #A69070);
+    color: #2C2C2C;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-actions .btn-primary:hover {
+    background: var(--color-accent-light, #C8B896);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(166, 144, 112, 0.3);
+}
+
+.modal-actions .btn-primary:disabled {
+    background: #C8B896;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}

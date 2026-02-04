@@ -1,0 +1,11 @@
+# Exclude large files and directories
+node_modules
+*.zip
+temp_*
+.git
+
+# Exclude development files
+*.md
+*.log
+.env.local
+.env.development

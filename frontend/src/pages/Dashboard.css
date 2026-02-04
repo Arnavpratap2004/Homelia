@@ -1,0 +1,1222 @@
+/* ===============================================
+   USER DASHBOARD - Luxury Minimal Design
+   =============================================== */
+
+/* Dashboard General */
+.dashboard-page {
+    padding: 0;
+    background-color: var(--color-ivory, #FAF9F7);
+    min-height: 100vh;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+}
+
+.dashboard-page .container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+    min-height: 100vh;
+}
+
+/* ===============================================
+   SIDEBAR - Dark Theme (matches Dealer Dashboard)
+   =============================================== */
+.dashboard-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background-color: #2C2C2C;
+    border-right: none;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Logo Header */
+.dashboard-logo {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dashboard-logo .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.dashboard-logo .logo-icon {
+    width: 36px;
+    height: 36px;
+    background-color: #C5A572;
+    color: #1C1917;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.dashboard-logo .logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-logo .logo-name {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    letter-spacing: -0.02em;
+}
+
+.dashboard-logo .logo-badge {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+}
+
+.dashboard-page .card {
+    background: var(--color-white, white);
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid var(--color-gray-100, #F5F4F2);
+    overflow: hidden;
+}
+
+.user-card {
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.user-avatar {
+    width: 52px;
+    height: 52px;
+    background-color: #C5A572;
+    color: #1C1917;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+.user-card h3 {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin-bottom: 0.2rem;
+    letter-spacing: -0.01em;
+}
+
+.user-card p {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+}
+
+.dashboard-nav {
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.dashboard-nav .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+    font-size: 0.85rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.dashboard-nav .nav-item svg {
+    stroke-width: 1.5;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.dashboard-nav .nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #FFFFFF;
+}
+
+.dashboard-nav .nav-item:hover svg {
+    opacity: 1;
+}
+
+.dashboard-nav .nav-item.active {
+    background-color: rgba(197, 165, 114, 0.15);
+    color: #C5A572;
+    font-weight: 500;
+}
+
+.dashboard-nav .nav-item.active svg {
+    opacity: 1;
+    color: #C5A572;
+}
+
+.dashboard-nav .nav-item.logout {
+    color: #E57373;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dashboard-nav .nav-item.logout:hover {
+    background-color: rgba(229, 115, 115, 0.1);
+    color: #EF5350;
+}
+
+/* ===============================================
+   MAIN CONTENT
+   =============================================== */
+.dashboard-main {
+    background-color: var(--color-ivory, #FAF9F7);
+    padding: 2rem 2.5rem;
+    overflow-x: hidden;
+}
+
+.tab-content {
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.tab-header h1 {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--color-gray-900, #1C1917);
+    letter-spacing: -0.02em;
+}
+
+/* ===============================================
+   ORDERS LIST
+   =============================================== */
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.order-card {
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    background: var(--color-white, white);
+    border: 1px solid var(--color-gray-100, #F5F4F2);
+    border-radius: 4px;
+}
+
+.order-card:hover {
+    border-color: var(--color-gray-200, #E8E6E3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-gray-100, #F5F4F2);
+}
+
+.order-id {
+    display: block;
+    font-weight: 500;
+    color: var(--color-gray-900, #1C1917);
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.order-date {
+    font-size: 0.8rem;
+    color: var(--color-gray-500, #78716C);
+    font-weight: 400;
+}
+
+.order-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-total {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-weight: 500;
+    color: var(--color-gray-900, #1C1917);
+    font-size: 1.15rem;
+    margin-top: 0.25rem;
+    letter-spacing: -0.02em;
+}
+
+.order-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* ===============================================
+   STATUS BADGES - Muted Colors
+   =============================================== */
+.dashboard-page .status-badge {
+    padding: 0.3rem 0.65rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+}
+
+.dashboard-page .status-badge.delivered,
+.dashboard-page .status-badge.paid,
+.dashboard-page .status-badge.approved {
+    background-color: var(--color-success-light, #E8F0E8);
+    color: var(--color-success, #5A7A5A);
+}
+
+.dashboard-page .status-badge.shipped {
+    background-color: #E0F2FE;
+    color: #0369A1;
+}
+
+.dashboard-page .status-badge.processing {
+    background-color: #EEF2FF;
+    color: #4338CA;
+}
+
+.dashboard-page .status-badge.pending {
+    background-color: var(--color-warning-light, #F5F0E8);
+    color: var(--color-warning, #9A7A4A);
+}
+
+.dashboard-page .status-badge.cancelled {
+    background-color: var(--color-error-light, #F5E8E8);
+    color: var(--color-error, #8A4A4A);
+}
+
+/* ===============================================
+   BUTTONS - Luxury Minimal
+   =============================================== */
+.dashboard-page .btn {
+    padding: 0.6rem 1.25rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.dashboard-page .btn-primary {
+    background-color: var(--color-primary, #2C2C2C);
+    color: white;
+    border-color: var(--color-primary, #2C2C2C);
+}
+
+.dashboard-page .btn-primary:hover {
+    background-color: var(--color-primary-light, #4A4A4A);
+    border-color: var(--color-primary-light, #4A4A4A);
+}
+
+.dashboard-page .btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--color-gray-200, #E8E6E3);
+    color: var(--color-gray-700, #44403C);
+}
+
+.dashboard-page .btn-outline:hover {
+    background-color: var(--color-gray-50, #FAF9F8);
+    border-color: var(--color-gray-300, #D4D1CC);
+}
+
+.dashboard-page .btn-ghost {
+    background: none;
+    color: var(--color-gray-600, #57534E);
+    border: none;
+}
+
+.dashboard-page .btn-ghost:hover {
+    background-color: var(--color-gray-50, #FAF9F8);
+    color: var(--color-gray-900, #1C1917);
+}
+
+.dashboard-page .btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.65rem;
+}
+
+/* ===============================================
+   MODALS - Refined
+   =============================================== */
+.dashboard-page .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(28, 25, 23, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(4px);
+}
+
+.dashboard-page .modal-content {
+    background: var(--color-white, white);
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
+    border: none;
+    border-radius: 4px;
+}
+
+.dashboard-page .modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-gray-100, #F5F4F2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-page .modal-header h2 {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    margin: 0;
+    color: var(--color-gray-900, #1C1917);
+    letter-spacing: -0.01em;
+}
+
+.dashboard-page .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--color-gray-400, #A8A29E);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.dashboard-page .close-btn:hover {
+    color: var(--color-gray-900, #1C1917);
+    background-color: var(--color-gray-50, #FAF9F8);
+}
+
+.dashboard-page .modal-body {
+    padding: 1.5rem;
+}
+
+.dashboard-page .modal-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--color-gray-100, #F5F4F2);
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+/* Order Details inside Modal */
+.order-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.order-detail-header h3 {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+}
+
+.order-detail-section {
+    margin-bottom: 2rem;
+}
+
+.order-detail-section h4 {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-gray-500, #78716C);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.order-products-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-products-table th,
+.order-products-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--color-gray-100, #F5F4F2);
+    text-align: left;
+    font-size: 0.875rem;
+}
+
+.order-products-table th {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-gray-500, #78716C);
+    font-weight: 500;
+}
+
+.order-products-table tfoot td {
+    border-bottom: none;
+    padding-top: 1rem;
+}
+
+.order-products-table tfoot .total-row td {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.1rem;
+    color: var(--color-gray-900, #1C1917);
+    padding-top: 0.5rem;
+}
+
+/* ===============================================
+   QUOTES LIST
+   =============================================== */
+.quotes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.quote-card {
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    background: var(--color-white, white);
+    border: 1px solid var(--color-gray-100, #F5F4F2);
+    border-radius: 4px;
+}
+
+.quote-card:hover {
+    border-color: var(--color-gray-200, #E8E6E3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.quote-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.quote-id {
+    font-weight: 500;
+    color: var(--color-gray-900, #1C1917);
+    font-size: 0.9rem;
+}
+
+.quote-products {
+    color: var(--color-gray-600, #57534E);
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.quote-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quote-date {
+    font-size: 0.8rem;
+    color: var(--color-gray-500, #78716C);
+    font-weight: 400;
+}
+
+/* ===============================================
+   INVOICES TABLE
+   =============================================== */
+.invoices-table {
+    overflow-x: auto;
+    background: var(--color-white, white);
+    border: 1px solid var(--color-gray-100, #F5F4F2);
+    border-radius: 4px;
+}
+
+.invoices-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.invoices-table th,
+.invoices-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-gray-100, #F5F4F2);
+    font-size: 0.875rem;
+}
+
+.invoices-table th {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-gray-500, #78716C);
+    font-weight: 500;
+    background-color: var(--color-gray-50, #FAF9F8);
+}
+
+.invoices-table tr:last-child td {
+    border-bottom: none;
+}
+
+.invoices-table tr:hover td {
+    background-color: var(--color-gray-50, #FAF9F8);
+}
+
+/* ===============================================
+   FAVORITES / SAVED ITEMS GRID
+   =============================================== */
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.favorite-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: var(--color-white, white);
+    border: 1px solid var(--color-gray-100, #F5F4F2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.favorite-card:hover {
+    border-color: var(--color-gray-200, #E8E6E3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.favorite-image {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-info {
+    padding: 1.25rem;
+}
+
+.favorite-info h3 {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-gray-900, #1C1917);
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.01em;
+}
+
+.favorite-info p {
+    font-size: 0.75rem;
+    color: var(--color-gray-500, #78716C);
+    margin-bottom: 0.75rem;
+    font-weight: 400;
+}
+
+.favorite-price {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1rem;
+    color: var(--color-accent, #8B7355);
+    font-weight: 500;
+}
+
+/* ===============================================
+   PROFILE & SETTINGS
+   =============================================== */
+.profile-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.profile-section {
+    padding: 1.5rem;
+    background: var(--color-white, white);
+    border: 1px solid var(--color-gray-100, #F5F4F2);
+    border-radius: 4px;
+}
+
+.profile-section h2 {
+    font-family: var(--font-heading, 'Cormorant Garamond', serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--color-gray-900, #1C1917);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-gray-100, #F5F4F2);
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
+}
+
+.profile-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.profile-field label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-gray-500, #78716C);
+    font-weight: 500;
+}
+
+.profile-field .input {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-gray-200, #E8E6E3);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    color: var(--color-gray-900, #1C1917);
+    background-color: var(--color-white, white);
+    transition: all 0.2s ease;
+}
+
+.profile-field .input:focus {
+    outline: none;
+    border-color: var(--color-primary, #2C2C2C);
+    box-shadow: 0 0 0 2px rgba(44, 44, 44, 0.08);
+}
+
+/* Notification Options */
+.notification-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.notification-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    background-color: var(--color-gray-50, #FAF9F8);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.notification-option:hover {
+    background-color: var(--color-linen, #F7F5F2);
+}
+
+.notification-option input[type="checkbox"] {
+    margin-top: 0.25rem;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-primary, #2C2C2C);
+}
+
+.notification-option div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.notification-option strong {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray-900, #1C1917);
+}
+
+.notification-option span {
+    font-size: 0.75rem;
+    color: var(--color-gray-500, #78716C);
+    font-weight: 400;
+}
+
+/* Save Success Message */
+.save-success-message {
+    padding: 1rem;
+    background-color: var(--color-success-light, #E8F0E8);
+    color: var(--color-success, #5A7A5A);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* ===============================================
+   LOADING STATE
+   =============================================== */
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: var(--color-gray-500, #78716C);
+    gap: 1rem;
+}
+
+.loading-state svg {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===============================================
+   EMPTY STATE
+   =============================================== */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--color-gray-500, #78716C);
+}
+
+.empty-state svg {
+    stroke-width: 1;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* ===============================================
+   MOBILE RESPONSIVE STYLES
+   =============================================== */
+
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 200;
+    width: 44px;
+    height: 44px;
+    background: var(--color-primary, #2C2C2C);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+}
+
+/* Tablet Styles (1024px and below) */
+@media (max-width: 1024px) {
+    .dashboard-layout {
+        grid-template-columns: 240px 1fr;
+    }
+
+    .dashboard-main {
+        padding: 1.5rem;
+    }
+
+    .favorites-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile Styles (768px and below) */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    .dashboard-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 100;
+    }
+
+    .dashboard-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .dashboard-main {
+        padding: 1rem;
+        padding-top: 4.5rem;
+        min-height: 100vh;
+    }
+
+    .tab-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tab-header h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Orders List Mobile */
+    .orders-list {
+        gap: 0.75rem;
+    }
+
+    .order-card {
+        padding: 1rem;
+    }
+
+    .order-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .order-body {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .order-actions {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .order-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Quotes List Mobile */
+    .quote-card {
+        padding: 1rem;
+    }
+
+    .quote-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .quote-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .quote-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Invoices Table Mobile */
+    .invoices-table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .invoices-table table {
+        min-width: 500px;
+    }
+
+    .invoices-table th,
+    .invoices-table td {
+        padding: 0.75rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    /* Favorites Grid Mobile */
+    .favorites-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .favorite-card {
+        flex-direction: row;
+    }
+
+    .favorite-image {
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+    }
+
+    .favorite-info {
+        padding: 1rem;
+    }
+
+    /* Profile Sections Mobile */
+    .profile-section {
+        padding: 1rem;
+    }
+
+    .profile-section h2 {
+        font-size: 1rem;
+    }
+
+    .profile-grid {
+        gap: 1rem;
+    }
+
+    .profile-field .input {
+        font-size: 16px;
+        /* Prevents zoom on iOS */
+    }
+
+    /* Modal Mobile */
+    .dashboard-page .modal-content {
+        width: 95%;
+        max-height: 90vh;
+        margin: 1rem;
+    }
+
+    .dashboard-page .modal-header {
+        padding: 1rem;
+    }
+
+    .dashboard-page .modal-header h2 {
+        font-size: 1.15rem;
+    }
+
+    .dashboard-page .modal-body {
+        padding: 1rem;
+    }
+
+    .dashboard-page .modal-footer {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .dashboard-page .modal-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Order Detail Modal Mobile */
+    .order-detail-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .order-products-table th,
+    .order-products-table td {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    /* Buttons Mobile */
+    .dashboard-page .btn {
+        padding: 0.75rem 1rem;
+        min-height: 44px;
+    }
+
+    .dashboard-page .btn-sm {
+        padding: 0.5rem 0.75rem;
+        min-height: 40px;
+    }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+    .dashboard-main {
+        padding: 0.75rem;
+        padding-top: 4rem;
+    }
+
+    .tab-header h1 {
+        font-size: 1.25rem;
+    }
+
+    .order-card,
+    .quote-card {
+        padding: 0.875rem;
+    }
+
+    .order-id,
+    .quote-id {
+        font-size: 0.85rem;
+    }
+
+    .order-total {
+        font-size: 1rem;
+    }
+
+    .dashboard-page .status-badge {
+        font-size: 0.6rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .favorite-card {
+        flex-direction: column;
+    }
+
+    .favorite-image {
+        width: 100%;
+        height: 140px;
+    }
+
+    .profile-field label {
+        font-size: 0.7rem;
+    }
+
+    .notification-option {
+        padding: 0.875rem;
+    }
+
+    .notification-option strong {
+        font-size: 0.825rem;
+    }
+
+    .dashboard-page .modal-content {
+        width: 100%;
+        max-height: 100vh;
+        margin: 0;
+        border-radius: 0;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .dashboard-nav .nav-item {
+        min-height: 48px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .dashboard-nav .nav-item:active {
+        opacity: 0.8;
+    }
+
+    .order-card:active,
+    .quote-card:active,
+    .favorite-card:active {
+        transform: scale(0.99);
+    }
+
+    .dashboard-page .btn:active:not(:disabled) {
+        transform: scale(0.98);
+    }
+}
+
+/* Safe area insets for notched devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+    @media (max-width: 768px) {
+        .mobile-menu-toggle {
+            top: calc(1rem + env(safe-area-inset-top));
+            left: calc(1rem + env(safe-area-inset-left));
+        }
+
+        .dashboard-main {
+            padding-top: calc(4.5rem + env(safe-area-inset-top));
+            padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+            padding-left: calc(1rem + env(safe-area-inset-left));
+            padding-right: calc(1rem + env(safe-area-inset-right));
+        }
+    }
+}

@@ -1,0 +1,109 @@
+/* Coming Soon Page Styles */
+.coming-soon-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-16) var(--space-6);
+    background: linear-gradient(135deg, var(--color-ivory) 0%, var(--color-white) 100%);
+}
+
+.coming-soon-container {
+    max-width: 560px;
+    text-align: center;
+    padding: var(--space-12);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--color-gray-100);
+}
+
+.coming-soon-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto var(--space-8);
+    background: linear-gradient(135deg, var(--color-accent) 0%, #c9a227 100%);
+    color: white;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coming-soon-page h1 {
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-normal);
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-4);
+}
+
+.coming-soon-subtitle {
+    font-size: var(--text-lg);
+    font-weight: var(--font-light);
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-4);
+}
+
+.coming-soon-description {
+    font-size: var(--text-base);
+    font-weight: var(--font-light);
+    color: var(--color-gray-500);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-8);
+}
+
+.coming-soon-notify {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-ivory);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-8);
+}
+
+.notify-icon {
+    color: var(--color-accent);
+}
+
+.coming-soon-notify span {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+}
+
+.coming-soon-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+}
+
+@media (min-width: 480px) {
+    .coming-soon-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+.coming-soon-contact {
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-gray-100);
+}
+
+.coming-soon-contact p {
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-2);
+}
+
+.coming-soon-contact .contact-link {
+    font-size: var(--text-lg);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.coming-soon-contact .contact-link:hover {
+    text-decoration: underline;
+}
