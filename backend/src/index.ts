@@ -19,8 +19,11 @@ app.get('/', (req, res) => {
     res.send('BACKEND IS RUNNING');
 });
 
-// Security middleware
-app.use(helmet());
+// Security middleware - configure helmet to not block CORS
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+    crossOriginOpenerPolicy: { policy: "same-origin-allow-popups" },
+}));
 
 // CORS - allow multiple origins
 const allowedOrigins = [
@@ -43,9 +46,13 @@ app.use(cors({
             return callback(null, true);
         }
 
+        // Log blocked origins for debugging
+        console.log(`[CORS] Blocked origin: ${origin}`);
         callback(new Error('Not allowed by CORS'));
     },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
 }));
 
 // Request parsing
