@@ -1,5 +1,4 @@
 # Nixpacks configuration for Railway deployment
-# This tells Railway to use Node.js
 
 # Specify providers to ensure Node.js is detected
 providers = ["node"]
@@ -8,10 +7,13 @@ providers = ["node"]
 nixPkgs = ["nodejs_20", "openssl"]
 
 [phases.install]
+dependsOn = ["setup"]
 cmds = ["cd backend && npm install"]
 
 [phases.build]
+dependsOn = ["install"]
 cmds = ["cd backend && npm run build"]
 
 [start]
-cmd = "cd backend && npm run start"
+cmd = "node backend/dist/index.js"
+
