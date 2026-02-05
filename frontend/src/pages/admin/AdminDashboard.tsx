@@ -1330,15 +1330,15 @@ const AdminDashboard = () => {
                                             ) : (
                                                 dashboardRecentOrders.map(order => (
                                                     <tr key={order.id}>
-                                                        <td><strong>{order.id}</strong></td>
-                                                        <td>{order.customer}</td>
-                                                        <td>{formatPrice(order.amount)}</td>
-                                                        <td>
+                                                        <td data-label="Order ID"><strong>{order.id}</strong></td>
+                                                        <td data-label="Customer">{order.customer}</td>
+                                                        <td data-label="Amount">{formatPrice(order.amount)}</td>
+                                                        <td data-label="Status">
                                                             <span className={`status-badge ${order.status.toLowerCase()}`}>
                                                                 {order.status}
                                                             </span>
                                                         </td>
-                                                        <td>
+                                                        <td data-label="Action">
                                                             <button
                                                                 className="btn btn-ghost btn-sm"
                                                                 onClick={() => handleViewOrder(order.originalData)}

@@ -732,66 +732,46 @@ const DealerDashboard = () => {
                         <div className="dealer-content" style={{ background: '#FAFAFA', minHeight: '100vh', padding: '2rem' }}>
 
                             {/* ============ CURRENT TIER - AUTHORITY & CONFIDENCE ============ */}
-                            <div style={{
-                                background: currentTier.color.gradient,
-                                borderRadius: '20px',
-                                padding: '2.5rem',
-                                color: 'white',
-                                marginBottom: '2rem',
-                                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.2)',
-                                position: 'relative',
-                                overflow: 'hidden'
-                            }}>
+                            <div className="partner-tier-card" style={{ background: currentTier.color.gradient }}>
                                 {/* Decorative element */}
-                                <div style={{
-                                    position: 'absolute',
-                                    top: '-50px',
-                                    right: '-50px',
-                                    width: '200px',
-                                    height: '200px',
-                                    background: 'rgba(255,255,255,0.1)',
-                                    borderRadius: '50%'
-                                }} />
+                                <div className="partner-decorative-circle" />
 
-                                <p style={{ margin: 0, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.15em', opacity: 0.9 }}>
+                                <p className="partner-status-label">
                                     Your Partnership Status
                                 </p>
-                                <h1 style={{ margin: '0.5rem 0 0', fontSize: '2.25rem', fontWeight: 600 }}>
+                                <h1 className="partner-status-title">
                                     You're a Trusted {currentTier.name} Partner
                                 </h1>
 
                                 {/* Key Metrics */}
-                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem', marginTop: '2rem' }}>
-                                    <div>
-                                        <p style={{ margin: 0, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.8 }}>💰 Your Discount</p>
-                                        <p style={{ margin: '0.25rem 0 0', fontSize: '3rem', fontWeight: 700 }}>{currentTier.discount}%</p>
-                                        <p style={{ margin: 0, fontSize: '0.85rem', opacity: 0.9 }}>on all products</p>
+                                <div className="partner-metrics-grid">
+                                    <div className="partner-metric-item">
+                                        <p className="partner-metric-label">💰 Your Discount</p>
+                                        <p className="partner-metric-value">{currentTier.discount}%</p>
+                                        <p className="partner-metric-sub">on all products</p>
                                     </div>
-                                    <div>
-                                        <p style={{ margin: 0, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.8 }}>📊 Credit Limit</p>
-                                        <p style={{ margin: '0.25rem 0 0', fontSize: '2.5rem', fontWeight: 600 }}>₹{(creditLimit / 100000).toFixed(1)}L</p>
+                                    <div className="partner-metric-item">
+                                        <p className="partner-metric-label">📊 Credit Limit</p>
+                                        <p className="partner-metric-value medium">₹{(creditLimit / 100000).toFixed(1)}L</p>
                                     </div>
-                                    <div>
-                                        <p style={{ margin: 0, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.8 }}>📈 Est. Monthly Savings</p>
-                                        <p style={{ margin: '0.25rem 0 0', fontSize: '2.5rem', fontWeight: 600 }}>₹{currentTier.monthlyEarnings.toLocaleString()}</p>
+                                    <div className="partner-metric-item">
+                                        <p className="partner-metric-label">📈 Est. Monthly Savings</p>
+                                        <p className="partner-metric-value medium">₹{currentTier.monthlyEarnings.toLocaleString()}</p>
                                     </div>
                                 </div>
 
                                 {/* Progress Bar to Next Tier */}
                                 {nextTier && (
-                                    <div style={{ marginTop: '2rem', background: 'rgba(255,255,255,0.15)', borderRadius: '12px', padding: '1rem 1.5rem' }}>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-                                            <span style={{ fontSize: '0.85rem', fontWeight: 500 }}>Progress to {nextTier.name}</span>
-                                            <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>₹{(amountToNextTier / 100000).toFixed(1)}L more to unlock</span>
+                                    <div className="partner-progress-container">
+                                        <div className="partner-progress-header">
+                                            <span className="partner-progress-label">Progress to {nextTier.name}</span>
+                                            <span className="partner-progress-val">₹{(amountToNextTier / 100000).toFixed(1)}L more to unlock</span>
                                         </div>
-                                        <div style={{ height: '8px', background: 'rgba(255,255,255,0.3)', borderRadius: '4px', overflow: 'hidden' }}>
-                                            <div style={{
-                                                width: `${progressPercent}%`,
-                                                height: '100%',
-                                                background: 'white',
-                                                borderRadius: '4px',
-                                                transition: 'width 0.5s ease'
-                                            }} />
+                                        <div className="partner-progress-bar-bg">
+                                            <div
+                                                className="partner-progress-bar-fill"
+                                                style={{ width: `${progressPercent}%` }}
+                                            />
                                         </div>
                                     </div>
                                 )}
@@ -1140,23 +1120,23 @@ const DealerDashboard = () => {
                                     {realQuotes.length > 0 ? (
                                         realQuotes.map((quote: any) => (
                                             <tr key={quote.id}>
-                                                <td><strong>{quote.quoteNumber || quote.id.slice(-8)}</strong></td>
-                                                <td>{new Date(quote.createdAt).toLocaleDateString()}</td>
-                                                <td>
+                                                <td data-label="Quote #"><strong>{quote.quoteNumber || quote.id.slice(-8)}</strong></td>
+                                                <td data-label="Date">{new Date(quote.createdAt).toLocaleDateString()}</td>
+                                                <td data-label="Products">
                                                     <div style={{ maxWidth: '250px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                                         {quote.items?.[0]?.product?.name || 'Custom Request'}
                                                         {quote.items?.length > 1 ? ` (+${quote.items.length - 1} more)` : ''}
                                                     </div>
                                                 </td>
-                                                <td>{quote.items?.reduce((acc: number, item: any) => acc + item.requestedQty, 0) || 0} sheets</td>
-                                                <td className="dealer-price">{formatPrice(quote.totalAmount || 0)}</td>
-                                                <td>
+                                                <td data-label="Total Items">{quote.items?.reduce((acc: number, item: any) => acc + item.requestedQty, 0) || 0} sheets</td>
+                                                <td data-label="Amount" className="dealer-price">{formatPrice(quote.totalAmount || 0)}</td>
+                                                <td data-label="Status">
                                                     <span className={`status-badge ${quote.status?.toLowerCase()}`}>
                                                         {quote.status}
                                                     </span>
                                                 </td>
-                                                <td>
-                                                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                                                <td data-label="Action">
+                                                    <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
                                                         <button
                                                             type="button"
                                                             className="btn btn-ghost btn-sm"
@@ -1227,21 +1207,21 @@ const DealerDashboard = () => {
                                         {orders.length > 0 ? (
                                             orders.map((order: any) => (
                                                 <tr key={order.id}>
-                                                    <td style={{ fontWeight: '600', color: '#8b5e3c' }}>{order.orderNumber || order.id.slice(-8)}</td>
-                                                    <td>{new Date(order.createdAt).toLocaleDateString()}</td>
-                                                    <td>{order.items?.length || 0} items</td>
-                                                    <td className="dealer-price">{formatPrice(order.totalAmount || 0)}</td>
-                                                    <td>
+                                                    <td data-label="Order #" style={{ fontWeight: '600', color: '#8b5e3c' }}>{order.orderNumber || order.id.slice(-8)}</td>
+                                                    <td data-label="Date">{new Date(order.createdAt).toLocaleDateString()}</td>
+                                                    <td data-label="Items">{order.items?.length || 0} items</td>
+                                                    <td data-label="Total Amount" className="dealer-price">{formatPrice(order.totalAmount || 0)}</td>
+                                                    <td data-label="Status">
                                                         <span className={`status-badge ${order.status?.toLowerCase()}`}>
                                                             {order.status}
                                                         </span>
                                                     </td>
-                                                    <td>
+                                                    <td data-label="Payment">
                                                         <span className={`status-badge ${order.paymentStatus?.toLowerCase() || 'pending'}`}>
                                                             {order.paymentStatus || 'PENDING'}
                                                         </span>
                                                     </td>
-                                                    <td>
+                                                    <td data-label="Action">
                                                         <button
                                                             className="btn btn-ghost btn-sm"
                                                             onClick={() => openOrderDetails(order)}
@@ -1443,11 +1423,11 @@ const DealerDashboard = () => {
                                     <tbody>
                                         {selectedQuote.items?.map((item: any) => (
                                             <tr key={item.id}>
-                                                <td>{item.product?.name || 'Custom Product'}</td>
-                                                <td>{item.product?.sku || 'N/A'}</td>
-                                                <td>{item.requestedQty} sheets</td>
-                                                <td>{item.quotedPrice ? formatPrice(item.quotedPrice) : 'Pending'}</td>
-                                                <td>{item.quotedPrice ? formatPrice(item.quotedPrice * item.requestedQty) : 'Pending'}</td>
+                                                <td data-label="Product">{item.product?.name || 'Custom Product'}</td>
+                                                <td data-label="SKU">{item.product?.sku || 'N/A'}</td>
+                                                <td data-label="Requested Qty">{item.requestedQty} sheets</td>
+                                                <td data-label="Quoted Price">{item.quotedPrice ? formatPrice(item.quotedPrice) : 'Pending'}</td>
+                                                <td data-label="Total">{item.quotedPrice ? formatPrice(item.quotedPrice * item.requestedQty) : 'Pending'}</td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -1559,11 +1539,11 @@ const DealerDashboard = () => {
                                     <tbody>
                                         {selectedOrder.items?.map((item: any) => (
                                             <tr key={item.id}>
-                                                <td>{item.product?.name || 'Product'}</td>
-                                                <td>{item.quantity} sheets</td>
-                                                <td>{formatPrice(item.unitPrice)}</td>
-                                                <td>{formatPrice(item.taxAmount)}</td>
-                                                <td>{formatPrice(item.totalPrice)}</td>
+                                                <td data-label="Product">{item.product?.name || 'Product'}</td>
+                                                <td data-label="Qty">{item.quantity} sheets</td>
+                                                <td data-label="Unit Price">{formatPrice(item.unitPrice)}</td>
+                                                <td data-label="Tax">{formatPrice(item.taxAmount)}</td>
+                                                <td data-label="Total">{formatPrice(item.totalPrice)}</td>
                                             </tr>
                                         ))}
                                     </tbody>

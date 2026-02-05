@@ -1348,3 +1348,227 @@
     transform: none;
     box-shadow: none;
 }
+
+/* ===============================================
+   PARTNER TAB STYLES (Extracted from Inline)
+   =============================================== */
+.partner-tier-card {
+    border-radius: 20px;
+    padding: 2.5rem;
+    color: white;
+    margin-bottom: 2rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    /* Background gradient set via inline style or modifier class */
+}
+
+.partner-decorative-circle {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.partner-status-label {
+    margin: 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.9;
+}
+
+.partner-status-title {
+    margin: 0.5rem 0 0;
+    font-size: 2.25rem;
+    font-weight: 600;
+}
+
+.partner-metrics-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.partner-metric-item {
+    min-width: 140px;
+}
+
+.partner-metric-label {
+    margin: 0;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+}
+
+.partner-metric-value {
+    margin: 0.25rem 0 0;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.partner-metric-value.medium {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.partner-metric-sub {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.partner-progress-container {
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+}
+
+.partner-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.partner-progress-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.partner-progress-val {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.partner-progress-bar-bg {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.partner-progress-bar-fill {
+    height: 100%;
+    background: white;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+/* Mobile Responsiveness for Partner Tab */
+@media (max-width: 768px) {
+    .partner-tier-card {
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .partner-status-title {
+        font-size: 1.5rem;
+    }
+
+    .partner-metrics-grid {
+        gap: 1.5rem;
+        flex-direction: column;
+    }
+
+    .partner-metric-item {
+        width: 100%;
+    }
+
+    .partner-metric-value {
+        font-size: 2.5rem;
+    }
+
+    .partner-metric-value.medium {
+        font-size: 2rem;
+    }
+
+    .partner-progress-container {
+        padding: 1rem;
+    }
+
+    .partner-progress-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}
+
+/* Mobile Responsiveness for Tables (Card View Transformation) */
+@media (max-width: 768px) {
+
+    .dealer-table,
+    .products-table {
+        display: block;
+        width: 100%;
+        overflow-x: visible;
+        /* Remove horizontal scroll as we are now stacking */
+    }
+
+    .dealer-table thead,
+    .products-table thead {
+        display: none;
+    }
+
+    .dealer-table tbody,
+    .products-table tbody {
+        display: block;
+        width: 100%;
+    }
+
+    .dealer-table tr,
+    .products-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        background: white;
+        border: 1px solid var(--color-gray-100, #E5E5E5);
+        border-radius: 12px;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .dealer-table td,
+    .products-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        padding: 0.75rem 0;
+        border: none;
+        border-bottom: 1px solid var(--color-gray-50, #F9FAFB);
+        font-size: 0.9rem;
+        height: auto;
+    }
+
+    .dealer-table td:last-child,
+    .products-table td:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        justify-content: flex-end;
+    }
+
+    .dealer-table td::before,
+    .products-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--color-gray-500, #6B7280);
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        margin-right: 1rem;
+        text-align: left;
+    }
+
+    /* Badge alignment fix in card view */
+    .status-badge {
+        display: inline-flex;
+        width: auto;
+    }
+}

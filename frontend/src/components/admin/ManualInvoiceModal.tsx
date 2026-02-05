@@ -133,10 +133,9 @@ const ManualInvoiceModal = ({ onClose, onSuccess }: ManualInvoiceModalProps) => 
                     )}
 
                     <form id="invoice-form" onSubmit={handleSubmit}>
-                        {/* Customer Details */}
                         <div className="order-detail-section">
                             <h4>Customer Details</h4>
-                            <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                            <div className="form-row-responsive">
                                 <div className="input-group">
                                     <label className="input-label">Name</label>
                                     <input type="text" className="input" name="name" value={customer.name} onChange={handleCustomerChange} required />
@@ -157,7 +156,7 @@ const ManualInvoiceModal = ({ onClose, onSuccess }: ManualInvoiceModalProps) => 
                             <div className="input-group" style={{ marginTop: '1rem' }}>
                                 <label className="input-label">Address</label>
                                 <input type="text" className="input" name="address.street" placeholder="Street Address" value={customer.address.street} onChange={handleCustomerChange} required />
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem', marginTop: '0.5rem' }}>
+                                <div className="address-grid">
                                     <input type="text" className="input" name="address.city" placeholder="City" value={customer.address.city} onChange={handleCustomerChange} required />
                                     <input type="text" className="input" name="address.state" placeholder="State" value={customer.address.state} onChange={handleCustomerChange} required />
                                     <input type="text" className="input" name="address.pincode" placeholder="Pincode" value={customer.address.pincode} onChange={handleCustomerChange} required />
@@ -174,15 +173,15 @@ const ManualInvoiceModal = ({ onClose, onSuccess }: ManualInvoiceModalProps) => 
                                 </button>
                             </div>
 
-                            <table className="order-items-table" style={{ tableLayout: 'fixed', width: '100%' }}>
+                            <table className="order-items-table">
                                 <thead>
                                     <tr>
-                                        <th style={{ width: '35%' }}>Product</th>
-                                        <th style={{ width: '12%', textAlign: 'center' }}>Qty</th>
-                                        <th style={{ width: '18%', textAlign: 'center' }}>Price</th>
-                                        <th style={{ width: '12%', textAlign: 'center' }}>Tax %</th>
-                                        <th style={{ width: '15%', textAlign: 'right' }}>Total</th>
-                                        <th style={{ width: '8%' }}></th>
+                                        <th>Product</th>
+                                        <th>Qty</th>
+                                        <th>Price</th>
+                                        <th>Tax %</th>
+                                        <th>Total</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -209,7 +208,7 @@ const ManualInvoiceModal = ({ onClose, onSuccess }: ManualInvoiceModalProps) => 
                                                         handleItemChange(item.id, 'quantity', parseInt(val) || 0);
                                                     }}
                                                     required
-                                                    placeholder="1"
+                                                    placeholder="Qty"
                                                 />
                                             </td>
                                             <td>
@@ -223,7 +222,7 @@ const ManualInvoiceModal = ({ onClose, onSuccess }: ManualInvoiceModalProps) => 
                                                         handleItemChange(item.id, 'unitPrice', parseFloat(val) || 0);
                                                     }}
                                                     required
-                                                    placeholder="0"
+                                                    placeholder="Price"
                                                 />
                                             </td>
                                             <td>
@@ -237,7 +236,7 @@ const ManualInvoiceModal = ({ onClose, onSuccess }: ManualInvoiceModalProps) => 
                                                         handleItemChange(item.id, 'taxRate', parseFloat(val) || 0);
                                                     }}
                                                     required
-                                                    placeholder="18"
+                                                    placeholder="Tax"
                                                 />
                                             </td>
                                             <td style={{ textAlign: 'right', fontWeight: 500 }}>
@@ -270,8 +269,8 @@ const ManualInvoiceModal = ({ onClose, onSuccess }: ManualInvoiceModalProps) => 
                         {isLoading ? <><Loader2 size={16} className="spin" /> Generating...</> : 'Generate Invoice'}
                     </button>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 
