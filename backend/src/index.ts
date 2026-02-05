@@ -30,6 +30,7 @@ const allowedOrigins = [
     env.frontendUrl,
     'https://www.homelia.studio',
     'https://homelia.studio',
+    'https://api.homelia.studio',
     'https://homelia-peach.vercel.app',
     'http://localhost:5173',
     'http://localhost:5174',
