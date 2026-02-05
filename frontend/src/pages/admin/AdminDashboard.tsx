@@ -1656,11 +1656,10 @@ const AdminDashboard = () => {
                     <div className="admin-content">
                         <div className="admin-header">
                             <h1>Order Management</h1>
-                            <div style={{ display: 'flex', gap: '1rem' }}>
+                            <div className="orders-actions">
                                 <button
                                     className="btn btn-primary"
                                     onClick={() => setShowInvoiceModal(true)}
-                                    style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
                                 >
                                     <Plus size={16} /> Create Invoice
                                 </button>
@@ -1682,7 +1681,7 @@ const AdminDashboard = () => {
                                     <p>Orders will appear here when customers place them.</p>
                                 </div>
                             ) : (
-                                <table className="data-table">
+                                <table className="data-table orders-management-table">
                                     <thead>
                                         <tr>
                                             <th>Order #</th>
@@ -1754,7 +1753,7 @@ const AdminDashboard = () => {
                                     <p>There are no pending credit limit increase requests.</p>
                                 </div>
                             ) : (
-                                <table className="data-table">
+                                <table className="data-table credit-requests-table">
                                     <thead>
                                         <tr>
                                             <th>Date</th>
@@ -2019,20 +2018,30 @@ const AdminDashboard = () => {
                                             {notifications.map(notif => (
                                                 <tr key={notif.id} className={notif.isRead ? '' : 'unread-row'}>
                                                     <td>
-                                                        <span className={`status-badge ${notif.type.toLowerCase().replace('_', '-')}`}>
-                                                            {notif.type.replace('_', ' ')}
-                                                        </span>
+                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                                            <div className={`status-badge ${notif.type.toLowerCase().replace('_', '-')}`}>
+                                                                {notif.type === 'ORDER_STATUS_UPDATE' ? <ShoppingCart size={14} /> :
+                                                                    notif.type === 'NEW_ORDER' ? <ShoppingCart size={14} /> :
+                                                                        notif.type === 'CREDIT_REQUEST' ? <DollarSign size={14} /> :
+                                                                            <Bell size={14} />}
+                                                                <span style={{ marginLeft: '4px' }}>
+                                                                    {notif.type.replace(/_/g, ' ')}
+                                                                </span>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <div style={{ fontWeight: notif.isRead ? 'normal' : 'bold' }}>
+                                                        <div style={{ fontWeight: notif.isRead ? 'normal' : '600', marginBottom: '0.25rem' }}>
                                                             {notif.title}
                                                         </div>
-                                                        <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                                                        <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: '1.4' }}>
                                                             {notif.message}
                                                         </div>
                                                     </td>
-                                                    <td style={{ whiteSpace: 'nowrap' }}>
-                                                        {new Date(notif.createdAt).toLocaleString()}
+                                                    <td style={{ fontSize: '0.75rem', color: '#888', whiteSpace: 'nowrap' }}>
+                                                        {new Date(notif.createdAt).toLocaleString(undefined, {
+                                                            month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                                                        })}
                                                     </td>
                                                 </tr>
                                             ))}
@@ -2045,265 +2054,273 @@ const AdminDashboard = () => {
                 )}
 
                 {/* Settings Tab */}
-                {activeTab === 'settings' && (
-                    <div className="admin-content">
-                        <div className="admin-header">
-                            <div>
-                                <h1>Settings</h1>
-                                <p>Configure your admin preferences</p>
+                {
+                    activeTab === 'settings' && (
+                        <div className="admin-content">
+                            <div className="admin-header">
+                                <div>
+                                    <h1>Settings</h1>
+                                    <p>Configure your admin preferences</p>
+                                </div>
+                            </div>
+                            <div className="admin-grid">
+                                <div className="admin-card">
+                                    <div className="card-header">
+                                        <h3>Account Settings</h3>
+                                    </div>
+                                    <div className="modal-body">
+                                        <div className="form-group">
+                                            <label>Admin Name</label>
+                                            <input
+                                                type="text"
+                                                className="search-input"
+                                                value={adminProfileForm.name}
+                                                onChange={(e) => setAdminProfileForm({ ...adminProfileForm, name: e.target.value })}
+                                                placeholder="Enter your name"
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Phone Number</label>
+                                            <input
+                                                type="tel"
+                                                className="search-input"
+                                                value={adminProfileForm.phone}
+                                                onChange={(e) => setAdminProfileForm({ ...adminProfileForm, phone: e.target.value })}
+                                                placeholder="Enter phone number"
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Email Address</label>
+                                            <input type="email" className="search-input" value={user?.email || 'admin@homelia.com'} readOnly style={{ opacity: 0.7 }} />
+                                            <small style={{ color: '#888', fontSize: '12px' }}>Email cannot be changed</small>
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Role</label>
+                                            <input type="text" className="search-input" value="Administrator" readOnly style={{ opacity: 0.7 }} />
+                                        </div>
+                                        <button
+                                            className="btn btn-primary"
+                                            onClick={handleSaveAdminProfile}
+                                            disabled={isSavingProfile}
+                                            style={{ marginTop: '1rem' }}
+                                        >
+                                            {isSavingProfile ? 'Saving...' : 'Save Profile'}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="admin-card">
+                                    <div className="card-header">
+                                        <h3>Preferences</h3>
+                                    </div>
+                                    <div className="modal-body">
+                                        <div className="form-group">
+                                            <label>Notifications</label>
+                                            <select className="filter-select" style={{ width: '100%' }}>
+                                                <option value="all">All Notifications</option>
+                                                <option value="important">Important Only</option>
+                                                <option value="none">None</option>
+                                            </select>
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Currency Display</label>
+                                            <select className="filter-select" style={{ width: '100%' }}>
+                                                <option value="inr">₹ INR</option>
+                                                <option value="usd">$ USD</option>
+                                            </select>
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Date Format</label>
+                                            <select className="filter-select" style={{ width: '100%' }}>
+                                                <option value="dd-mm-yyyy">DD-MM-YYYY</option>
+                                                <option value="mm-dd-yyyy">MM-DD-YYYY</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className="admin-grid">
-                            <div className="admin-card">
-                                <div className="card-header">
-                                    <h3>Account Settings</h3>
-                                </div>
-                                <div className="modal-body">
-                                    <div className="form-group">
-                                        <label>Admin Name</label>
-                                        <input
-                                            type="text"
-                                            className="search-input"
-                                            value={adminProfileForm.name}
-                                            onChange={(e) => setAdminProfileForm({ ...adminProfileForm, name: e.target.value })}
-                                            placeholder="Enter your name"
-                                        />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Phone Number</label>
-                                        <input
-                                            type="tel"
-                                            className="search-input"
-                                            value={adminProfileForm.phone}
-                                            onChange={(e) => setAdminProfileForm({ ...adminProfileForm, phone: e.target.value })}
-                                            placeholder="Enter phone number"
-                                        />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Email Address</label>
-                                        <input type="email" className="search-input" value={user?.email || 'admin@homelia.com'} readOnly style={{ opacity: 0.7 }} />
-                                        <small style={{ color: '#888', fontSize: '12px' }}>Email cannot be changed</small>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Role</label>
-                                        <input type="text" className="search-input" value="Administrator" readOnly style={{ opacity: 0.7 }} />
-                                    </div>
-                                    <button
-                                        className="btn btn-primary"
-                                        onClick={handleSaveAdminProfile}
-                                        disabled={isSavingProfile}
-                                        style={{ marginTop: '1rem' }}
-                                    >
-                                        {isSavingProfile ? 'Saving...' : 'Save Profile'}
-                                    </button>
-                                </div>
-                            </div>
-                            <div className="admin-card">
-                                <div className="card-header">
-                                    <h3>Preferences</h3>
-                                </div>
-                                <div className="modal-body">
-                                    <div className="form-group">
-                                        <label>Notifications</label>
-                                        <select className="filter-select" style={{ width: '100%' }}>
-                                            <option value="all">All Notifications</option>
-                                            <option value="important">Important Only</option>
-                                            <option value="none">None</option>
-                                        </select>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Currency Display</label>
-                                        <select className="filter-select" style={{ width: '100%' }}>
-                                            <option value="inr">₹ INR</option>
-                                            <option value="usd">$ USD</option>
-                                        </select>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Date Format</label>
-                                        <select className="filter-select" style={{ width: '100%' }}>
-                                            <option value="dd-mm-yyyy">DD-MM-YYYY</option>
-                                            <option value="mm-dd-yyyy">MM-DD-YYYY</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </main>
+                    )
+                }
+            </main >
             {/* Manual Invoice Modal */}
-            {showInvoiceModal && (
-                <ManualInvoiceModal
-                    onClose={() => setShowInvoiceModal(false)}
-                    onSuccess={() => {
-                        fetchOrders(); // Refresh list
-                        setShowInvoiceModal(false);
-                    }}
-                />
-            )}
+            {
+                showInvoiceModal && (
+                    <ManualInvoiceModal
+                        onClose={() => setShowInvoiceModal(false)}
+                        onSuccess={() => {
+                            fetchOrders(); // Refresh list
+                            setShowInvoiceModal(false);
+                        }}
+                    />
+                )
+            }
 
             {/* Credit Action Confirmation Modal */}
-            {creditActionModal.show && (
-                <div
-                    style={{
-                        position: 'fixed',
-                        inset: 0,
-                        background: 'rgba(0, 0, 0, 0.6)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        zIndex: 9999,
-                        backdropFilter: 'blur(4px)'
-                    }}
-                    onClick={() => setCreditActionModal({ show: false, type: 'approve', request: null })}
-                >
+            {
+                creditActionModal.show && (
                     <div
                         style={{
-                            background: 'white',
-                            borderRadius: '12px',
-                            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
-                            maxWidth: '450px',
-                            width: '90%',
-                            overflow: 'hidden'
-                        }}
-                        onClick={e => e.stopPropagation()}
-                    >
-                        <div style={{
-                            padding: '1.5rem',
-                            background: creditActionModal.type === 'approve' ? '#5A7A5A' : '#8A4A4A',
-                            color: 'white'
-                        }}>
-                            <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 500 }}>
-                                {creditActionModal.type === 'approve' ? '✓ Approve Credit Request' : '✕ Reject Credit Request'}
-                            </h3>
-                        </div>
-                        <div style={{ padding: '1.5rem' }}>
-                            {creditActionModal.request && (
-                                <div style={{ marginBottom: '1rem' }}>
-                                    <p style={{ margin: '0 0 0.5rem', color: '#57534E', fontSize: '0.9rem' }}>
-                                        <strong>Dealer:</strong> {creditActionModal.request.user?.companyName || creditActionModal.request.user?.name}
-                                    </p>
-                                    <p style={{ margin: '0 0 0.5rem', color: '#57534E', fontSize: '0.9rem' }}>
-                                        <strong>Requested Amount:</strong> ₹{creditActionModal.request.amount?.toLocaleString()}
-                                    </p>
-                                    <p style={{ margin: '0', color: '#57534E', fontSize: '0.9rem' }}>
-                                        <strong>Current Limit:</strong> ₹{creditActionModal.request.currentLimit?.toLocaleString()}
-                                    </p>
-                                </div>
-                            )}
-
-                            {creditActionModal.type === 'approve' ? (
-                                <p style={{ color: '#1C1917', fontSize: '0.95rem', margin: 0 }}>
-                                    Are you sure you want to approve this credit limit increase?
-                                </p>
-                            ) : (
-                                <div>
-                                    <label style={{
-                                        display: 'block',
-                                        fontSize: '0.75rem',
-                                        textTransform: 'uppercase',
-                                        letterSpacing: '0.05em',
-                                        color: '#57534E',
-                                        marginBottom: '0.5rem',
-                                        fontWeight: 600
-                                    }}>
-                                        Rejection Reason
-                                    </label>
-                                    <textarea
-                                        value={rejectReason}
-                                        onChange={e => setRejectReason(e.target.value)}
-                                        placeholder="Enter reason for rejection..."
-                                        style={{
-                                            width: '100%',
-                                            padding: '0.75rem',
-                                            border: '2px solid #E8E6E3',
-                                            borderRadius: '6px',
-                                            resize: 'vertical',
-                                            minHeight: '80px',
-                                            fontSize: '0.9rem'
-                                        }}
-                                    />
-                                </div>
-                            )}
-                        </div>
-                        <div style={{
-                            padding: '1rem 1.5rem',
-                            borderTop: '1px solid #E8E6E3',
+                            position: 'fixed',
+                            inset: 0,
+                            background: 'rgba(0, 0, 0, 0.6)',
                             display: 'flex',
-                            gap: '0.75rem',
-                            justifyContent: 'flex-end'
-                        }}>
-                            <button
-                                onClick={() => setCreditActionModal({ show: false, type: 'approve', request: null })}
-                                style={{
-                                    padding: '0.6rem 1.25rem',
-                                    border: '2px solid #E8E6E3',
-                                    borderRadius: '6px',
-                                    background: 'white',
-                                    color: '#57534E',
-                                    cursor: 'pointer',
-                                    fontWeight: 500
-                                }}
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                onClick={confirmCreditAction}
-                                style={{
-                                    padding: '0.6rem 1.25rem',
-                                    border: 'none',
-                                    borderRadius: '6px',
-                                    background: creditActionModal.type === 'approve' ? '#5A7A5A' : '#8A4A4A',
-                                    color: 'white',
-                                    cursor: 'pointer',
-                                    fontWeight: 500
-                                }}
-                            >
-                                {creditActionModal.type === 'approve' ? 'Approve' : 'Reject'}
-                            </button>
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            zIndex: 9999,
+                            backdropFilter: 'blur(4px)'
+                        }}
+                        onClick={() => setCreditActionModal({ show: false, type: 'approve', request: null })}
+                    >
+                        <div
+                            style={{
+                                background: 'white',
+                                borderRadius: '12px',
+                                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+                                maxWidth: '450px',
+                                width: '90%',
+                                overflow: 'hidden'
+                            }}
+                            onClick={e => e.stopPropagation()}
+                        >
+                            <div style={{
+                                padding: '1.5rem',
+                                background: creditActionModal.type === 'approve' ? '#5A7A5A' : '#8A4A4A',
+                                color: 'white'
+                            }}>
+                                <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 500 }}>
+                                    {creditActionModal.type === 'approve' ? '✓ Approve Credit Request' : '✕ Reject Credit Request'}
+                                </h3>
+                            </div>
+                            <div style={{ padding: '1.5rem' }}>
+                                {creditActionModal.request && (
+                                    <div style={{ marginBottom: '1rem' }}>
+                                        <p style={{ margin: '0 0 0.5rem', color: '#57534E', fontSize: '0.9rem' }}>
+                                            <strong>Dealer:</strong> {creditActionModal.request.user?.companyName || creditActionModal.request.user?.name}
+                                        </p>
+                                        <p style={{ margin: '0 0 0.5rem', color: '#57534E', fontSize: '0.9rem' }}>
+                                            <strong>Requested Amount:</strong> ₹{creditActionModal.request.amount?.toLocaleString()}
+                                        </p>
+                                        <p style={{ margin: '0', color: '#57534E', fontSize: '0.9rem' }}>
+                                            <strong>Current Limit:</strong> ₹{creditActionModal.request.currentLimit?.toLocaleString()}
+                                        </p>
+                                    </div>
+                                )}
+
+                                {creditActionModal.type === 'approve' ? (
+                                    <p style={{ color: '#1C1917', fontSize: '0.95rem', margin: 0 }}>
+                                        Are you sure you want to approve this credit limit increase?
+                                    </p>
+                                ) : (
+                                    <div>
+                                        <label style={{
+                                            display: 'block',
+                                            fontSize: '0.75rem',
+                                            textTransform: 'uppercase',
+                                            letterSpacing: '0.05em',
+                                            color: '#57534E',
+                                            marginBottom: '0.5rem',
+                                            fontWeight: 600
+                                        }}>
+                                            Rejection Reason
+                                        </label>
+                                        <textarea
+                                            value={rejectReason}
+                                            onChange={e => setRejectReason(e.target.value)}
+                                            placeholder="Enter reason for rejection..."
+                                            style={{
+                                                width: '100%',
+                                                padding: '0.75rem',
+                                                border: '2px solid #E8E6E3',
+                                                borderRadius: '6px',
+                                                resize: 'vertical',
+                                                minHeight: '80px',
+                                                fontSize: '0.9rem'
+                                            }}
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                            <div style={{
+                                padding: '1rem 1.5rem',
+                                borderTop: '1px solid #E8E6E3',
+                                display: 'flex',
+                                gap: '0.75rem',
+                                justifyContent: 'flex-end'
+                            }}>
+                                <button
+                                    onClick={() => setCreditActionModal({ show: false, type: 'approve', request: null })}
+                                    style={{
+                                        padding: '0.6rem 1.25rem',
+                                        border: '2px solid #E8E6E3',
+                                        borderRadius: '6px',
+                                        background: 'white',
+                                        color: '#57534E',
+                                        cursor: 'pointer',
+                                        fontWeight: 500
+                                    }}
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={confirmCreditAction}
+                                    style={{
+                                        padding: '0.6rem 1.25rem',
+                                        border: 'none',
+                                        borderRadius: '6px',
+                                        background: creditActionModal.type === 'approve' ? '#5A7A5A' : '#8A4A4A',
+                                        color: 'white',
+                                        cursor: 'pointer',
+                                        fontWeight: 500
+                                    }}
+                                >
+                                    {creditActionModal.type === 'approve' ? 'Approve' : 'Reject'}
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )
+            }
 
             {/* Toast Notification */}
-            {toast && (
-                <div
-                    style={{
-                        position: 'fixed',
-                        top: '20px',
-                        right: '20px',
-                        padding: '1rem 1.5rem',
-                        borderRadius: '8px',
-                        backgroundColor: toast.type === 'success' ? '#5A7A5A' : '#8A4A4A',
-                        color: 'white',
-                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)',
-                        zIndex: 10000,
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.75rem',
-                        maxWidth: '400px'
-                    }}
-                >
-                    <span style={{ fontSize: '1.25rem' }}>{toast.type === 'success' ? '✓' : '✕'}</span>
-                    <span style={{ fontSize: '0.9rem', fontWeight: 500 }}>{toast.message}</span>
-                    <button
-                        onClick={() => setToast(null)}
+            {
+                toast && (
+                    <div
                         style={{
-                            background: 'transparent',
-                            border: 'none',
+                            position: 'fixed',
+                            top: '20px',
+                            right: '20px',
+                            padding: '1rem 1.5rem',
+                            borderRadius: '8px',
+                            backgroundColor: toast.type === 'success' ? '#5A7A5A' : '#8A4A4A',
                             color: 'white',
-                            cursor: 'pointer',
-                            marginLeft: 'auto',
-                            fontSize: '1.25rem',
-                            opacity: 0.7
+                            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)',
+                            zIndex: 10000,
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.75rem',
+                            maxWidth: '400px'
                         }}
                     >
-                        ×
-                    </button>
-                </div>
-            )}
-        </div>
+                        <span style={{ fontSize: '1.25rem' }}>{toast.type === 'success' ? '✓' : '✕'}</span>
+                        <span style={{ fontSize: '0.9rem', fontWeight: 500 }}>{toast.message}</span>
+                        <button
+                            onClick={() => setToast(null)}
+                            style={{
+                                background: 'transparent',
+                                border: 'none',
+                                color: 'white',
+                                cursor: 'pointer',
+                                marginLeft: 'auto',
+                                fontSize: '1.25rem',
+                                opacity: 0.7
+                            }}
+                        >
+                            ×
+                        </button>
+                    </div>
+                )
+            }
+        </div >
     );
 };
 

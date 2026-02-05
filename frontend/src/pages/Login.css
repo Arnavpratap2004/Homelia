@@ -516,158 +516,161 @@
 @media (max-width: 768px) {
     .auth-page {
         min-height: 100vh;
-        min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+        min-height: 100dvh;
+        /* Dynamic viewport height for mobile browsers */
     }
-    
+
     .auth-container {
         grid-template-columns: 1fr;
         min-height: 100vh;
         min-height: 100dvh;
     }
-    
+
     .auth-branding {
         display: none;
     }
-    
+
     .auth-form-panel {
         padding: var(--space-6);
         align-items: flex-start;
         padding-top: var(--space-10);
     }
-    
+
     .auth-form-container {
         max-width: 100%;
     }
-    
+
     /* User Type Selection on Tablet */
     .selection-title {
         font-size: var(--text-xl);
         margin-bottom: var(--space-1);
     }
-    
+
     .selection-subtitle {
         font-size: var(--text-sm);
         margin-bottom: var(--space-6);
     }
-    
+
     .user-type-selector {
         gap: var(--space-3);
     }
-    
+
     .user-type-card {
         padding: var(--space-5);
         flex-direction: row;
         text-align: left;
         gap: var(--space-4);
     }
-    
+
     .user-type-card .card-icon {
         width: 56px;
         height: 56px;
         flex-shrink: 0;
     }
-    
+
     .user-type-card h3 {
         font-size: var(--text-base);
         margin-bottom: var(--space-1);
     }
-    
+
     .user-type-card p {
         font-size: var(--text-xs);
     }
-    
+
     /* Login Header on Tablet */
     .login-header {
         flex-wrap: wrap;
         gap: var(--space-3);
         margin-bottom: var(--space-5);
     }
-    
+
     .back-button {
         font-size: var(--text-sm);
         padding: var(--space-2);
     }
-    
+
     .portal-badge {
         font-size: var(--text-xs);
         padding: var(--space-1-5) var(--space-2-5);
     }
-    
+
     /* Auth Tabs on Tablet */
     .auth-tabs {
         margin-bottom: var(--space-6);
     }
-    
+
     .auth-tab {
         padding: var(--space-2-5) var(--space-3);
         font-size: var(--text-sm);
     }
-    
+
     /* Form on Tablet */
     .auth-form {
         gap: var(--space-4);
     }
-    
+
     .form-row {
         grid-template-columns: 1fr;
         gap: var(--space-4);
     }
-    
+
     .input-group {
         margin-bottom: 0;
     }
-    
+
     .input-label {
         font-size: var(--text-sm);
         margin-bottom: var(--space-1-5);
     }
-    
+
     .input {
-        font-size: 16px; /* Prevents zoom on iOS */
+        font-size: 16px;
+        /* Prevents zoom on iOS */
         padding: var(--space-3) var(--space-4);
     }
-    
+
     .input-with-icon .input {
         padding-left: var(--space-11);
         padding-right: var(--space-11);
     }
-    
+
     .input-with-icon svg:first-child {
         left: var(--space-3);
     }
-    
+
     .password-toggle {
         right: var(--space-2);
     }
-    
+
     /* Form Options on Tablet */
     .form-options {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--space-3);
     }
-    
+
     .checkbox-label {
         font-size: var(--text-sm);
     }
-    
+
     .forgot-link {
         font-size: var(--text-sm);
     }
-    
+
     /* Submit Button on Tablet */
     .submit-btn {
         padding: var(--space-3-5) var(--space-6);
         font-size: var(--text-base);
-        min-height: 48px; /* Touch-friendly minimum height */
+        min-height: 48px;
+        /* Touch-friendly minimum height */
     }
-    
+
     /* Demo Credentials on Tablet */
     .demo-credentials {
         margin-top: var(--space-5);
         padding: var(--space-3);
     }
-    
+
     /* Auth Error on Tablet */
     .auth-error {
         padding: var(--space-2-5) var(--space-3);
@@ -682,169 +685,212 @@
         padding: var(--space-4);
         padding-top: var(--space-8);
     }
-    
+
     /* User Type Selection on Mobile */
     .selection-title {
         font-size: var(--text-lg);
     }
-    
+
     .selection-subtitle {
         font-size: var(--text-xs);
         margin-bottom: var(--space-5);
     }
-    
+
     .user-type-selector {
         gap: var(--space-2-5);
     }
-    
+
     .user-type-card {
         padding: var(--space-4);
         gap: var(--space-3);
         border-radius: var(--radius-lg);
     }
-    
+
     .user-type-card .card-icon {
         width: 48px;
         height: 48px;
     }
-    
+
     .user-type-card .card-icon svg {
         width: 24px;
         height: 24px;
     }
-    
+
     .user-type-card h3 {
         font-size: var(--text-sm);
     }
-    
+
     .user-type-card p {
         font-size: 11px;
         line-height: 1.4;
     }
-    
+
     /* Login Header on Mobile */
     .login-header {
         margin-bottom: var(--space-4);
     }
-    
+
     .back-button {
         font-size: var(--text-xs);
         padding: var(--space-1-5);
         gap: var(--space-1);
     }
-    
+
     .back-button svg {
         width: 16px;
         height: 16px;
     }
-    
+
     .portal-badge {
         font-size: 11px;
         padding: var(--space-1) var(--space-2);
     }
-    
+
     .portal-badge svg {
         width: 14px;
         height: 14px;
     }
-    
+
     /* Auth Tabs on Mobile */
     .auth-tabs {
         margin-bottom: var(--space-5);
         padding: 3px;
     }
-    
+
     .auth-tab {
         padding: var(--space-2) var(--space-2-5);
         font-size: var(--text-xs);
     }
-    
+
     /* Form on Mobile */
     .auth-form {
         gap: var(--space-3-5);
     }
-    
+
     .input-label {
         font-size: var(--text-xs);
         margin-bottom: var(--space-1);
     }
-    
+
     .input {
         padding: var(--space-2-5) var(--space-3-5);
         border-radius: var(--radius-md);
     }
-    
+
     .input-with-icon .input {
         padding-left: var(--space-10);
         padding-right: var(--space-10);
     }
-    
+
     .input-with-icon svg:first-child {
         width: 16px;
         height: 16px;
     }
-    
+
     .password-toggle svg {
         width: 16px;
         height: 16px;
     }
-    
+
     /* Checkbox on Mobile */
     .checkbox-label {
         font-size: var(--text-xs);
         gap: var(--space-1-5);
     }
-    
+
     .checkbox-label input {
         width: 14px;
         height: 14px;
     }
-    
-    .checkbox-label.terms span {
-        line-height: 1.5;
+}
+
+/* ===============================================
+   MOBILE OPTIMIZATION (Fixes)
+   =============================================== */
+@media (max-width: 639px) {
+
+    /* Stack Portal Cards Vertically & Center Content */
+    .user-type-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: var(--space-3);
     }
-    
-    .checkbox-label.terms a {
-        font-weight: var(--font-medium);
+
+    /* Fix Input Icon Overlap - Increase padding */
+    .input-with-icon .input {
+        padding-left: 3.5rem;
+        /* Ensure enough space for icon */
     }
-    
-    /* Submit Button on Mobile */
-    .submit-btn {
-        padding: var(--space-3) var(--space-5);
-        font-size: var(--text-sm);
-        border-radius: var(--radius-md);
-        min-height: 44px;
+
+    /* Container Spacing */
+    .auth-form-panel {
+        padding-left: var(--space-4);
+        padding-right: var(--space-4);
     }
-    
-    .submit-btn svg {
-        width: 16px;
-        height: 16px;
+
+    .auth-form-container {
+        padding: 0 var(--space-2);
     }
-    
-    /* Demo Credentials on Mobile */
-    .demo-credentials {
-        margin-top: var(--space-4);
-        padding: var(--space-2-5) var(--space-3);
-        border-radius: var(--radius-md);
-        font-size: 10px;
+
+    /* Reduce Logo Size if visible */
+    .auth-logo .logo-icon {
+        width: 32px;
+        height: 32px;
+        font-size: var(--text-lg);
     }
-    
-    .demo-credentials p {
-        line-height: 1.5;
+
+    .auth-logo span {
+        font-size: var(--text-xl);
     }
-    
-    /* Auth Error on Mobile */
-    .auth-error {
-        padding: var(--space-2) var(--space-2-5);
-        font-size: var(--text-xs);
-        border-radius: var(--radius-md);
-        gap: var(--space-2);
-    }
-    
-    .auth-error svg {
-        width: 16px;
-        height: 16px;
-    }
+}
+}
+
+.checkbox-label.terms span {
+    line-height: 1.5;
+}
+
+.checkbox-label.terms a {
+    font-weight: var(--font-medium);
+}
+
+/* Submit Button on Mobile */
+.submit-btn {
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--text-sm);
+    border-radius: var(--radius-md);
+    min-height: 44px;
+}
+
+.submit-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Demo Credentials on Mobile */
+.demo-credentials {
+    margin-top: var(--space-4);
+    padding: var(--space-2-5) var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: 10px;
+}
+
+.demo-credentials p {
+    line-height: 1.5;
+}
+
+/* Auth Error on Mobile */
+.auth-error {
+    padding: var(--space-2) var(--space-2-5);
+    font-size: var(--text-xs);
+    border-radius: var(--radius-md);
+    gap: var(--space-2);
+}
+
+.auth-error svg {
+    width: 16px;
+    height: 16px;
+}
 }
 
 /* Small Mobile Styles (360px and below) */
@@ -853,47 +899,47 @@
         padding: var(--space-3);
         padding-top: var(--space-6);
     }
-    
+
     .selection-title {
         font-size: var(--text-base);
     }
-    
+
     .selection-subtitle {
         font-size: 11px;
     }
-    
+
     .user-type-card {
         padding: var(--space-3);
     }
-    
+
     .user-type-card .card-icon {
         width: 40px;
         height: 40px;
     }
-    
+
     .user-type-card .card-icon svg {
         width: 20px;
         height: 20px;
     }
-    
+
     .user-type-card h3 {
         font-size: var(--text-xs);
     }
-    
+
     .user-type-card p {
         font-size: 10px;
     }
-    
+
     .portal-badge {
         font-size: 10px;
         padding: 3px 6px;
     }
-    
+
     .portal-badge svg {
         width: 12px;
         height: 12px;
     }
-    
+
     .auth-tab {
         padding: var(--space-1-5) var(--space-2);
         font-size: 11px;
@@ -905,27 +951,27 @@
     .user-type-card {
         -webkit-tap-highlight-color: transparent;
     }
-    
+
     .user-type-card:active {
         transform: scale(0.98);
     }
-    
+
     .back-button:active {
         background: var(--color-gray-200);
     }
-    
+
     .auth-tab:active {
         opacity: 0.7;
     }
-    
+
     .submit-btn:active:not(:disabled) {
         transform: scale(0.98);
     }
-    
+
     .password-toggle:active {
         opacity: 0.7;
     }
-    
+
     .checkbox-label:active {
         opacity: 0.7;
     }
@@ -939,7 +985,7 @@
         padding-left: calc(var(--space-6) + env(safe-area-inset-left));
         padding-right: calc(var(--space-6) + env(safe-area-inset-right));
     }
-    
+
     @media (max-width: 480px) {
         .auth-form-panel {
             padding-top: calc(var(--space-8) + env(safe-area-inset-top));
@@ -947,7 +993,7 @@
             padding-right: calc(var(--space-4) + env(safe-area-inset-right));
         }
     }
-    
+
     @media (max-width: 360px) {
         .auth-form-panel {
             padding-top: calc(var(--space-6) + env(safe-area-inset-top));
@@ -963,46 +1009,46 @@
         padding-top: var(--space-4);
         align-items: center;
     }
-    
+
     .selection-title {
         font-size: var(--text-lg);
         margin-bottom: var(--space-1);
     }
-    
+
     .selection-subtitle {
         margin-bottom: var(--space-4);
     }
-    
+
     .user-type-selector {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         gap: var(--space-3);
     }
-    
+
     .user-type-card {
         flex: 0 0 calc(33.333% - var(--space-3));
         max-width: 180px;
         flex-direction: column;
         text-align: center;
     }
-    
+
     .auth-tabs {
         margin-bottom: var(--space-4);
     }
-    
+
     .auth-form {
         gap: var(--space-3);
     }
-    
+
     .form-row {
         grid-template-columns: 1fr 1fr;
     }
-    
+
     .submit-btn {
         margin-top: var(--space-1);
     }
-    
+
     .demo-credentials {
         margin-top: var(--space-3);
     }

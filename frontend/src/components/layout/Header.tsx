@@ -133,17 +133,17 @@ const Header = () => {
 
                         {/* Header Actions */}
                         <div className="header-actions">
-                            <button className="header-action-btn" aria-label="Search">
+                            <button className="header-action-btn action-hide-mobile" aria-label="Search">
                                 <Search size={20} />
                             </button>
-                            <button className="header-action-btn" aria-label="Wishlist">
+                            <button className="header-action-btn action-hide-mobile" aria-label="Wishlist">
                                 <Heart size={20} />
                             </button>
                             <Link to="/cart" className="header-action-btn cart-btn" aria-label="Cart">
                                 <ShoppingCart size={20} />
                                 {itemCount > 0 && <span className="cart-count">{itemCount}</span>}
                             </Link>
-                            <Link to={getProfileLink()} className="header-action-btn" aria-label="Account">
+                            <Link to={getProfileLink()} className="header-action-btn action-hide-mobile" aria-label="Account">
                                 <User size={20} />
                             </Link>
                             <button
@@ -219,10 +219,22 @@ const Header = () => {
                             <Link to="/contact" className="mobile-nav-link">Contact Us</Link>
                         </div>
 
+                        {/* Mobile Actions (Search, Wishlist, Account) */}
+                        <div className="mobile-nav-section">
+                            <div className="mobile-actions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginTop: '10px' }}>
+                                <button className="btn btn-outline btn-sm" style={{ justifyContent: 'center' }}>
+                                    <Search size={18} />
+                                </button>
+                                <button className="btn btn-outline btn-sm" style={{ justifyContent: 'center' }}>
+                                    <Heart size={18} />
+                                </button>
+                                <Link to={getProfileLink()} className="btn btn-outline btn-sm" style={{ justifyContent: 'center' }}>
+                                    <User size={18} />
+                                </Link>
+                            </div>
+                        </div>
+
                         <div className="mobile-nav-footer">
-                            <Link to={isAuthenticated ? getProfileLink() : "/login"} className="btn btn-primary btn-lg">
-                                {isAuthenticated ? 'My Dashboard' : 'Sign In / Register'}
-                            </Link>
                             <p className="mobile-phone">
                                 <Phone size={16} />
                                 +91 98352 68202

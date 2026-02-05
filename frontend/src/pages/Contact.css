@@ -292,3 +292,52 @@
 .map-placeholder p {
     font-size: var(--text-sm);
 }
+
+/* ===============================================
+   MOBILE OPTIMIZATION
+   =============================================== */
+@media (max-width: 639px) {
+
+    /* Header Adjustments */
+    .contact-header {
+        padding: var(--space-8) 0;
+    }
+
+    .contact-header h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .contact-header p {
+        font-size: var(--text-base);
+    }
+
+    /* Form Adjustments */
+    .contact-form-container {
+        padding: var(--space-5);
+    }
+
+    .contact-form h2 {
+        font-size: var(--text-lg);
+        margin-bottom: var(--space-6);
+    }
+
+    /* Input & Button Adjustments */
+    .input {
+        padding: var(--space-3);
+        font-size: var(--text-base);
+        /* Prevent zoom on iOS */
+    }
+
+    .contact-form .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Info Card Adjustments */
+    .contact-info {
+        gap: var(--space-4);
+    }
+
+    /* Stack grid for bottom badges if needed (optional) */
+}

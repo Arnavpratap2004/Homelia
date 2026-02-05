@@ -901,10 +901,16 @@
     background: var(--color-ivory);
 }
 
+@media (max-width: 639px) {
+    .cta-section {
+        padding: var(--space-16) 0;
+    }
+}
+
 .cta-card {
     background: var(--color-primary);
     border-radius: var(--radius-sm);
-    padding: var(--space-16) var(--space-8);
+    padding: var(--space-10) var(--space-6);
     text-align: center;
 }
 
@@ -916,11 +922,12 @@
 
 .cta-content h2 {
     font-family: var(--font-heading);
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-size: clamp(2rem, 5vw, 2.75rem);
     font-weight: var(--font-normal);
     color: var(--color-white);
     margin-bottom: var(--space-6);
     letter-spacing: var(--tracking-tight);
+    line-height: 1.1;
 }
 
 .cta-content p {
@@ -940,12 +947,24 @@
     gap: var(--space-4);
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 @media (min-width: 640px) {
     .cta-buttons {
         flex-direction: row;
         gap: var(--space-6);
+        width: auto;
+    }
+}
+
+.cta-buttons .btn {
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .cta-buttons .btn {
+        width: auto;
     }
 }
 
@@ -996,4 +1015,79 @@
 /* Shadow utilities override */
 .shadow-glow {
     box-shadow: none;
+}
+
+/* ===============================================
+   MOBILE OPTIMIZATION OVERRIDES
+   =============================================== */
+
+@media (max-width: 768px) {
+
+    /* Philosophy Section Mobile Fixes */
+    .philosophy-grid {
+        gap: var(--space-10);
+    }
+
+    .philosophy-image {
+        min-height: 250px;
+        height: 300px;
+    }
+
+    /* Section Spacing adjustments */
+    .section {
+        padding: var(--space-16) 0;
+    }
+
+    .section-header {
+        margin-bottom: var(--space-10);
+    }
+}
+
+@media (max-width: 639px) {
+
+    /* Hero Adjustments */
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-base);
+    }
+
+    /* Brand Card Adjustments */
+    .brand-card {
+        padding: var(--space-6);
+        gap: var(--space-6);
+    }
+
+    .brand-logo {
+        width: 100%;
+        height: 120px;
+        margin-bottom: var(--space-4);
+        background: transparent;
+        overflow: hidden;
+        padding: 0 var(--space-8);
+    }
+
+    .brand-logo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* Category Card Adjustments */
+    .category-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-4);
+    }
+
+    .category-arrow {
+        align-self: flex-end;
+    }
+
+    /* Quick Actions Adjustments */
+    .quick-action-card .btn {
+        width: 100%;
+    }
 }

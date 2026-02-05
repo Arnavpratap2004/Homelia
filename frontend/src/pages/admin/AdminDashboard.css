@@ -974,6 +974,7 @@
     background-color: white;
     color: var(--color-gray-800, #292524);
     -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 .order-items-table input.input:focus {
@@ -1262,13 +1263,21 @@
     .admin-sidebar {
         width: 280px;
         position: fixed;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        transform: translateX(-100%) !important;
+        transition: transform 0.3s ease, visibility 0.3s;
         z-index: 50;
+        visibility: hidden !important;
+        /* Hide completely when closed */
+        box-shadow: none;
     }
 
     .admin-sidebar.open {
-        transform: translateX(0);
+        transform: translateX(0) !important;
+        visibility: visible !important;
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
     }
 
     .admin-main {
@@ -1428,6 +1437,16 @@
         padding: 0.5rem 0.75rem;
         min-height: 40px;
     }
+
+    /* Fix Actions Row Spacing */
+    .admin-header .btn-primary,
+    .admin-header .btn-outline {
+        margin-top: 0.5rem;
+    }
+
+    .admin-header {
+        gap: 0.75rem;
+    }
 }
 
 /* Small Mobile (480px and below) */
@@ -1528,5 +1547,570 @@
             padding-left: calc(1rem + env(safe-area-inset-left));
             padding-right: calc(1rem + env(safe-area-inset-right));
         }
+    }
+}
+
+/* Mobile Notification Optimizations */
+@media (max-width: 768px) {
+
+    /* Transform Table to Cards */
+    .admin-card .orders-table tr {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 1px solid var(--color-gray-100, #F5F4F2);
+        gap: 0.25rem;
+        position: relative;
+    }
+
+    .admin-card .orders-table tr:last-child {
+        border-bottom: none;
+    }
+
+    .admin-card .orders-table td {
+        display: block;
+        padding: 0;
+        border: none;
+        width: 100%;
+        white-space: normal !important;
+        /* Allow text wrap */
+        overflow: visible;
+    }
+
+    /* Hide table header */
+    .admin-card .orders-table thead {
+        display: none;
+    }
+
+    /* Unread Row Styling - Card Style */
+    .unread-row {
+        background-color: white !important;
+        border-left: 3px solid var(--color-primary, #2C2C2C);
+    }
+
+    .unread-row td {
+        font-weight: 500;
+        color: var(--color-gray-900, #1C1917) !important;
+    }
+
+    /* Mark all as read button mobile */
+    .admin-header .btn-outline {
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    /* ------------------------------------------------------------------
+       USERS PAGE OPTIMIZATIONS (CORRECTED SELECTORS)
+       ------------------------------------------------------------------ */
+
+    /* Stack Search and Filters in .filters-bar */
+    .filters-bar {
+        display: flex;
+        flex-direction: row;
+        /* Allow wrapping */
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Search input takes full row */
+    .filters-bar input.search-input {
+        width: 100% !important;
+        flex: 1 1 100% !important;
+        /* Force full width in flex container */
+        margin: 0 !important;
+        display: block !important;
+    }
+
+    /* Selects share the second row */
+    .filters-bar select.filter-select {
+        width: calc(50% - 0.3rem) !important;
+        /* Slightly less than 50% to account for rounding/gap */
+        flex: 0 0 calc(50% - 0.3rem) !important;
+        margin: 0 !important;
+        max-width: none !important;
+        display: block !important;
+    }
+
+    /* Add User Button - Full Width */
+    .admin-header .btn-primary {
+        width: 100% !important;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+
+    /* Users Table to Cards Transformation */
+    .users-table {
+        display: block;
+        width: 100%;
+    }
+
+    .users-table thead {
+        display: none !important;
+    }
+
+    .users-table tbody {
+        display: block;
+        width: 100%;
+    }
+
+    /* Cards Container & Spacing */
+    .users-table tr {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        margin-bottom: 1.25rem;
+        border: 1px solid var(--color-gray-100, #F3F4F6);
+        border-radius: 16px;
+        background: white;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        gap: 0.5rem;
+        position: relative;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .users-table tr:active {
+        transform: scale(0.99);
+    }
+
+    /* General Cell Reset */
+    .users-table td {
+        display: block;
+        padding: 0;
+        border: none !important;
+        width: 60%;
+        text-align: left;
+        white-space: normal;
+        font-size: 0.95rem;
+        color: var(--color-gray-600, #4B5563);
+        line-height: 1.5;
+    }
+
+    /* 1. Name - Large & Bold (Top Left) */
+    .users-table td:first-child {
+        font-weight: 700;
+        font-size: 1.15rem;
+        color: var(--color-gray-900, #111827);
+        width: 100%;
+        margin-bottom: 0.25rem;
+        order: 1;
+        /* Flex order for potential re-arranging */
+    }
+
+    /* 2. Email - Secondary Text */
+    .users-table td:nth-child(2) {
+        font-size: 0.9rem;
+        color: var(--color-gray-500, #6B7280);
+        margin-bottom: 0.125rem;
+        order: 2;
+    }
+
+    /* 3. Company - Secondary Text */
+    .users-table td:nth-child(3) {
+        font-size: 0.9rem;
+        color: var(--color-gray-500, #6B7280);
+        margin-bottom: 0.75rem;
+        font-weight: 500;
+        order: 3;
+    }
+
+    /* 4. Role - Pill/Badge styling */
+    .users-table td:nth-child(4) {
+        order: 4;
+        width: auto;
+        display: inline-flex;
+        margin-bottom: 0.5rem;
+    }
+
+    /* 5. Status - Pill/Badge styling */
+    .users-table td:nth-child(5) {
+        order: 5;
+        width: auto;
+        display: inline-flex;
+        margin-bottom: 1rem;
+    }
+
+    /* 6. Actions - Footer Area */
+    .users-table td:last-child {
+        order: 6;
+        width: 100%;
+        flex-direction: row;
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--color-gray-100, #EF444400) !important;
+        /* Invisible border or very light */
+        border-top: 1px dashed #E5E7EB !important;
+        justify-content: flex-end;
+        /* Align buttons to right */
+    }
+
+    /* Action Buttons Polish */
+    .users-table td:last-child button {
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        background: var(--color-gray-50, #F9FAFB);
+        border: 1px solid var(--color-gray-200, #E5E7EB);
+        color: var(--color-gray-700, #374151);
+        transition: all 0.2s;
+    }
+
+    .users-table td:last-child button:active {
+        background: var(--color-gray-100, #F3F4F6);
+    }
+
+    /* Clean up badges inside the TD */
+    .users-table td .role-badge,
+    .users-table td .status-badge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        letter-spacing: 0.025em;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    /* Modal Mobile Optimization */
+    .modal-content {
+        width: 95% !important;
+        max-width: 95% !important;
+        margin: 1rem auto;
+        padding: 1rem;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-footer {
+        flex-direction: column-reverse;
+        /* Stack buttons */
+        gap: 0.75rem;
+    }
+
+    .modal-footer button {
+        width: 100%;
+    }
+
+    /* ------------------------------------------------------------------
+       ORDERS PAGE OPTIMIZATIONS
+       ------------------------------------------------------------------ */
+
+    /* Header Actions Stacking */
+    .orders-actions {
+        display: flex;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .orders-actions .btn {
+        flex: 1;
+        /* Make buttons equal width */
+        font-size: 0.8rem;
+        padding: 0.5rem;
+        white-space: nowrap;
+        justify-content: center;
+    }
+
+    /* Orders Table -> Cards */
+    .orders-management-table {
+        display: block;
+    }
+
+    .orders-management-table thead {
+        display: none;
+    }
+
+    .orders-management-table tbody {
+        display: block;
+        width: 100%;
+    }
+
+    .orders-management-table tr {
+        display: flex;
+        flex-direction: column;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid var(--color-gray-200, #E5E7EB);
+        border-radius: 12px;
+        background: white;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        gap: 0.5rem;
+        position: relative;
+    }
+
+    .orders-management-table td {
+        display: flex;
+        align-items: center;
+        padding: 0;
+        border: none !important;
+        width: 100%;
+        text-align: left;
+        font-size: 0.95rem;
+        justify-content: space-between;
+        /* Label - Value layout */
+    }
+
+    /* Cell Labels with Pseudo-elements for Context */
+    .orders-management-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--color-gray-500, #6B7280);
+        margin-right: 1rem;
+    }
+
+    /* Specific Column Styling */
+
+    /* Order # (Top) */
+    .orders-management-table td:first-child {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--color-gray-900, #111827);
+        margin-bottom: 0.25rem;
+        display: block;
+        /* Full width title */
+    }
+
+    .orders-management-table td:first-child::before {
+        display: none;
+        /* Hide label for the title */
+    }
+
+    /* Customer */
+    .orders-management-table td:nth-child(2) {
+        order: 2;
+        color: var(--color-gray-700, #374151);
+        font-weight: 500;
+    }
+
+    .orders-management-table td:nth-child(2)::before {
+        content: "Customer:";
+    }
+
+    /* Amount */
+    .orders-management-table td:nth-child(3) {
+        order: 3;
+        font-family: monospace;
+        font-weight: 600;
+    }
+
+    .orders-management-table td:nth-child(3)::before {
+        content: "Amount:";
+    }
+
+    /* Status */
+    .orders-management-table td:nth-child(4) {
+        order: 4;
+        justify-content: flex-start;
+        gap: 0.5rem;
+    }
+
+    .orders-management-table td:nth-child(4)::before {
+        display: none;
+        /* Badge is self-explanatory */
+    }
+
+    /* Date */
+    .orders-management-table td:nth-child(5) {
+        order: 5;
+        font-size: 0.85rem;
+        color: var(--color-gray-500);
+    }
+
+    .orders-management-table td:nth-child(5)::before {
+        content: "Date:";
+    }
+
+    /* Actions */
+    .orders-management-table td:last-child {
+        order: 6;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px dashed var(--color-gray-200, #E5E7EB) !important;
+        justify-content: flex-end;
+        gap: 0.5rem;
+    }
+
+    .orders-management-table td:last-child::before {
+        display: none;
+    }
+
+    .orders-management-table td:last-child button {
+        padding: 0.5rem 1rem;
+        background: var(--color-gray-50, #F9FAFB);
+        border: 1px solid var(--color-gray-200, #E5E7EB);
+        border-radius: 6px;
+    }
+
+    /* ------------------------------------------------------------------
+       CREDIT REQUESTS OPTIMIZATIONS
+       ------------------------------------------------------------------ */
+
+    .credit-requests-table {
+        display: block;
+    }
+
+    .credit-requests-table thead {
+        display: none;
+    }
+
+    .credit-requests-table tbody {
+        display: block;
+        width: 100%;
+    }
+
+    .credit-requests-table tr {
+        display: flex;
+        flex-direction: column;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid var(--color-gray-200, #E5E7EB);
+        border-radius: 12px;
+        background: white;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        gap: 0.5rem;
+        position: relative;
+    }
+
+    .credit-requests-table td {
+        display: flex;
+        align-items: center;
+        padding: 0;
+        border: none !important;
+        width: 100%;
+        text-align: left;
+        font-size: 0.95rem;
+        justify-content: space-between;
+    }
+
+    .credit-requests-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--color-gray-500, #6B7280);
+        margin-right: 1rem;
+    }
+
+    /* 1. Dealer Name (Top) */
+    .credit-requests-table td:nth-child(2) {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--color-gray-900, #111827);
+        margin-bottom: 0.25rem;
+        display: block;
+        order: 1;
+    }
+
+    .credit-requests-table td:nth-child(2) div:last-child {
+        font-weight: normal;
+        font-size: 0.85rem;
+        margin-top: 0.1rem;
+    }
+
+    .credit-requests-table td:nth-child(2)::before {
+        display: none;
+    }
+
+    /* 2. Requested Limit & Increase */
+    .credit-requests-table td:nth-child(4) {
+        order: 2;
+        font-weight: 600;
+    }
+
+    .credit-requests-table td:nth-child(4)::before {
+        content: "New Limit:";
+    }
+
+    .credit-requests-table td:nth-child(5) {
+        order: 3;
+        color: #059669 !important;
+        /* Green */
+        font-weight: 600;
+    }
+
+    .credit-requests-table td:nth-child(5)::before {
+        content: "Increase:";
+    }
+
+    /* 3. Current Limit */
+    .credit-requests-table td:nth-child(3) {
+        order: 4;
+        color: var(--color-gray-500);
+        font-size: 0.9rem;
+    }
+
+    .credit-requests-table td:nth-child(3)::before {
+        content: "Current:";
+    }
+
+    /* 4. Notes */
+    .credit-requests-table td:nth-child(6) {
+        order: 5;
+        display: block;
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        background: #F9FAFB;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        color: var(--color-gray-600);
+    }
+
+    .credit-requests-table td:nth-child(6)::before {
+        content: "Notes:";
+        display: block;
+        /* Label above notes */
+        margin-bottom: 0.25rem;
+    }
+
+    /* 5. Date & Status */
+    .credit-requests-table td:nth-child(1) {
+        order: 6;
+        font-size: 0.85rem;
+        color: var(--color-gray-400);
+        margin-top: 0.5rem;
+    }
+
+    .credit-requests-table td:nth-child(1)::before {
+        content: "Date:";
+    }
+
+    .credit-requests-table td:nth-child(7) {
+        order: 7;
+        margin-top: 0.5rem;
+        justify-content: flex-start;
+    }
+
+    .credit-requests-table td:nth-child(7)::before {
+        display: none;
+    }
+
+    /* 6. Actions (Footer) */
+    .credit-requests-table td:last-child {
+        order: 8;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px dashed var(--color-gray-200, #E5E7EB) !important;
+        justify-content: flex-end;
+        gap: 0.75rem;
+    }
+
+    .credit-requests-table td:last-child::before {
+        display: none;
+    }
+
+    .credit-requests-table .action-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Increase specific button size for mobile touch */
+    .credit-requests-table .action-btn svg {
+        width: 20px;
+        height: 20px;
     }
 }

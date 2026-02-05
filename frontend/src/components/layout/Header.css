@@ -308,6 +308,10 @@
         width: 18px;
         height: 18px;
     }
+
+    .action-hide-mobile {
+        display: none !important;
+    }
 }
 
 .header-action-btn:hover {
