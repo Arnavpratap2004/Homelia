@@ -9,8 +9,8 @@ const updateProfileSchema = z.object({
   phone: z.string().min(10).optional(),
   companyName: z.string().optional(),
   gstNumber: z.string().optional(),
-  billingAddress: z.record(z.unknown()).optional(),
-  shippingAddress: z.record(z.unknown()).optional(),
+  billingAddress: z.record(z.string(), z.unknown()).optional(),
+  shippingAddress: z.record(z.string(), z.unknown()).optional(),
 });
 
 async function handler(req: AuthenticatedRequest, res: NextApiResponse) {

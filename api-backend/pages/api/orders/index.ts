@@ -1,4 +1,4 @@
-l̥l̥import type { NextApiResponse } from 'next';
+import type { NextApiResponse } from 'next';
 import { z } from 'zod';
 import { prisma } from '../../../lib/prisma';
 import { withAuth, AuthenticatedRequest } from '../../../lib/middleware';
@@ -9,8 +9,8 @@ import { Prisma } from '@prisma/client';
 
 const createOrderSchema = z.object({
   items: z.array(z.object({ productId: z.string().uuid(), quantity: z.number().int().min(1) })).min(1),
-  shippingAddress: z.record(z.unknown()),
-  billingAddress: z.record(z.unknown()),
+  shippingAddress: z.record(z.string(), z.unknown()),
+  billingAddress: z.record(z.string(), z.unknown()),
   notes: z.string().optional(),
   quoteId: z.string().uuid().optional(),
 });
@@ -33,7 +33,7 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
       const { page = 1, limit = 10, ...filters } = parsed.data;
       const { skip, take } = getPaginationParams({ page, limit });
       const isAdmin = req.user!.role === 'ADMIN';
-      const where: Prisma.OrderWhereInput = {};
+      const where: any = {};
       if (!isAdmin) where.userId = req.user!.userId;
       if (filters.status) where.status = filters.status;
       if (filters.paymentStatus) where.paymentStatus = filters.paymentStatus;
@@ -65,10 +65,10 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
       if (products.length !== productIds.length) throw ApiError.badRequest('One or more products not found');
 
       let subtotal = 0;
-      const orderItems: Prisma.OrderItemCreateWithoutOrderInput[] = [];
+      const orderItems: any[] = [];
 
       for (const item of input.items) {
-        const product = products.find(p => p.id === item.productId)!;
+        const product = products.find((p: any) => p.id === item.productId)!;
         const unitPrice = getPriceForRole(req.user!.role, product.price?.toNumber() || null, product.b2bPrice?.toNumber() || null, product.dealerPrice?.toNumber() || null);
         if (!unitPrice && !product.isPriceOnRequest) throw ApiError.badRequest(`Price not available for ${product.name}`);
         if (product.isPriceOnRequest) throw ApiError.badRequest(`${product.name} requires a quote. Please submit an RFQ.`);
@@ -90,15 +90,15 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
       const totalAmount = roundToTwo(gst.totalAmount + freightCharges);
       const orderNumber = await generateOrderNumber();
 
-      const order = await prisma.$transaction(async (tx) => {
+      const order = await prisma.$transaction(async (tx: any) => {
         const newOrder = await tx.order.create({
           data: {
             orderNumber, userId: req.user!.userId,
             orderType: input.quoteId ? 'RFQ' : 'DIRECT', status: 'PENDING',
             subtotal, cgst: gst.cgst, sgst: gst.sgst, igst: gst.igst,
             totalTax: gst.totalTax, freightCharges, totalAmount, balanceDue: totalAmount,
-            shippingAddress: input.shippingAddress as Prisma.InputJsonValue,
-            billingAddress: input.billingAddress as Prisma.InputJsonValue,
+            shippingAddress: input.shippingAddress as any,
+            billingAddress: input.billingAddress as any,
             notes: input.notes, quoteId: input.quoteId,
             items: { create: orderItems },
           },

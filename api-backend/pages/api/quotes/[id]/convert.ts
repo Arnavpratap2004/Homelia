@@ -4,7 +4,7 @@ import { prisma } from '../../../../lib/prisma';
 import { withAuth, AuthenticatedRequest } from '../../../../lib/middleware';
 import { handleApiError, ApiError } from '../../../../lib/errors';
 
-const convertSchema = z.object({ shippingAddress: z.record(z.unknown()), billingAddress: z.record(z.unknown()) });
+const convertSchema = z.object({ shippingAddress: z.record(z.string(), z.unknown()), billingAddress: z.record(z.string(), z.unknown()) });
 
 async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
   if (req.method !== 'POST') { res.setHeader('Allow', 'POST'); return res.status(405).json({ success: false, message: 'Method not allowed' }); }

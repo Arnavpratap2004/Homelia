@@ -34,7 +34,7 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
     let subtotal = 0;
     const itemUpdates: { id: string; quotedQty: number; quotedPrice: number }[] = [];
     for (const pi of pricing.items) {
-      const qi = quote.items.find(i => i.id === pi.quoteItemId);
+      const qi = quote.items.find((i: any) => i.id === pi.quoteItemId);
       if (!qi) throw ApiError.badRequest(`Quote item ${pi.quoteItemId} not found`);
       subtotal += pi.quotedPrice * pi.quotedQty;
       itemUpdates.push({ id: pi.quoteItemId, quotedQty: pi.quotedQty, quotedPrice: pi.quotedPrice });

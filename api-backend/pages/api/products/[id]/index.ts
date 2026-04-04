@@ -27,7 +27,7 @@ const createProductSchema = z.object({
   images: z.array(z.string()).optional(),
   colors: z.array(z.string()).optional(),
   description: z.string().optional(),
-  technicalSpecs: z.record(z.string()).optional(),
+  technicalSpecs: z.record(z.string(), z.string()).optional(),
   isActive: z.boolean().optional(),
   isFeatured: z.boolean().optional(),
   isBestseller: z.boolean().optional(),
@@ -49,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!parsed.success) return authRes.status(400).json({ success: false, message: parsed.error.issues[0].message });
         const product = await prisma.product.update({
           where: { id },
-          data: { ...parsed.data, technicalSpecs: parsed.data.technicalSpecs as Prisma.InputJsonValue },
+          data: { ...parsed.data, technicalSpecs: parsed.data.technicalSpecs as any },
         });
         return authRes.json({ success: true, message: 'Product updated', data: product });
       })(req as AuthenticatedRequest, res);

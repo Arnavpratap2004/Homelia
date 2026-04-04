@@ -1,4 +1,4 @@
-l̥l̥import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '../../../lib/prisma';
 import { handleApiError } from '../../../lib/errors';
 import { Brand } from '@prisma/client';

@@ -1,4 +1,4 @@
-ḥimport type { NextApiResponse } from 'next';
+import type { NextApiResponse } from 'next';
 import { prisma } from '../../../../lib/prisma';
 import { withAuth, AuthenticatedRequest } from '../../../../lib/middleware';
 import { handleApiError, ApiError } from '../../../../lib/errors';

@@ -45,7 +45,7 @@ const createProductSchema = z.object({
   images: z.array(z.string()).optional(),
   colors: z.array(z.string()).optional(),
   description: z.string().optional(),
-  technicalSpecs: z.record(z.string()).optional(),
+  technicalSpecs: z.record(z.string(), z.string()).optional(),
   isActive: z.boolean().optional(),
   isFeatured: z.boolean().optional(),
   isBestseller: z.boolean().optional(),
@@ -60,7 +60,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { page = 1, limit = 20, sortBy = 'createdAt', sortOrder = 'desc', ...filters } = parsed.data;
       const { skip, take } = getPaginationParams({ page, limit });
 
-      const where: Prisma.ProductWhereInput = { isActive: true };
+      const where: any = { isActive: true };
       if (filters.brand) where.brand = filters.brand;
       if (filters.category) where.category = filters.category;
       if (filters.finish) where.finish = filters.finish;
@@ -104,7 +104,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!parsed.success) return authRes.status(400).json({ success: false, message: parsed.error.issues[0].message });
 
         const product = await prisma.product.create({
-          data: { ...parsed.data, technicalSpecs: parsed.data.technicalSpecs as Prisma.InputJsonValue },
+          data: { ...parsed.data, technicalSpecs: parsed.data.technicalSpecs as any },
         });
 
         return authRes.status(201).json({ success: true, message: 'Product created', data: product });
