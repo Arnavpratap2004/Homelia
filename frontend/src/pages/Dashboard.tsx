@@ -662,10 +662,10 @@ const Dashboard = () => {
                                                             <tbody>
                                                                 {order.products.map((p, i) => (
                                                                     <tr key={i}>
-                                                                        <td>{p.name}</td>
-                                                                        <td>{p.qty}</td>
-                                                                        <td>{formatPrice(p.price)}</td>
-                                                                        <td>{formatPrice(p.qty * p.price)}</td>
+                                                                        <td data-label="Product">{p.name}</td>
+                                                                        <td data-label="Qty">{p.qty}</td>
+                                                                        <td data-label="Price">{formatPrice(p.price)}</td>
+                                                                        <td data-label="Total">{formatPrice(p.qty * p.price)}</td>
                                                                     </tr>
                                                                 ))}
                                                             </tbody>
@@ -786,10 +786,10 @@ const Dashboard = () => {
                                                             <tbody>
                                                                 {quote.items.map((item, i) => (
                                                                     <tr key={i}>
-                                                                        <td>{item.name}</td>
-                                                                        <td>{item.qty}</td>
-                                                                        <td>{formatPrice(item.price)}</td>
-                                                                        <td>{formatPrice(item.qty * item.price)}</td>
+                                                                        <td data-label="Product">{item.name}</td>
+                                                                        <td data-label="Qty">{item.qty}</td>
+                                                                        <td data-label="Est. Price">{formatPrice(item.price)}</td>
+                                                                        <td data-label="Total">{formatPrice(item.qty * item.price)}</td>
                                                                     </tr>
                                                                 ))}
                                                             </tbody>
@@ -864,15 +864,24 @@ const Dashboard = () => {
                                             ) : (
                                                 invoices.map(invoice => (
                                                     <tr key={invoice.id}>
-                                                        <td>{invoice.id}</td>
-                                                        <td>{invoice.date}</td>
-                                                        <td>{formatPrice(invoice.amount)}</td>
-                                                        <td>
+                                                        <td data-label="Invoice No.">
+                                                            <span className="cell-content">{invoice.id}</span>
+                                                        </td>
+                                                        <td data-label="Order ID">
+                                                            <span className="cell-content">{invoice.orderId}</span>
+                                                        </td>
+                                                        <td data-label="Date">
+                                                            <span className="cell-content">{invoice.date}</span>
+                                                        </td>
+                                                        <td data-label="Amount">
+                                                            <span className="cell-content">{formatPrice(invoice.amount)}</span>
+                                                        </td>
+                                                        <td data-label="Status">
                                                             <span className={`status-badge ${invoice.status.toLowerCase()}`}>
                                                                 {invoice.status}
                                                             </span>
                                                         </td>
-                                                        <td>
+                                                        <td data-label="Action">
                                                             <button
                                                                 className="btn btn-outline btn-sm"
                                                                 onClick={() => downloadInvoice(invoice.orderId)}

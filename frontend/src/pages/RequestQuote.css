@@ -282,3 +282,23 @@
     gap: var(--space-4);
     justify-content: center;
 }
+
+@media (max-width: 640px) {
+    .request-quote-page .quote-form-container {
+        padding: var(--space-4);
+    }
+
+    .request-quote-page .quote-header h1 {
+        font-size: var(--text-2xl);
+    }
+
+    .request-quote-page .success-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .request-quote-page .success-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

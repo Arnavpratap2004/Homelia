@@ -1220,3 +1220,176 @@
         }
     }
 }
+
+/* Mobile Table Styles (Card View for Invoices & Modals) */
+/* Mobile Table Styles (Card View for Invoices & Modals) */
+@media (max-width: 768px) {
+
+    .dashboard-page .invoices-table table,
+    .dashboard-page .order-products-table {
+        display: block !important;
+        width: 100% !important;
+        overflow-x: visible !important;
+    }
+
+    .dashboard-page .invoices-table thead,
+    .dashboard-page .order-products-table thead {
+        display: none !important;
+    }
+
+    .dashboard-page .invoices-table tbody,
+    .dashboard-page .order-products-table tbody {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .dashboard-page .invoices-table tr,
+    .dashboard-page .order-products-table tr {
+        display: block !important;
+        margin-bottom: 1rem !important;
+        background: white !important;
+        border: 1px solid var(--color-gray-100, #E5E5E5) !important;
+        border-radius: 8px !important;
+        padding: 1rem !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+        position: relative !important;
+    }
+
+    .dashboard-page .invoices-table td,
+    .dashboard-page .order-products-table td {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        text-align: right !important;
+        padding: 0.5rem 0 !important;
+        border: none !important;
+        border-bottom: 1px solid var(--color-gray-50, #F9FAFB) !important;
+        font-size: 0.9rem !important;
+        white-space: normal !important;
+        /* Allow wrapping */
+        overflow-wrap: break-word !important;
+        /* Standard property */
+        word-wrap: break-word !important;
+        /* Legacy support */
+        word-break: break-word !important;
+        /* Non-standard but effective for flex */
+        max-width: 100% !important;
+    }
+
+    /* Wrapper for text content to ensure it respects flex bounds */
+    .dashboard-page .invoices-table .cell-content {
+        flex: 1 !important;
+        min-width: 0 !important;
+        /* CRITICAL for flex item shrinking */
+        text-align: right !important;
+        word-break: break-all !important;
+        /* Force break for IDs */
+        overflow-wrap: break-word !important;
+    }
+
+    /* Force aggressive wrapping for IDs to prevent overflow */
+    .dashboard-page .invoices-table td[data-label="Order ID"],
+    .dashboard-page .invoices-table td[data-label="Invoice No."] {
+        word-break: break-all !important;
+    }
+
+    .dashboard-page .invoices-table td:last-child,
+    .dashboard-page .order-products-table td:last-child {
+        border-bottom: none !important;
+        padding-bottom: 0 !important;
+        justify-content: flex-end !important;
+    }
+
+    .dashboard-page .invoices-table td::before,
+    .dashboard-page .order-products-table td::before {
+        content: attr(data-label);
+        font-weight: 500 !important;
+        color: var(--color-gray-500, #6B7280) !important;
+        text-transform: uppercase !important;
+        font-size: 0.75rem !important;
+        letter-spacing: 0.05em !important;
+        margin-right: 1rem !important;
+        text-align: left !important;
+        flex-shrink: 0 !important;
+        /* Prevent label from shrinking */
+        max-width: 40% !important;
+        /* Limit label width */
+    }
+
+    /* === Invoice specific polish === */
+    .dashboard-page .invoices-table td[data-label="Invoice No."] {
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+        color: var(--color-gray-900, #1C1917) !important;
+        padding-bottom: 0.75rem !important;
+        border-bottom: 2px solid var(--color-gray-100, #E5E5E5) !important;
+        margin-bottom: 0.5rem !important;
+        /* Removing negative margins to prevent overflow issues */
+        background: var(--color-gray-50, #FAF9F8) !important;
+        border-radius: 8px !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        flex-direction: column !important;
+        /* Stack Label and ID for header */
+        align-items: flex-start !important;
+        gap: 0.25rem !important;
+    }
+
+    .dashboard-page .invoices-table td[data-label="Invoice No."] ::before {
+        margin-right: 0 !important;
+        font-size: 0.7rem !important;
+    }
+
+    .dashboard-page .invoices-table td[data-label="Amount"] {
+        color: var(--color-gray-900, #1C1917) !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+    }
+
+    .dashboard-page .invoices-table td[data-label="Action"] {
+        margin-top: 0.75rem !important;
+        padding-top: 0.75rem !important;
+        border-top: 1px dashed var(--color-gray-200, #E5E5E5) !important;
+    }
+
+    .dashboard-page .invoices-table td[data-label="Action"] button {
+        width: 100% !important;
+        justify-content: center !important;
+        height: 40px !important;
+    }
+
+    /* Modal Tweaks */
+    .dashboard-page .modal-content {
+        width: 95% !important;
+        max-height: 85vh !important;
+        margin: auto !important;
+    }
+
+    .dashboard-page .modal-header h2 {
+        font-size: 1.25rem !important;
+    }
+
+    /* Stack Profile Grid */
+    .dashboard-page .profile-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Quote Card Mobile Optimization */
+    .dashboard-page .quote-card {
+        padding: 1rem !important;
+    }
+
+    .dashboard-page .quote-header {
+        margin-bottom: 0.75rem !important;
+    }
+
+    .dashboard-page .quote-footer {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0.75rem !important;
+    }
+
+    .dashboard-page .quote-footer .btn {
+        width: 100%;
+    }
+}
