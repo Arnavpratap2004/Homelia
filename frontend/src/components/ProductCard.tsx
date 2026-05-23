@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Star } from 'lucide-react';
+import { Star, ShoppingCart } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 import { Product, formatPricePerSheet } from '../data/products';
 import './ProductCard.css';
 
@@ -9,6 +10,20 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) => {
+    const { addToCart } = useCart();
+
+    const handleQuickAdd = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        addToCart({
+            productId: product.id,
+            name: product.name,
+            sku: product.sku,
+            price: product.price,
+            color: product.colors[0],
+            image: product.image
+        });
+    };
     return (
         <Link
             to={`/product/${product.id}`}
@@ -80,6 +95,13 @@ const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) => {
 
                 <div className="product-footer">
                     <span className="product-price">{formatPricePerSheet(product.price)}</span>
+                    <button 
+                        className="btn btn-primary btn-sm quick-add-btn"
+                        onClick={handleQuickAdd}
+                        title="Quick Add to Cart"
+                    >
+                        <ShoppingCart size={16} />
+                    </button>
                     <span className="product-moq">MOQ: {product.moq} sheets</span>
                 </div>
             </div>

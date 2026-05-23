@@ -12,8 +12,7 @@ import {
     Building2
 } from 'lucide-react';
 import { productsApi } from '../api';
-// ProductCard available if needed
-// import ProductCard from '../components/ProductCard';
+import ProductCard from '../components/ProductCard';
 import ExpandableBrands from '../components/ExpandableBrands';
 import { getFeaturedProducts, getBestsellerProducts, categories, brands, Product } from '../data/products';
 import './Home.css';
@@ -202,6 +201,27 @@ const Home = () => {
                                     </span>
                                 </div>
                             </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+            
+            {/* Featured Products Section */}
+            <section className="featured-products section">
+                <div className="container">
+                    <div className="section-header">
+                        <div>
+                            <h2>Featured Collection</h2>
+                            <p>Handpicked textures for sophisticated interiors</p>
+                        </div>
+                        <Link to="/catalog" className="btn btn-ghost">
+                            View All <ArrowRight size={16} />
+                        </Link>
+                    </div>
+                    
+                    <div className="products-grid">
+                        {_featuredProducts.slice(0, 3).map(product => (
+                            <ProductCard key={product.id} product={product} />
                         ))}
                     </div>
                 </div>

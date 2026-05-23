@@ -204,6 +204,7 @@ const Login = () => {
                                     <button
                                         className="user-type-card admin"
                                         onClick={() => setSelectedUserType('ADMIN')}
+                                        data-testid="portal-admin"
                                     >
                                         <div className="card-icon">
                                             <Shield size={32} />
@@ -215,6 +216,7 @@ const Login = () => {
                                     <button
                                         className="user-type-card dealer"
                                         onClick={() => setSelectedUserType('DEALER')}
+                                        data-testid="portal-dealer"
                                     >
                                         <div className="card-icon">
                                             <Store size={32} />
@@ -226,6 +228,7 @@ const Login = () => {
                                     <button
                                         className="user-type-card b2b"
                                         onClick={() => setSelectedUserType('B2B')}
+                                        data-testid="portal-b2b"
                                     >
                                         <div className="card-icon">
                                             <Briefcase size={32} />
@@ -294,6 +297,7 @@ const Login = () => {
                                                     value={email}
                                                     onChange={(e) => setEmail(e.target.value)}
                                                     required
+                                                    data-testid="login-email"
                                                 />
                                             </div>
                                         </div>
@@ -309,6 +313,7 @@ const Login = () => {
                                                     value={password}
                                                     onChange={(e) => setPassword(e.target.value)}
                                                     required
+                                                    data-testid="login-password"
                                                 />
                                                 <button
                                                     type="button"
