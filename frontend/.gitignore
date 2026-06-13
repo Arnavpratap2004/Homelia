@@ -15,8 +15,6 @@ build/
 .env.production.local
 temp_durian.zip
 temp_durian_extracted/
-public/catalogues/
-
 # Logs
 npm-debug.log*
 yarn-debug.log*
