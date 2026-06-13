@@ -19,9 +19,9 @@ const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) => {
             productId: product.id,
             name: product.name,
             sku: product.sku,
-            price: product.price,
+            price: product.price ?? 0,
             color: product.colors[0],
-            image: product.image
+            image: product.images?.[0] || ''
         });
     };
     return (
