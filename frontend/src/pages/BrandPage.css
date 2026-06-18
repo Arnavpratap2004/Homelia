@@ -197,7 +197,9 @@
     border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Brand Visual / Swatches */
+/* ===============================================
+   BRAND DISPLAY — Curated Museum-Style Hero Visual
+   =============================================== */
 .brand-hero-visual {
     display: none;
 }
@@ -210,26 +212,304 @@
     }
 }
 
-.brand-swatches {
+.brand-display {
     position: relative;
-    width: 350px;
-    height: 350px;
+    width: 440px;
+    height: 440px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.brand-swatch {
+/* ---- Ambient Glow ---- */
+.brand-display-glow {
     position: absolute;
-    width: 200px;
-    height: 130px;
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-xl);
-    transition: all 0.3s ease;
+    width: 280px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(
+        ellipse,
+        rgba(166, 144, 112, 0.12) 0%,
+        rgba(166, 144, 112, 0.04) 50%,
+        transparent 80%
+    );
+    filter: blur(30px);
+    animation: glowPulse 5s ease-in-out infinite;
+    z-index: 0;
 }
 
-.brand-swatches:hover .brand-swatch {
-    transform: rotate(0deg) !important;
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.08); }
+}
+
+/* ---- Decorative Corner Brackets ---- */
+.brand-display-frame {
+    position: absolute;
+    inset: 20px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.frame-corner {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+}
+
+.frame-corner::before,
+.frame-corner::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(to right, rgba(166, 144, 112, 0.35), rgba(166, 144, 112, 0.08));
+}
+
+.frame-tl {
+    top: 0;
+    left: 0;
+}
+
+.frame-tl::before {
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 1px;
+}
+
+.frame-tl::after {
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(166, 144, 112, 0.35), rgba(166, 144, 112, 0.08));
+}
+
+.frame-br {
+    bottom: 0;
+    right: 0;
+}
+
+.frame-br::before {
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(to left, rgba(166, 144, 112, 0.35), rgba(166, 144, 112, 0.08));
+}
+
+.frame-br::after {
+    bottom: 0;
+    right: 0;
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to top, rgba(166, 144, 112, 0.35), rgba(166, 144, 112, 0.08));
+}
+
+/* ---- Main Hero Card ---- */
+.brand-card-main {
+    position: relative;
+    z-index: 3;
+    width: 260px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+        0 16px 48px rgba(0, 0, 0, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.04);
+    transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    animation: mainCardFloat 6s ease-in-out infinite;
+}
+
+@keyframes mainCardFloat {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-10px) rotate(-2deg); }
+}
+
+.brand-card-main:hover {
+    transform: translateY(-14px) rotate(0deg) scale(1.02) !important;
+    box-shadow:
+        0 28px 64px rgba(0, 0, 0, 0.35),
+        0 8px 20px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* Surface with gradient */
+.brand-card-surface {
+    width: 100%;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Diagonal light shine */
+.brand-card-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        125deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.03) 25%,
+        transparent 50%,
+        transparent 75%,
+        rgba(0, 0, 0, 0.06) 100%
+    );
+}
+
+.brand-card-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.06),
+        transparent
+    );
+    animation: cardShimmer 4s ease-in-out infinite;
+}
+
+@keyframes cardShimmer {
+    0%, 100% { left: -100%; }
+    50% { left: 150%; }
+}
+
+/* Info strip */
+.brand-card-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(18, 15, 13, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.brand-card-info-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.brand-card-name {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.03em;
+}
+
+.brand-card-type {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.05em;
+}
+
+.brand-card-finish {
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dealer-accent);
+    background: rgba(166, 144, 112, 0.1);
+    border: 1px solid rgba(166, 144, 112, 0.2);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+/* ---- Accent Swatches ---- */
+.brand-accent-swatch {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+    transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.brand-accent-swatch:hover {
+    transform: scale(1.1) translateY(-6px) !important;
+}
+
+.accent-color {
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle shine on accent swatches */
+.accent-color::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+}
+
+.brand-accent-swatch span {
+    font-size: 0.5rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* Accent 1 — top right, floats slightly offset from main */
+.brand-accent-1 {
+    top: 40px;
+    right: 30px;
+    animation: accent1Float 7s ease-in-out infinite;
+}
+
+@keyframes accent1Float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Accent 2 — bottom left */
+.brand-accent-2 {
+    bottom: 70px;
+    left: 30px;
+    animation: accent2Float 8s ease-in-out infinite;
+}
+
+@keyframes accent2Float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* ---- Color Palette Strip ---- */
+.brand-palette-strip {
+    position: absolute;
+    bottom: 25px;
+    right: 40px;
+    display: flex;
+    gap: 6px;
+    z-index: 4;
+}
+
+.brand-palette-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.brand-palette-dot:hover {
+    transform: scale(1.4);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Collections */
@@ -640,4 +920,384 @@
 
 .catalogues-section .container {
     overflow: visible;
+}
+
+/* ===============================================
+   STATS TRUST BAR — Dealer Luxury Theme
+   =============================================== */
+.brand-stats-bar {
+    position: relative;
+    padding: 3rem 0;
+    background: linear-gradient(135deg,
+            #1C1917 0%,
+            #292524 50%,
+            #1C1917 100%);
+    border-top: 1px solid rgba(166, 144, 112, 0.15);
+    border-bottom: 1px solid rgba(166, 144, 112, 0.15);
+}
+
+/* Subtle gold shimmer overlay */
+.brand-stats-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(166, 144, 112, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.brand-stats-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+}
+
+.brand-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    position: relative;
+}
+
+/* Vertical divider between stats */
+.brand-stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(166, 144, 112, 0.3),
+            transparent);
+}
+
+.brand-stat-icon {
+    color: var(--dealer-accent);
+    margin-bottom: 0.75rem;
+    opacity: 0.8;
+}
+
+.brand-stat-value {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.brand-stat-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .brand-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .brand-stat-item:nth-child(2)::after {
+        display: none;
+    }
+
+    .brand-stat-item:nth-child(1)::after,
+    .brand-stat-item:nth-child(3)::after {
+        display: block;
+    }
+
+    .brand-stats-bar {
+        padding: 2rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem 0;
+    }
+
+    .brand-stat-item {
+        padding: 1rem 0.5rem;
+    }
+
+    .brand-stat-value {
+        font-size: 1.75rem;
+    }
+}
+
+/* ===============================================
+   COLLECTIONS GRID — Dealer Luxury Theme
+   =============================================== */
+.brand-collections-section {
+    background: var(--dealer-ivory);
+    padding: 5rem 0;
+}
+
+.brand-collections-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--dealer-border-dark);
+    gap: 2rem;
+}
+
+.brand-collections-header-left {
+    flex: 1;
+}
+
+.brand-collections-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dealer-accent);
+    margin-bottom: 0.75rem;
+}
+
+.brand-collections-header h2 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    color: var(--dealer-primary);
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.brand-collections-desc {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #78716C;
+    max-width: 320px;
+    line-height: 1.6;
+    text-align: right;
+    margin: 0;
+}
+
+.brand-collections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+@keyframes brandCollectionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.brand-collection-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: #fff;
+    border: 1px solid var(--dealer-border-dark);
+    border-radius: 6px;
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    animation: brandCollectionFadeIn 0.5s ease both;
+}
+
+.brand-collection-card:hover {
+    background: var(--dealer-primary);
+    border-color: var(--dealer-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(44, 44, 44, 0.15);
+}
+
+.brand-collection-card:hover .brand-collection-icon {
+    background: rgba(166, 144, 112, 0.2);
+    color: var(--dealer-accent-light);
+    border-color: rgba(166, 144, 112, 0.3);
+}
+
+.brand-collection-card:hover h4 {
+    color: #fff;
+}
+
+.brand-collection-card:hover span {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.brand-collection-card:hover .brand-collection-arrow {
+    color: var(--dealer-accent-light);
+    transform: translateX(4px);
+    opacity: 1;
+}
+
+.brand-collection-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(166, 144, 112, 0.08);
+    border: 1px solid rgba(166, 144, 112, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dealer-accent);
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+}
+
+.brand-collection-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.brand-collection-info h4 {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--dealer-primary);
+    margin: 0 0 0.2rem 0;
+    letter-spacing: 0;
+    transition: color 0.3s ease;
+}
+
+.brand-collection-info span {
+    font-size: 0.75rem;
+    color: #78716C;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.brand-collection-arrow {
+    color: var(--dealer-accent);
+    opacity: 0.3;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+    .brand-collections-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .brand-collections-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-collections-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .brand-collections-desc {
+        text-align: left;
+        max-width: 100%;
+    }
+}
+
+/* ===============================================
+   FEATURED PRODUCTS — Dealer Luxury Theme
+   =============================================== */
+.brand-featured-section {
+    background: linear-gradient(to bottom, #F7F5F2, var(--dealer-ivory));
+    padding: 5rem 0;
+    position: relative;
+}
+
+/* Decorative top accent */
+.brand-featured-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right,
+            transparent,
+            var(--dealer-accent),
+            transparent);
+}
+
+.brand-featured-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    gap: 2rem;
+}
+
+.brand-featured-eyebrow {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dealer-accent);
+    margin-bottom: 0.75rem;
+}
+
+.brand-featured-header h2 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    color: var(--dealer-primary);
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.brand-featured-subtitle {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #78716C;
+    line-height: 1.6;
+    margin: 0.5rem 0 0 0;
+    max-width: 400px;
+}
+
+.brand-featured-cta {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.brand-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .brand-featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .brand-featured-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    .brand-featured-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }

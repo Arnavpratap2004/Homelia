@@ -1,9 +1,54 @@
+import { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowRight, FileText, ChevronRight } from 'lucide-react';
+import { ArrowRight, FileText, ChevronRight, Award, Layers, Globe, BookOpen, Palette, Trees, Sparkles, Gem, Sun, ShieldCheck, Zap } from 'lucide-react';
 import { getBrandById, getProductsByBrand } from '../data/products';
+import ProductCard from '../components/ProductCard';
 import { ExpandableCards, ExpandableCardItem } from '../components/ui/ExpandableCards';
 import '../components/ui/ExpandableCards.css';
 import './BrandPage.css';
+
+/* ---- Animated Stat Counter Sub-Component ---- */
+const StatCounter = ({ value, suffix, label, icon, delay }: {
+    value: number; suffix: string; label: string; icon: React.ReactNode; delay: number;
+}) => {
+    const [count, setCount] = useState(0);
+    const [hasAnimated, setHasAnimated] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    setHasAnimated(true);
+                    const duration = 1800;
+                    const start = performance.now();
+                    const animate = (now: number) => {
+                        const elapsed = now - start - delay;
+                        if (elapsed < 0) { requestAnimationFrame(animate); return; }
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+                        setCount(Math.round(eased * value));
+                        if (progress < 1) requestAnimationFrame(animate);
+                    };
+                    requestAnimationFrame(animate);
+                }
+            },
+            { threshold: 0.3 }
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, [value, delay, hasAnimated]);
+
+    return (
+        <div className="brand-stat-item" ref={ref}>
+            <div className="brand-stat-icon">{icon}</div>
+            <div className="brand-stat-value">{count}{suffix}</div>
+            <div className="brand-stat-label">{label}</div>
+        </div>
+    );
+};
 
 const BrandPage = () => {
     const { brandId } = useParams<{ brandId: string }>();
@@ -52,24 +97,153 @@ const BrandPage = () => {
                             </div>
                         </div>
                         <div className="brand-hero-visual">
-                            <div className="brand-swatches">
-                                {products.slice(0, 4).map((product, idx) => (
+                            <div className="brand-display">
+                                {/* Ambient glow behind main card */}
+                                <div className="brand-display-glow" />
+
+                                {/* Decorative corner brackets */}
+                                <div className="brand-display-frame">
+                                    <div className="frame-corner frame-tl" />
+                                    <div className="frame-corner frame-br" />
+                                </div>
+
+                                {/* Main hero card — the featured product */}
+                                <div className="brand-card-main">
                                     <div
-                                        key={product.id}
-                                        className="brand-swatch"
-                                        style={{
-                                            background: product.colors[0],
-                                            transform: `rotate(${(idx - 1.5) * 8}deg)`,
-                                            zIndex: 4 - idx
-                                        }}
-                                    />
-                                ))}
+                                        className="brand-card-surface"
+                                        style={{ background: `linear-gradient(145deg, ${products[0]?.colors[0]} 0%, ${products[0]?.colors[1] || products[0]?.colors[0]} 100%)` }}
+                                    >
+                                        <div className="brand-card-shine" />
+                                    </div>
+                                    <div className="brand-card-info">
+                                        <div className="brand-card-info-left">
+                                            <span className="brand-card-name">{products[0]?.name}</span>
+                                            <span className="brand-card-type">{products[0]?.texture} · {products[0]?.thickness}</span>
+                                        </div>
+                                        <span className="brand-card-finish">{products[0]?.finish}</span>
+                                    </div>
+                                </div>
+
+                                {/* Accent swatch — top right */}
+                                <div className="brand-accent-swatch brand-accent-1">
+                                    <div className="accent-color" style={{ background: products[1]?.colors[0] }} />
+                                    <span>{products[1]?.name.split(' ')[0]}</span>
+                                </div>
+
+                                {/* Accent swatch — bottom left */}
+                                <div className="brand-accent-swatch brand-accent-2">
+                                    <div className="accent-color" style={{ background: products[2]?.colors[0] }} />
+                                    <span>{products[2]?.name.split(' ')[0]}</span>
+                                </div>
+
+                                {/* Color palette strip */}
+                                <div className="brand-palette-strip">
+                                    {products.slice(0, 5).map((p, i) => (
+                                        <div
+                                            key={i}
+                                            className="brand-palette-dot"
+                                            style={{ background: p.colors[0] }}
+                                            title={p.name}
+                                        />
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            {/* ======== STATS TRUST BAR ======== */}
+            <section className="brand-stats-bar">
+                <div className="container">
+                    <div className="brand-stats-grid">
+                        {(brand.id === 'durian' ? [
+                            { value: 40, suffix: '+', label: 'Years of Excellence', icon: <Award size={22} /> },
+                            { value: 500, suffix: '+', label: 'Unique Designs', icon: <Palette size={22} /> },
+                            { value: 9, suffix: '', label: 'Catalogue Collections', icon: <BookOpen size={22} /> },
+                            { value: 50, suffix: '+', label: 'Countries Exported', icon: <Globe size={22} /> },
+                        ] : [
+                            { value: 15, suffix: '+', label: 'Years of Innovation', icon: <Award size={22} /> },
+                            { value: 300, suffix: '+', label: 'Bold Designs', icon: <Palette size={22} /> },
+                            { value: 4, suffix: '', label: 'Catalogue Collections', icon: <BookOpen size={22} /> },
+                            { value: 100, suffix: '+', label: 'Dealer Partners', icon: <Globe size={22} /> },
+                        ]).map((stat, idx) => (
+                            <StatCounter key={idx} value={stat.value} suffix={stat.suffix} label={stat.label} icon={stat.icon} delay={idx * 150} />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ======== COLLECTIONS GRID ======== */}
+            <section className="brand-collections-section section">
+                <div className="container">
+                    <div className="brand-collections-header">
+                        <div className="brand-collections-header-left">
+                            <span className="brand-collections-eyebrow">
+                                <Layers size={14} />
+                                Collections
+                            </span>
+                            <h2>Explore by Collection</h2>
+                        </div>
+                        <p className="brand-collections-desc">
+                            Each collection is crafted with a distinct aesthetic vision — find the one that speaks to your project.
+                        </p>
+                    </div>
+                    <div className="brand-collections-grid">
+                        {(brand.id === 'durian' ? [
+                            { name: 'Woodgrains', icon: <Trees size={20} />, desc: 'Natural wood textures' },
+                            { name: 'Abstracts', icon: <Sparkles size={20} />, desc: 'Creative patterns' },
+                            { name: 'Solids', icon: <Gem size={20} />, desc: 'Clean solid finishes' },
+                            { name: 'High Gloss', icon: <Sun size={20} />, desc: 'Mirror-like shine' },
+                            { name: 'Exterior Grade', icon: <ShieldCheck size={20} />, desc: 'Weather resistant' },
+                            { name: 'Compact', icon: <Zap size={20} />, desc: 'High-density panels' },
+                        ] : [
+                            { name: 'Urban Collection', icon: <Sparkles size={20} />, desc: 'City-inspired designs' },
+                            { name: 'Nature Series', icon: <Trees size={20} />, desc: 'Organic textures' },
+                            { name: 'Metallics', icon: <Gem size={20} />, desc: 'Shimmering surfaces' },
+                            { name: 'Stone Finish', icon: <Layers size={20} />, desc: 'Natural stone look' },
+                            { name: 'Fabric Textures', icon: <Palette size={20} />, desc: 'Soft textile feel' },
+                        ]).map((col, idx) => (
+                            <Link
+                                key={idx}
+                                to={`/catalog?brand=${brand.id}`}
+                                className="brand-collection-card"
+                                style={{ animationDelay: `${idx * 80}ms` }}
+                            >
+                                <div className="brand-collection-icon">{col.icon}</div>
+                                <div className="brand-collection-info">
+                                    <h4>{col.name}</h4>
+                                    <span>{col.desc}</span>
+                                </div>
+                                <ArrowRight size={16} className="brand-collection-arrow" />
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ======== FEATURED PRODUCTS ======== */}
+            {products.length > 0 && (
+                <section className="brand-featured-section section">
+                    <div className="container">
+                        <div className="brand-featured-header">
+                            <div>
+                                <span className="brand-featured-eyebrow">Curated Selection</span>
+                                <h2>Featured from {brand.name.split(' ')[0]}</h2>
+                                <p className="brand-featured-subtitle">Handpicked textures and finishes loved by architects and designers</p>
+                            </div>
+                            <Link to={`/catalog?brand=${brand.id}`} className="btn btn-outline btn-lg brand-featured-cta">
+                                View All Products <ArrowRight size={16} />
+                            </Link>
+                        </div>
+                        <div className="brand-featured-grid">
+                            {products.slice(0, 4).map(product => (
+                                <ProductCard key={product.id} product={product} />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
 
             {/* Catalogues Section - Only for Durian */}
             {brand.id === 'durian' && (() => {
