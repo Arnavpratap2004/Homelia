@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf';
 import {
   ChevronLeft, ChevronRight, ChevronDown, Check,
-  Minus, Plus, Download, X, Maximize2, PanelLeftClose, PanelLeft, Clock, LayoutGrid
+  Minus, Plus, Download, X, Maximize2, PanelLeftClose, PanelLeft, Clock
 } from 'lucide-react';
 import { ExpandableCardItem } from './ExpandableCards';
 import './CatalogueViewer.css';
@@ -387,8 +387,7 @@ export default function CatalogueViewer({ card, cards, onClose, onSwitch }: Cata
                 if (e.key === 'Enter') {
                   const val = parseInt(zoomInput);
                   if (!isNaN(val)) {
-                    // restrict zoom between 50% and 300%
-                    setScale(s => Math.min(Math.max(val / 100, 0.5), 3));
+                    setScale(Math.min(Math.max(val / 100, 0.5), 3));
                   } else {
                     setZoomInput(Math.round(scale * 100).toString());
                   }

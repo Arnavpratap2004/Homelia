@@ -1,5 +1,5 @@
 import React, { useEffect, useId, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import CatalogueViewer from "./CatalogueViewer";
 
 // useOutsideClick hook
@@ -69,7 +69,6 @@ interface ExpandableCardProps {
 // Main ExpandableCards component
 export function ExpandableCards({ cards }: ExpandableCardProps) {
     const [active, setActive] = useState<ExpandableCardItem | null>(null);
-    const [showCatalogueSelector, setShowCatalogueSelector] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
     const id = useId();
 
@@ -77,7 +76,6 @@ export function ExpandableCards({ cards }: ExpandableCardProps) {
         function onKeyDown(event: KeyboardEvent) {
             if (event.key === "Escape") {
                 setActive(null);
-                setShowCatalogueSelector(false);
             }
         }
 
@@ -93,14 +91,7 @@ export function ExpandableCards({ cards }: ExpandableCardProps) {
 
     useOutsideClick(ref as React.RefObject<HTMLDivElement>, () => {
         setActive(null);
-        setShowCatalogueSelector(false);
     });
-
-    const handleCatalogueSelect = (e: React.MouseEvent, card: ExpandableCardItem) => {
-        e.stopPropagation();
-        setActive(card);
-        setShowCatalogueSelector(false);
-    };
 
     return (
         <>
